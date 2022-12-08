@@ -14,7 +14,7 @@ class _DrawerSalamState extends State<DrawerSalam> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: KLWhite,
+      backgroundColor: Kblack,
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
@@ -23,15 +23,15 @@ class _DrawerSalamState extends State<DrawerSalam> {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w800,
-                color: KBlack,
+                color: Kred,
               ),
             ),
             accountEmail: Text(
               'ibrahimrasith@gmail.com',
               style: TextStyle(
                 fontSize: 10,
-                fontWeight: FontWeight.w600,
-                color: KBlack.withOpacity(0.5),
+                fontWeight: FontWeight.w400,
+                color: Kwhite.withOpacity(0.5),
               ),
             ),
             currentAccountPicture: CircleAvatar(
@@ -44,19 +44,109 @@ class _DrawerSalamState extends State<DrawerSalam> {
                 ),
               ),
             ),
-            decoration: BoxDecoration(color: KLWhite),
+            decoration: BoxDecoration(color: Kblack),
           ),
           ListTile(
             leading: SvgPicture.asset(
               'assets/icons/bookout.svg',
-              color: KPrimaryblue,
+              color: Kwhite,
+              height: 22,
+              width: 22,
             ),
             title: Text(
               'Quran Recitation',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: KBlack,
+                color: Kred,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Quran(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.bookmark_outline_rounded,
+              color: Kwhite,
+            ),
+            title: Text(
+              'Bookmarks',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Kred,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Quran(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.book_outlined,
+              color: Kwhite,
+            ),
+            title: Text(
+              'Hadiths',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Kred,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Quran(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.location_on_outlined,
+              color: Kwhite,
+            ),
+            title: Text(
+              'Address',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Kred,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Quran(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.attach_money_outlined,
+              color: Kwhite,
+            ),
+            title: Text(
+              'Charity Donation',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Kred,
               ),
             ),
             onTap: () {

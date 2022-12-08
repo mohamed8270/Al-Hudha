@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:salamapp/provider%20like/fav_provider.dart';
 import 'interface/bottomnav.dart';
 import 'signup screen/signup.dart';
 
@@ -32,12 +34,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Barlow',
+    return ChangeNotifierProvider(
+      create: (context) => FavoriteProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          fontFamily: 'Poppins',
+        ),
+        home: const BottomNav(),
       ),
-      home: const BottomNav(),
     );
   }
 }

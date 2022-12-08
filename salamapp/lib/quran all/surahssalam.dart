@@ -15,9 +15,10 @@ class _SurahSalamState extends State<SurahSalam> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Kblack,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: KPurewhite,
+        backgroundColor: Kblack,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
@@ -26,14 +27,14 @@ class _SurahSalamState extends State<SurahSalam> {
             padding: EdgeInsets.all(20),
             child: SvgPicture.asset(
               'assets/icons/back.svg',
-              color: KBlack,
+              color: Kred,
             ),
           ),
         ),
         title: Text(
           quran.getSurahName(widget.surahnumber),
           style: TextStyle(
-            color: KBlack,
+            color: Kred.withOpacity(0.5),
             fontSize: 18,
             fontWeight: FontWeight.w800,
           ),
@@ -50,6 +51,10 @@ class _SurahSalamState extends State<SurahSalam> {
                   quran.getVerse(widget.surahnumber, index + 1,
                       verseEndSymbol: true),
                   textAlign: TextAlign.right,
+                  style: TextStyle(
+                    color: Kwhite,
+                    fontSize: 20,
+                  ),
                 ),
               );
             },

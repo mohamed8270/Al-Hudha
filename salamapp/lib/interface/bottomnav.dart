@@ -27,54 +27,56 @@ class _BottomNavState extends State<BottomNav> {
     return Scaffold(
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: KPurewhite,
+        backgroundColor: Kblack,
         type: BottomNavigationBarType.fixed,
         elevation: 0,
         iconSize: 18,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         currentIndex: currentIndex,
         onTap: (index) => setState(() => currentIndex = index),
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/homeout.svg',
-              color: KBlack.withOpacity(0.6),
+              color: Kred.withOpacity(0.6),
             ),
             activeIcon: SvgPicture.asset(
               'assets/icons/homefill.svg',
-              color: KPrimaryblue,
+              color: Kred,
             ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/timeout.svg',
-              color: KBlack.withOpacity(0.6),
+              color: Kred.withOpacity(0.6),
             ),
             activeIcon: SvgPicture.asset(
               'assets/icons/timefill.svg',
-              color: KPrimaryblue,
+              color: Kred,
             ),
             label: 'Prayer Time',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/bookout.svg',
-              color: KBlack.withOpacity(0.6),
+              color: Kred.withOpacity(0.6),
             ),
             activeIcon: SvgPicture.asset(
               'assets/icons/bookfill.svg',
-              color: KPrimaryblue,
+              color: Kred,
             ),
             label: 'Quran',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/moreout.svg',
-              color: KBlack.withOpacity(0.6),
+              color: Kred.withOpacity(0.6),
             ),
             activeIcon: SvgPicture.asset(
               'assets/icons/morefill.svg',
-              color: KPrimaryblue,
+              color: Kred,
             ),
             label: 'More',
           ),

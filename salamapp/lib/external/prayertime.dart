@@ -19,9 +19,9 @@ class PrayerTimeWidget extends StatelessWidget {
             Text(
               title,
               style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w800,
-                color: KBlack,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+                color: Kred,
               ),
             ),
             Text(
@@ -29,7 +29,7 @@ class PrayerTimeWidget extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w400,
-                color: KBlack.withOpacity(0.6),
+                color: Kred.withOpacity(0.6),
               ),
             )
           ],

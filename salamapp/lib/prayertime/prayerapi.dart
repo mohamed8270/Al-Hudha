@@ -26,7 +26,7 @@ class _PrayerApiState extends State<PrayerApi> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
               child: CircularProgressIndicator(
-                color: KPrimaryblue,
+                color: Kred,
               ),
             );
           }

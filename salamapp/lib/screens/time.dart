@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:location/location.dart';
 import 'package:salamapp/external/prayertime.dart';
+import 'package:salamapp/interface/bottomnav.dart';
 import 'package:salamapp/theme/colors.dart';
 
 class PrayerTime extends StatefulWidget {
@@ -21,21 +22,25 @@ class _PrayerTimeState extends State<PrayerTime> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: KLWhite,
+      backgroundColor: Kblack,
       appBar: AppBar(
-        centerTitle: true,
         elevation: 0,
-        backgroundColor: KPurewhite,
+        backgroundColor: Kblack,
         leading: InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => BottomNav()),
+            );
+          },
           child: Padding(
             padding: const EdgeInsets.all(20),
             child: SvgPicture.asset(
               'assets/icons/back.svg',
-              height: 14,
-              width: 14,
+              height: 18,
+              width: 18,
               fit: BoxFit.scaleDown,
-              color: KBlack,
+              color: Kred,
             ),
           ),
         ),
@@ -43,7 +48,7 @@ class _PrayerTimeState extends State<PrayerTime> {
           'Prayer Time',
           style: TextStyle(
             fontSize: 20,
-            color: KBlack,
+            color: Kred,
             fontWeight: FontWeight.w800,
           ),
         ),
@@ -54,7 +59,7 @@ class _PrayerTimeState extends State<PrayerTime> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
               child: CircularProgressIndicator(
-                color: KPrimaryblue,
+                color: Kred,
               ),
             );
           }
@@ -72,25 +77,37 @@ class _PrayerTimeState extends State<PrayerTime> {
                   time: DateFormat.jm().format(prayerTimes.fajr),
                   title: 'Salat al-Fajr',
                 ),
-                Divider(thickness: 1),
+                Divider(
+                  thickness: 1,
+                  color: Kwhite.withOpacity(0.4),
+                ),
                 SizedBox(height: 10),
                 PrayerTimeWidget(
                   time: DateFormat.jm().format(prayerTimes.dhuhr),
                   title: 'Salat al-Zuhr',
                 ),
-                Divider(thickness: 1),
+                Divider(
+                  thickness: 1,
+                  color: Kwhite.withOpacity(0.4),
+                ),
                 SizedBox(height: 10),
                 PrayerTimeWidget(
                   time: DateFormat.jm().format(prayerTimes.asr),
                   title: 'Salat al-Asr',
                 ),
-                Divider(thickness: 1),
+                Divider(
+                  thickness: 1,
+                  color: Kwhite.withOpacity(0.4),
+                ),
                 SizedBox(height: 10),
                 PrayerTimeWidget(
                   time: DateFormat.jm().format(prayerTimes.maghrib),
                   title: 'Salat al-Maghrib',
                 ),
-                Divider(thickness: 1),
+                Divider(
+                  thickness: 1,
+                  color: Kwhite.withOpacity(0.4),
+                ),
                 SizedBox(height: 10),
                 PrayerTimeWidget(
                   time: DateFormat.jm().format(prayerTimes.isha),
@@ -108,7 +125,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                     height: 50,
                     width: 200,
                     decoration: BoxDecoration(
-                      color: KPrimaryblue,
+                      color: Kwhite.withOpacity(0.02),
                       borderRadius: BorderRadius.circular(40),
                     ),
                     child: Row(
@@ -119,15 +136,16 @@ class _PrayerTimeState extends State<PrayerTime> {
                           height: 18,
                           width: 18,
                           fit: BoxFit.scaleDown,
-                          color: KPurewhite,
+                          color: Kred,
                         ),
                         SizedBox(width: 20),
                         Text(
                           'Set Reminder',
                           style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: KPurewhite),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Kred,
+                          ),
                         )
                       ],
                     ),

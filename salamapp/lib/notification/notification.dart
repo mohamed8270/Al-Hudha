@@ -13,9 +13,9 @@ class _NotificationSalamState extends State<NotificationSalam> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: KLWhite,
+      backgroundColor: Kblack,
       appBar: AppBar(
-        backgroundColor: KPurewhite,
+        backgroundColor: Kblack,
         elevation: 0,
         leading: InkWell(
           onTap: () {
@@ -28,7 +28,7 @@ class _NotificationSalamState extends State<NotificationSalam> {
               height: 16,
               width: 16,
               fit: BoxFit.scaleDown,
-              color: KBlack,
+              color: Kred,
             ),
           ),
         ),
@@ -37,7 +37,7 @@ class _NotificationSalamState extends State<NotificationSalam> {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w800,
-            color: KBlack,
+            color: Kred,
           ),
         ),
       ),

@@ -42,8 +42,8 @@ class _QuranState extends State<Quran> {
           'Quran Recitation',
           style: TextStyle(
             fontSize: 18,
-            fontWeight: FontWeight.w800,
-            color: Kred,
+            fontWeight: FontWeight.w500,
+            color: Kwhite.withOpacity(0.3),
           ),
         ),
       ),
@@ -71,9 +71,12 @@ class _QuranState extends State<Quran> {
                     color: Kwhite,
                   ),
                 ),
-                trailing: Icon(
-                  Icons.bookmark_outline_rounded,
-                  color: Kred.withOpacity(0.5),
+                trailing: InkWell(
+                  onTap: () {},
+                  child: Icon(
+                    Icons.bookmark_outline_rounded,
+                    color: Kred.withOpacity(0.5),
+                  ),
                 ),
               ),
             );

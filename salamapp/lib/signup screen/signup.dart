@@ -13,18 +13,18 @@ class _SignScreenState extends State<SignScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: KLWhite,
+      backgroundColor: Kblack,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(top: 60, left: 10, right: 10),
           child: Column(
             children: [
               Text(
-                'Salam App',
+                'Al Hudha',
                 style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.w600,
-                  color: KPrimaryblue,
+                  color: Kred,
                 ),
               ),
               SizedBox(height: 15),
@@ -33,7 +33,7 @@ class _SignScreenState extends State<SignScreen> {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
-                  color: KBlack.withOpacity(0.5),
+                  color: Kwhite.withOpacity(0.3),
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -59,13 +59,8 @@ class _SignScreenState extends State<SignScreen> {
                   height: 50,
                   width: 300,
                   decoration: BoxDecoration(
-                    color: KPurewhite,
+                    color: Kwhite.withOpacity(0.03),
                     borderRadius: BorderRadius.circular(40),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                      ),
-                    ],
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -80,9 +75,9 @@ class _SignScreenState extends State<SignScreen> {
                       Text(
                         'Continue with Google',
                         style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w800,
-                          color: KPrimaryblue,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: Kwhite,
                         ),
                       )
                     ],

@@ -42,8 +42,8 @@ class _ZakatCalcState extends State<ZakatCalc> {
           'Zakat Calculator',
           style: TextStyle(
             fontSize: 20,
-            fontWeight: FontWeight.w800,
-            color: Kred,
+            fontWeight: FontWeight.w500,
+            color: Kwhite.withOpacity(0.3),
           ),
         ),
       ),
@@ -114,7 +114,7 @@ class _ZakatCalcState extends State<ZakatCalc> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w800,
-                  color: Kred,
+                  color: Kwhite,
                 ),
               ),
             ),

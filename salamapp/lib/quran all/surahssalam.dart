@@ -34,9 +34,9 @@ class _SurahSalamState extends State<SurahSalam> {
         title: Text(
           quran.getSurahName(widget.surahnumber),
           style: TextStyle(
-            color: Kred.withOpacity(0.5),
+            color: Kwhite.withOpacity(0.3),
             fontSize: 18,
-            fontWeight: FontWeight.w800,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),

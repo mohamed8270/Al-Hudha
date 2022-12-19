@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:salamapp/auth_services.dart';
+import 'package:salamapp/onboard%20screen/onboard.dart';
 import 'package:salamapp/provider%20like/fav_provider.dart';
 import 'interface/bottomnav.dart';
 import 'signup screen/signup.dart';
@@ -41,7 +43,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           fontFamily: 'Poppins',
         ),
-        home: const BottomNav(),
+        home: const OnboardScreen(),
       ),
     );
   }

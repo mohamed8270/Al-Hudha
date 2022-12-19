@@ -23,7 +23,7 @@ class _DrawerSalamState extends State<DrawerSalam> {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w800,
-                color: Kred,
+                color: Kwhite,
               ),
             ),
             accountEmail: Text(
@@ -93,8 +93,10 @@ class _DrawerSalamState extends State<DrawerSalam> {
             },
           ),
           ListTile(
-            leading: Icon(
-              Icons.book_outlined,
+            leading: SvgPicture.asset(
+              'assets/icons/hadid.svg',
+              height: 17,
+              width: 17,
               color: Kwhite,
             ),
             title: Text(
@@ -137,8 +139,10 @@ class _DrawerSalamState extends State<DrawerSalam> {
             },
           ),
           ListTile(
-            leading: Icon(
-              Icons.attach_money_outlined,
+            leading: SvgPicture.asset(
+              'assets/icons/donate.svg',
+              height: 17,
+              width: 17,
               color: Kwhite,
             ),
             title: Text(

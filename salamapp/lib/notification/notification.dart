@@ -36,8 +36,8 @@ class _NotificationSalamState extends State<NotificationSalam> {
           'Notifications',
           style: TextStyle(
             fontSize: 18,
-            fontWeight: FontWeight.w800,
-            color: Kred,
+            fontWeight: FontWeight.w500,
+            color: Kwhite.withOpacity(0.3),
           ),
         ),
       ),

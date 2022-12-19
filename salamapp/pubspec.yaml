@@ -49,6 +49,13 @@ dependencies:
   url_launcher: ^6.1.7
   like_button: ^2.0.5
   provider: ^6.0.4
+  share_plus: ^6.3.0
+  path_provider: ^2.0.11
+  http: ^0.13.5
+  permission_handler: ^10.2.0
+  flutter_qiblah: ^2.1.0
+  
+
   
 
 dev_dependencies:

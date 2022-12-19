@@ -37,8 +37,8 @@ class _TasbeehSalamState extends State<TasbeehSalam> {
           'Tasbeeh',
           style: TextStyle(
             fontSize: 20,
-            fontWeight: FontWeight.w800,
-            color: Kred,
+            fontWeight: FontWeight.w500,
+            color: Kwhite.withOpacity(0.3),
           ),
         ),
       ),
@@ -60,7 +60,7 @@ class _TasbeehSalamState extends State<TasbeehSalam> {
                     alignment: Alignment.center,
                     child: Icon(
                       Icons.add_rounded,
-                      color: Kred,
+                      color: Kwhite,
                     ),
                   ),
                   SizedBox(width: 10),
@@ -92,8 +92,8 @@ class _TasbeehSalamState extends State<TasbeehSalam> {
               '${Counter}',
               style: TextStyle(
                 fontSize: 70,
-                fontWeight: FontWeight.w600,
-                color: Kred,
+                fontWeight: FontWeight.w500,
+                color: Kwhite,
               ),
             ),
             SizedBox(height: 20),
@@ -102,7 +102,7 @@ class _TasbeehSalamState extends State<TasbeehSalam> {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: Kred.withOpacity(0.5),
+                color: Kwhite.withOpacity(0.5),
               ),
             ),
             SizedBox(height: 60),
@@ -124,6 +124,52 @@ class _TasbeehSalamState extends State<TasbeehSalam> {
                   color: Kwhite,
                   size: 100,
                 ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        Counter = 0;
+                      });
+                    },
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: Kwhite.withOpacity(0.03),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      alignment: Alignment.center,
+                      child: Icon(
+                        Icons.loop_outlined,
+                        color: Kred,
+                        size: 26,
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: Kwhite.withOpacity(0.03),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      alignment: Alignment.center,
+                      child: Icon(
+                        Icons.audiotrack_outlined,
+                        color: Kred,
+                        size: 26,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             )
           ],

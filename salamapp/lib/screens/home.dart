@@ -1,12 +1,14 @@
+import 'dart:convert';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:salamapp/external/banner.dart';
+import 'package:intl/intl.dart';
+import 'package:quran/surah_data.dart';
 import 'package:salamapp/external/quranaudio.dart';
-import 'package:salamapp/external/search.dart';
-import 'package:salamapp/external/tabcontrol.dart';
 import 'package:salamapp/interface/drawer.dart';
 import 'package:salamapp/notification/notification.dart';
+import 'package:salamapp/quran%20data/surah_data.dart';
 import '../theme/colors.dart';
 
 class Home extends StatefulWidget {
@@ -165,6 +167,25 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    var timeNow = int.parse(DateFormat('kk').format(now));
+    var message = '';
+    if (timeNow <= 9) {
+      message = 'Did you complete fajr';
+    } else if ((timeNow > 9) && (timeNow <= 12)) {
+      message = 'Get ready for zuhr';
+    } else if ((timeNow > 12) && (timeNow <= 15)) {
+      message = 'Time for zuhr';
+    } else if ((timeNow > 15) && (timeNow < 18)) {
+      message = 'Time for asr';
+    } else if ((timeNow >= 18) && (timeNow < 19)) {
+      message = 'Time for maghrib';
+    } else if ((timeNow > 19) && (timeNow <= 6)) {
+      message = 'Time for Isha, Thahajjath, Fajr';
+    } else {
+      message = "It's time for thahajjath";
+    }
+
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
     queryData.devicePixelRatio;
@@ -232,22 +253,69 @@ class _HomeState extends State<Home> {
                       text: 'Asalamu Alaikum',
                       style: TextStyle(
                         fontSize: 28,
-                        fontWeight: FontWeight.w800,
-                        color: Kred,
+                        fontWeight: FontWeight.w600,
+                        color: Kwhite,
                       ),
                     ),
                     TextSpan(
-                      text: '\nMohamed',
+                      text: '\nMohamed ',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w400,
-                        color: Kwhite.withOpacity(0.4),
+                        color: Kred,
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 12),
+              Container(
+                height: 100,
+                width: 380,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: Kwhite.withOpacity(0.03),
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/quran2.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(bottom: 0.5),
+                        decoration: BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(color: Kred, width: 2),
+                          ),
+                        ),
+                        child: Text(
+                          message,
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            color: Kblack,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        "O you who believe! Seek help in patience \nand As-Salat (the prayer). Truly! Allah \nis with As-Sabirin the patient ones",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w500,
+                          color: Kblack.withOpacity(0.7),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
               Container(
                 height: 50,
                 width: 400,
@@ -274,7 +342,7 @@ class _HomeState extends State<Home> {
                       hintStyle: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
-                        color: Kred.withOpacity(0.5),
+                        color: Kwhite.withOpacity(0.3),
                       ),
                       focusedBorder:
                           UnderlineInputBorder(borderSide: BorderSide.none),
@@ -296,8 +364,7 @@ class _HomeState extends State<Home> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => QuranAudio(
-                                audioData: _allSurah,
-                                Index: i,
+                                surahnumber: i + 1,
                               ),
                             ),
                           );
@@ -336,7 +403,7 @@ class _HomeState extends State<Home> {
                                   style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500,
-                                    color: Kred.withOpacity(0.5),
+                                    color: Kwhite.withOpacity(0.3),
                                   ),
                                 ),
                                 trailing: SvgPicture.asset(

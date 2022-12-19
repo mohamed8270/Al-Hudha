@@ -36,29 +36,32 @@ class _HadithSalamState extends State<HadithSalam> {
           'Hadiths',
           style: TextStyle(
             fontSize: 18,
-            fontWeight: FontWeight.w800,
-            color: Kred,
+            fontWeight: FontWeight.w500,
+            color: Kwhite.withOpacity(0.3),
           ),
         ),
       ),
-      body: ListView.builder(
-        itemCount: HadithTopic.length,
-        itemBuilder: (context, i) => Column(
-          children: [
-            InkWell(
-              onTap: () {},
-              child: ListTile(
-                title: new Text(
-                  HadithTopic[i].name,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    color: Kred.withOpacity(0.6),
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: ListView.builder(
+          itemCount: HadithTopic.length,
+          itemBuilder: (context, i) => Column(
+            children: [
+              InkWell(
+                onTap: () {},
+                child: ListTile(
+                  title: new Text(
+                    HadithTopic[i].name,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      color: Kwhite,
+                    ),
                   ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

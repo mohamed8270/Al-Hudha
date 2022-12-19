@@ -6,14 +6,13 @@ import 'package:provider/provider.dart';
 import 'package:salamapp/interface/bottomnav.dart';
 import 'package:salamapp/provider%20like/fav_provider.dart';
 import 'package:salamapp/theme/colors.dart';
+import 'package:quran/quran.dart' as quran;
 
 class QuranAudio extends StatefulWidget {
-  final audioData;
-  final int Index;
+  final int surahnumber;
   const QuranAudio({
     Key? key,
-    this.audioData,
-    required this.Index,
+    required this.surahnumber,
   }) : super(key: key);
 
   @override
@@ -86,6 +85,7 @@ class _QuranAudioState extends State<QuranAudio> {
         backgroundColor: Kblack,
         leading: InkWell(
           onTap: () {
+            audioPlayer.stop();
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => BottomNav()),
@@ -106,8 +106,8 @@ class _QuranAudioState extends State<QuranAudio> {
           "Surah",
           style: TextStyle(
             fontSize: 18,
-            fontWeight: FontWeight.w800,
-            color: Kred,
+            fontWeight: FontWeight.w500,
+            color: Kwhite.withOpacity(0.3),
           ),
         ),
         actions: [
@@ -132,7 +132,6 @@ class _QuranAudioState extends State<QuranAudio> {
                 width: 350,
                 decoration: BoxDecoration(
                   color: Kwhite.withOpacity(0.02),
-                  borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
                     image: AssetImage('assets/images/quran4.jpg'),
                     fit: BoxFit.cover,
@@ -146,15 +145,15 @@ class _QuranAudioState extends State<QuranAudio> {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: "Al Fatiha\n",
+                      text: quran.getSurahName(widget.surahnumber),
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.w600,
-                        color: Kred,
+                        color: Kwhite,
                       ),
                     ),
                     TextSpan(
-                      text: "Ali Al Hudhaifhi",
+                      text: "\nAli Al Hudhaifhi",
                       style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w500,
@@ -294,7 +293,7 @@ class _QuranAudioState extends State<QuranAudio> {
                       if (isPlaying) {
                         await audioPlayer.pause();
                       } else {
-                        await audioPlayer.play(AssetSource('audio/001.mp3'));
+                        await audioPlayer.play(AssetSource('audio/002.mp3'));
                       }
                     },
                     child: CircleAvatar(

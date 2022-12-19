@@ -14,7 +14,6 @@ class More extends StatefulWidget {
 }
 
 class _MoreState extends State<More> {
-  int _Count = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,8 +45,8 @@ class _MoreState extends State<More> {
           'More',
           style: TextStyle(
             fontSize: 20,
-            color: Kred,
-            fontWeight: FontWeight.w800,
+            color: Kwhite.withOpacity(0.3),
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),
@@ -69,6 +68,7 @@ class _MoreState extends State<More> {
                 },
                 child: MoreItems(
                   txt: 'Zakat Calculator',
+                  icn: 'assets/icons/cal.svg',
                 ),
               ),
               SizedBox(height: 10),
@@ -83,6 +83,7 @@ class _MoreState extends State<More> {
                 },
                 child: MoreItems(
                   txt: 'Tasbeeh',
+                  icn: 'assets/icons/tasbih.svg',
                 ),
               ),
               SizedBox(height: 10),
@@ -97,6 +98,7 @@ class _MoreState extends State<More> {
                 },
                 child: MoreItems(
                   txt: 'Hadiths',
+                  icn: 'assets/icons/hadid.svg',
                 ),
               ),
               SizedBox(height: 10),
@@ -104,6 +106,7 @@ class _MoreState extends State<More> {
                 onTap: () {},
                 child: MoreItems(
                   txt: 'Charity Donation',
+                  icn: 'assets/icons/donate.svg',
                 ),
               ),
               SizedBox(height: 10),
@@ -111,6 +114,7 @@ class _MoreState extends State<More> {
                 onTap: () {},
                 child: MoreItems(
                   txt: 'Quiz',
+                  icn: 'assets/icons/quiz.svg',
                 ),
               ),
             ],
@@ -125,8 +129,10 @@ class MoreItems extends StatelessWidget {
   const MoreItems({
     Key? key,
     required this.txt,
+    required this.icn,
   }) : super(key: key);
   final String txt;
+  final String icn;
 
   @override
   Widget build(BuildContext context) {
@@ -140,13 +146,24 @@ class MoreItems extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Text(
-          txt,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: Kred,
-          ),
+        child: Row(
+          children: [
+            SvgPicture.asset(
+              icn,
+              height: 17,
+              width: 17,
+              color: Kwhite,
+            ),
+            SizedBox(width: 20),
+            Text(
+              txt,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Kred,
+              ),
+            ),
+          ],
         ),
       ),
     );

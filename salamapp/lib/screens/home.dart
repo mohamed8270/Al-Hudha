@@ -18,7 +18,7 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   final List<Map<String, dynamic>> _allSurah = [
     {"id": 1, "name": "Al Fatiha", "aji": "Ali Al Hudhaifi"},
     {"id": 2, "name": "Al Baqara", "aji": "Ali Al Hudhaifi"},
@@ -136,6 +136,8 @@ class _HomeState extends State<Home> {
     {"id": 114, "name": "An Naas", "aji": "Ali Al Hudhaifi"},
   ];
 
+  late List audioList;
+
   // This list holds the data for the list view
   List<Map<String, dynamic>> _foundSurah = [];
 
@@ -144,6 +146,18 @@ class _HomeState extends State<Home> {
   initState() {
     _foundSurah = _allSurah;
     super.initState();
+
+    _readData();
+  }
+
+  _readData() async {
+    await DefaultAssetBundle.of(context)
+        .loadString("audio_json/audiosalam.json")
+        .then((s) {
+      setState(() {
+        audioList = json.decode(s);
+      });
+    });
   }
 
   // This function is called whenever the text field changes
@@ -365,6 +379,7 @@ class _HomeState extends State<Home> {
                             MaterialPageRoute(
                               builder: (context) => QuranAudio(
                                 surahnumber: i + 1,
+                                audioPaths: audioList[index]["audio"],
                               ),
                             ),
                           );

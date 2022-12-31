@@ -9,7 +9,7 @@ const KLWhite = Color(0xFFF2F2F2);
 const KPurewhite = Color(0xFFFFFFFF);
 
 const Kblack = Color(0xFF242422);
-const Kred = Color(0xFF9A16F2);
+const Kred = Color(0xFFFF315B);
 const Kgrey = Color(0xFFE6E4E5);
 const KLgrey = Color(0xFFEEEFF3);
 const Kwhite = Color(0xFFFCFCFC);

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,23 +11,27 @@ import 'package:salamapp/theme/colors.dart';
 import 'package:quran/quran.dart' as quran;
 
 class QuranAudio extends StatefulWidget {
+  final String audioPaths;
   final int surahnumber;
   const QuranAudio({
     Key? key,
     required this.surahnumber,
+    required this.audioPaths,
   }) : super(key: key);
 
   @override
   State<QuranAudio> createState() => _QuranAudioState();
 }
 
-class _QuranAudioState extends State<QuranAudio> {
+class _QuranAudioState extends State<QuranAudio>
+    with SingleTickerProviderStateMixin {
   final audioPlayer = AudioPlayer();
   bool isPlaying = false;
   Duration duration = Duration.zero;
   Duration position = Duration.zero;
   bool isRepeat = false;
-  Color color = Color(0xFF9A16F2).withOpacity(0.5);
+  Color color = Color(0xFFFF315B).withOpacity(0.5);
+  late Source path;
 
   @override
   void initState() {
@@ -58,13 +64,16 @@ class _QuranAudioState extends State<QuranAudio> {
         isRepeat = false;
       });
     });
+
+    path = UrlSource(this.widget.audioPaths);
   }
 
   Future setAudio() async {
     //audioPlayer.setReleaseMode(ReleaseMode.loop);
 
-    final player = AudioCache(prefix: 'assets/audio');
-    final url = await player.load('001.mp3');
+    //audioPlayer.setSourceUrl(path);
+    //final player = AudioCache(prefix: 'assets/audio');
+    //final url = await player.load('001.mp3');
     //audioPlayer.setUrl(url.path, isLocal: true);
   }
 
@@ -213,11 +222,11 @@ class _QuranAudioState extends State<QuranAudio> {
                         audioPlayer.setReleaseMode(ReleaseMode.loop);
                         setState(() {
                           isRepeat = true;
-                          color = Color(0xFF9A16F2);
+                          color = Color(0xFFFF315B);
                         });
                       } else if (isRepeat == true) {
                         audioPlayer.setReleaseMode(ReleaseMode.release);
-                        color = Color(0xFF9A16F2).withOpacity(0.5);
+                        color = Color(0xFFFF315B).withOpacity(0.5);
                       }
                     },
                     child: SvgPicture.asset(
@@ -293,7 +302,7 @@ class _QuranAudioState extends State<QuranAudio> {
                       if (isPlaying) {
                         await audioPlayer.pause();
                       } else {
-                        await audioPlayer.play(AssetSource('audio/002.mp3'));
+                        await audioPlayer.play(path);
                       }
                     },
                     child: CircleAvatar(

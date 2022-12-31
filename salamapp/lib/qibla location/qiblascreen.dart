@@ -39,18 +39,12 @@ class _QiblaScreenState extends State<QiblaScreen>
           }
 
           final qiblahDirection = snapshot.data;
-          animation = Tween(
-                  begin: begin,
-                  end: (qiblahDirection!.qiblah * (pi / 180) * -1))
-              .animate(_animationController!);
-          begin = (qiblahDirection.qiblah * (pi / 180) * -1);
-          _animationController!.forward(from: 0);
 
           return Center(
             child: Column(
               children: [
                 Text(
-                  "${qiblahDirection.direction.toInt()}°",
+                  "KIBLA",
                   style: TextStyle(
                     color: Kwhite,
                     fontSize: 18,
@@ -59,18 +53,19 @@ class _QiblaScreenState extends State<QiblaScreen>
                 ),
                 SizedBox(height: 10),
                 Container(
-                    height: 250,
-                    width: 250,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(150),
+                  height: 250,
+                  width: 250,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(150),
+                  ),
+                  child: AnimatedBuilder(
+                    animation: animation!,
+                    builder: (context, child) => Transform.rotate(
+                      angle: animation!.value,
+                      child: Image.asset('assets/images/compass.png'),
                     ),
-                    child: AnimatedBuilder(
-                      animation: animation!,
-                      builder: (context, child) => Transform.rotate(
-                        angle: animation!.value,
-                        child: Image.asset('assets/images/compass.png'),
-                      ),
-                    ))
+                  ),
+                )
               ],
             ),
           );

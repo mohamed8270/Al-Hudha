@@ -1,7 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:salamapp/external/hadith_models.dart';
 import 'package:salamapp/theme/colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HadithSalam extends StatefulWidget {
   const HadithSalam({Key? key}) : super(key: key);

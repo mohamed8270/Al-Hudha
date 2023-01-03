@@ -136,7 +136,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     {"id": 114, "name": "An Naas", "aji": "Ali Al Hudhaifi"},
   ];
 
-  late List audioList;
+  List audioList = [];
 
   // This list holds the data for the list view
   List<Map<String, dynamic>> _foundSurah = [];
@@ -152,7 +152,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   _readData() async {
     await DefaultAssetBundle.of(context)
-        .loadString("audio_json/audiosalam.json")
+        .loadString("assets/audio_json/audiosalam.json")
         .then((s) {
       setState(() {
         audioList = json.decode(s);
@@ -379,7 +379,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                             MaterialPageRoute(
                               builder: (context) => QuranAudio(
                                 surahnumber: i + 1,
-                                audioPaths: audioList[index]["audio"],
+                                audioPaths: audioList[i + 0]["audio"],
                               ),
                             ),
                           );

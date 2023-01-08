@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:salamapp/external/hadith_models.dart';
+import 'package:salamapp/more/charity.dart';
+import 'package:salamapp/more/hadith.dart';
 import 'package:salamapp/screens/quran.dart';
 import 'package:salamapp/theme/colors.dart';
 
@@ -111,7 +114,7 @@ class _DrawerSalamState extends State<DrawerSalam> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Quran(),
+                  builder: (context) => HadithSalam(),
                 ),
               );
             },
@@ -157,7 +160,7 @@ class _DrawerSalamState extends State<DrawerSalam> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Quran(),
+                  builder: (context) => CharityPage(),
                 ),
               );
             },

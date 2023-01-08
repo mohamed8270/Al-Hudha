@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:salamapp/interface/bottomnav.dart';
+import 'package:salamapp/more/charity.dart';
 import 'package:salamapp/more/hadith.dart';
 import 'package:salamapp/more/tasbeeh.dart';
 import 'package:salamapp/more/zakatcal.dart';
@@ -14,6 +17,25 @@ class More extends StatefulWidget {
 }
 
 class _MoreState extends State<More> {
+  List HadidList = [];
+
+  @override
+  initState() {
+    super.initState();
+
+    _readData();
+  }
+
+  _readData() async {
+    await DefaultAssetBundle.of(context)
+        .loadString("assets/hadid_json/Hadid.json")
+        .then((s) {
+      setState(() {
+        HadidList = json.decode(s);
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,7 +125,14 @@ class _MoreState extends State<More> {
               ),
               SizedBox(height: 10),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CharityPage(),
+                    ),
+                  );
+                },
                 child: MoreItems(
                   txt: 'Charity Donation',
                   icn: 'assets/icons/donate.svg',

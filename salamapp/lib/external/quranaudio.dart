@@ -131,209 +131,264 @@ class _QuranAudioState extends State<QuranAudio>
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 10),
-              child: Container(
-                height: 350,
-                width: 350,
-                decoration: BoxDecoration(
-                  color: Kwhite.withOpacity(0.02),
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/quran4.jpg'),
-                    fit: BoxFit.cover,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 14, horizontal: 10),
+                child: Container(
+                  height: 350,
+                  width: 350,
+                  decoration: BoxDecoration(
+                    color: Kwhite.withOpacity(0.02),
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/quran4.jpg'),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: RichText(
-                text: TextSpan(
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: quran.getSurahName(widget.surahnumber),
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.w600,
+                          color: Kwhite,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "\nAli Al Hudhaifhi",
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w500,
+                          color: Kwhite.withOpacity(0.3),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              SliderTheme(
+                data: SliderThemeData(
+                  thumbShape: RoundSliderThumbShape(enabledThumbRadius: 5),
+                  overlayShape: RoundSliderOverlayShape(overlayRadius: 18),
+                  trackHeight: 1.5,
+                  thumbColor: Kred.withOpacity(0.4),
+                ),
+                child: Slider(
+                  min: 0,
+                  max: duration.inSeconds.toDouble(),
+                  value: position.inSeconds.toDouble(),
+                  activeColor: Kred,
+                  inactiveColor: Kwhite.withOpacity(0.08),
+                  onChanged: (value) async {
+                    final position = Duration(seconds: value.toInt());
+                    await audioPlayer.seek(position);
+
+                    await audioPlayer.resume();
+                  },
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 0.5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TextSpan(
-                      text: quran.getSurahName(widget.surahnumber),
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.w600,
-                        color: Kwhite,
+                    Text(
+                      formatTime(position),
+                      style: TextStyle(color: Kred, fontSize: 12),
+                    ),
+                    Text(
+                      formatTime(duration - position),
+                      style: TextStyle(color: Kred, fontSize: 12),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 35),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        if (isRepeat == false) {
+                          audioPlayer.setReleaseMode(ReleaseMode.loop);
+                          setState(() {
+                            isRepeat = true;
+                            color = Color(0xFFFF315B);
+                          });
+                        } else if (isRepeat == true) {
+                          audioPlayer.setReleaseMode(ReleaseMode.release);
+                          color = Color(0xFFFF315B).withOpacity(0.5);
+                        }
+                      },
+                      child: SvgPicture.asset(
+                        'assets/icons/loop.svg',
+                        height: 18,
+                        width: 18,
+                        color: color,
                       ),
                     ),
-                    TextSpan(
-                      text: "\nAli Al Hudhaifhi",
-                      style: TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w500,
-                        color: Kwhite.withOpacity(0.3),
-                      ),
+                    LikeButton(
+                      size: 20,
+                      bubblesColor: BubblesColor(
+                          dotPrimaryColor: Kred, dotSecondaryColor: Kwhite),
+                      likeBuilder: (isLiked) {
+                        if (isLiked)
+                          return SvgPicture.asset(
+                            'assets/icons/heartr.svg',
+                            height: 18,
+                            width: 18,
+                            color: Kred,
+                          );
+                        if (!isLiked) {
+                          return SvgPicture.asset(
+                            'assets/icons/heartout.svg',
+                            height: 18,
+                            width: 18,
+                            color: Kred,
+                          );
+                        }
+                      },
                     )
                   ],
                 ),
               ),
-            ),
-            SliderTheme(
-              data: SliderThemeData(
-                thumbShape: RoundSliderThumbShape(enabledThumbRadius: 5),
-                overlayShape: RoundSliderOverlayShape(overlayRadius: 18),
-                trackHeight: 1.5,
-                thumbColor: Kred.withOpacity(0.4),
-              ),
-              child: Slider(
-                min: 0,
-                max: duration.inSeconds.toDouble(),
-                value: position.inSeconds.toDouble(),
-                activeColor: Kred,
-                inactiveColor: Kwhite.withOpacity(0.08),
-                onChanged: (value) async {
-                  final position = Duration(seconds: value.toInt());
-                  await audioPlayer.seek(position);
-
-                  await audioPlayer.resume();
-                },
-              ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 0.5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    formatTime(position),
-                    style: TextStyle(color: Kred, fontSize: 12),
-                  ),
-                  Text(
-                    formatTime(duration - position),
-                    style: TextStyle(color: Kred, fontSize: 12),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 35),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      if (isRepeat == false) {
-                        audioPlayer.setReleaseMode(ReleaseMode.loop);
-                        setState(() {
-                          isRepeat = true;
-                          color = Color(0xFFFF315B);
-                        });
-                      } else if (isRepeat == true) {
-                        audioPlayer.setReleaseMode(ReleaseMode.release);
-                        color = Color(0xFFFF315B).withOpacity(0.5);
-                      }
-                    },
-                    child: SvgPicture.asset(
-                      'assets/icons/loop.svg',
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SvgPicture.asset(
+                      'assets/icons/shuffle.svg',
                       height: 18,
                       width: 18,
-                      color: color,
-                    ),
-                  ),
-                  LikeButton(
-                    size: 20,
-                    bubblesColor: BubblesColor(
-                        dotPrimaryColor: Kred, dotSecondaryColor: Kwhite),
-                    likeBuilder: (isLiked) {
-                      if (isLiked)
-                        return SvgPicture.asset(
-                          'assets/icons/heartr.svg',
-                          height: 18,
-                          width: 18,
-                          color: Kred,
-                        );
-                      if (!isLiked) {
-                        return SvgPicture.asset(
-                          'assets/icons/heartout.svg',
-                          height: 18,
-                          width: 18,
-                          color: Kred,
-                        );
-                      }
-                    },
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SvgPicture.asset(
-                    'assets/icons/shuffle.svg',
-                    height: 18,
-                    width: 18,
-                    color: Kred,
-                  ),
-                  SvgPicture.asset(
-                    'assets/icons/device.svg',
-                    height: 18,
-                    width: 18,
-                    color: Kred,
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 4),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      audioPlayer.setPlaybackRate(0.5);
-                    },
-                    child: SvgPicture.asset(
-                      'assets/icons/backward.svg',
                       color: Kred,
+                    ),
+                    SvgPicture.asset(
+                      'assets/icons/device.svg',
                       height: 18,
                       width: 18,
+                      color: Kred,
                     ),
-                  ),
-                  InkWell(
-                    onTap: () async {
-                      if (isPlaying) {
-                        await audioPlayer.pause();
-                      } else {
-                        await audioPlayer.play(path);
-                      }
-                    },
-                    child: CircleAvatar(
-                      backgroundColor: Kwhite.withOpacity(0.02),
-                      radius: 30,
+                  ],
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 70, vertical: 4),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        audioPlayer.setPlaybackRate(0.5);
+                      },
                       child: SvgPicture.asset(
-                        isPlaying
-                            ? 'assets/icons/play.svg'
-                            : 'assets/icons/pause.svg',
+                        'assets/icons/backward.svg',
+                        color: Kred,
                         height: 18,
                         width: 18,
-                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () async {
+                        if (isPlaying) {
+                          await audioPlayer.pause();
+                        } else {
+                          await audioPlayer.play(path);
+                        }
+                      },
+                      child: CircleAvatar(
+                        backgroundColor: Kwhite.withOpacity(0.02),
+                        radius: 30,
+                        child: SvgPicture.asset(
+                          isPlaying
+                              ? 'assets/icons/play.svg'
+                              : 'assets/icons/pause.svg',
+                          height: 18,
+                          width: 18,
+                          fit: BoxFit.cover,
+                          color: Kred,
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        audioPlayer.setPlaybackRate(1.5);
+                      },
+                      child: SvgPicture.asset(
+                        'assets/icons/forward.svg',
+                        color: Kred,
+                        height: 18,
+                        width: 18,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 21),
+              Container(
+                height: 40,
+                width: 380,
+                decoration: BoxDecoration(
+                  color: Kwhite.withOpacity(0.05),
+                ),
+                alignment: Alignment.center,
+                child: RichText(
+                  text: TextSpan(children: [
+                    TextSpan(
+                      text: "Listen ",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
                         color: Kred,
                       ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      audioPlayer.setPlaybackRate(1.5);
-                    },
-                    child: SvgPicture.asset(
-                      'assets/icons/forward.svg',
-                      color: Kred,
-                      height: 18,
-                      width: 18,
-                    ),
-                  ),
-                ],
+                    TextSpan(
+                      text: quran.getSurahName(widget.surahnumber),
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: Kred,
+                      ),
+                    )
+                  ]),
+                ),
               ),
-            )
-          ],
+              SizedBox(height: 20),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                itemCount: quran.getVerseCount(widget.surahnumber),
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(
+                      quran.getVerse(widget.surahnumber, index + 1,
+                          verseEndSymbol: true),
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        color: Kwhite,
+                        fontSize: 20,
+                      ),
+                    ),
+                  );
+                },
+              )
+            ],
+          ),
         ),
       ),
     );

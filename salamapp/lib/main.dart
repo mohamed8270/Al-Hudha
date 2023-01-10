@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:salamapp/auth_services.dart';
 import 'package:salamapp/onboard%20screen/onboard.dart';
 import 'package:salamapp/provider%20like/fav_provider.dart';
+import 'package:salamapp/splash%20screen/splashscreen.dart';
 import 'interface/bottomnav.dart';
 import 'signup screen/signup.dart';
 
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           fontFamily: 'Poppins',
         ),
-        home: const OnboardScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

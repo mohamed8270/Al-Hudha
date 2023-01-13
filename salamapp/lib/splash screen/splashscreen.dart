@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:salamapp/interface/bottomnav.dart';
 import 'package:salamapp/onboard%20screen/onboard.dart';
 import 'package:salamapp/theme/colors.dart';
 
@@ -19,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => OnboardScreen(),
+          builder: (context) => BottomNav(),
         ),
       );
     });

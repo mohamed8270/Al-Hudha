@@ -7,8 +7,11 @@ import 'package:salamapp/theme/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HadithSalam extends StatefulWidget {
+  final String urlPath;
+
   const HadithSalam({
     Key? key,
+    required this.urlPath,
   }) : super(key: key);
 
   @override
@@ -16,6 +19,9 @@ class HadithSalam extends StatefulWidget {
 }
 
 class _HadithSalamState extends State<HadithSalam> {
+  late Source urlPath;
+  late int index;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +59,8 @@ class _HadithSalamState extends State<HadithSalam> {
           itemBuilder: (context, i) => Column(
             children: [
               InkWell(
-                onTap: () {},
+                // ignore: deprecated_member_use
+                onTap: () => launch(this.widget.urlPath),
                 child: ListTile(
                   title: new Text(
                     HadithTopic[i].name,

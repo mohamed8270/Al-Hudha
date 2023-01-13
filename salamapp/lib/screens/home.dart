@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -264,7 +266,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: 'Asalamu Alaikum',
+                      text: 'Asalamu Alaikum\n',
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.w600,
@@ -272,7 +274,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                       ),
                     ),
                     TextSpan(
-                      text: '\nMohamed ',
+                      text: FirebaseAuth.instance.currentUser!.displayName!,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w400,

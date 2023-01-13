@@ -14,6 +14,21 @@ class AuthService {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  getProfileImage() {
+    if (FirebaseAuth.instance.currentUser!.photoURL != null) {
+      return Image.network(
+        FirebaseAuth.instance.currentUser!.photoURL!,
+        height: 100,
+        width: 100,
+      );
+    } else {
+      return Icon(
+        Icons.account_circle,
+        size: 100,
+      );
+    }
+  }
+
   handleAuthState() {
     return StreamBuilder(
       stream: FirebaseAuth.instance.authStateChanges(),

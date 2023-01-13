@@ -2,9 +2,11 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:salamapp/auth_services.dart';
 import 'package:salamapp/interface/bottomnav.dart';
 import 'package:salamapp/onboard%20screen/onboardcontent.dart';
 import 'package:salamapp/theme/colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardScreen extends StatefulWidget {
   const OnboardScreen({Key? key}) : super(key: key);
@@ -27,6 +29,14 @@ class _OnboardScreenState extends State<OnboardScreen> {
   void dispose() {
     _controller?.dispose();
     super.dispose();
+  }
+
+  _storeOnboardInfo() async {
+    print("Shared pref called");
+    int isViewed = 0;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('onBoard', isViewed);
+    print(prefs.getInt('onBoard'));
   }
 
   @override
@@ -100,12 +110,13 @@ class _OnboardScreenState extends State<OnboardScreen> {
             color: Kwhite.withOpacity(0.03),
             margin: EdgeInsets.all(40),
             child: FlatButton(
-              onPressed: () {
+              onPressed: () async {
                 if (CurrentIndex == content.length - 1) {
+                  await _storeOnboardInfo();
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => BottomNav(),
+                      builder: (_) => AuthService().handleAuthState(),
                     ),
                   );
                 }

@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:salamapp/interface/bottomnav.dart';
@@ -16,7 +16,7 @@ class More extends StatefulWidget {
   State<More> createState() => _MoreState();
 }
 
-class _MoreState extends State<More> {
+class _MoreState extends State<More> with SingleTickerProviderStateMixin {
   List HadidList = [];
 
   @override
@@ -114,7 +114,9 @@ class _MoreState extends State<More> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => HadithSalam(),
+                      builder: (context) => HadithSalam(
+                        urlPath: HadidList[0]["hadid"],
+                      ),
                     ),
                   );
                 },

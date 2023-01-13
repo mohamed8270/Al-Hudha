@@ -1,5 +1,4 @@
-import 'dart:convert';
-
+import 'package:app_settings/app_settings.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,6 +8,7 @@ import 'package:salamapp/interface/bottomnav.dart';
 import 'package:salamapp/provider%20like/fav_provider.dart';
 import 'package:salamapp/theme/colors.dart';
 import 'package:quran/quran.dart' as quran;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class QuranAudio extends StatefulWidget {
   final String audioPaths;
@@ -32,6 +32,8 @@ class _QuranAudioState extends State<QuranAudio>
   bool isRepeat = false;
   Color color = Color(0xFFFF315B).withOpacity(0.5);
   late Source path;
+  static const LikedKey = 'Liked_Key';
+  late bool Liked = false;
 
   @override
   void initState() {
@@ -66,6 +68,20 @@ class _QuranAudioState extends State<QuranAudio>
     });
 
     path = UrlSource(this.widget.audioPaths);
+
+    _restorePersistedPreference();
+  }
+
+  void _restorePersistedPreference() async {
+    var preferences = await SharedPreferences.getInstance();
+    var Liked = preferences.getBool(LikedKey);
+    setState(() => this.Liked = Liked!);
+  }
+
+  void _persistPreference() async {
+    setState(() => Liked = !Liked);
+    var preferences = await SharedPreferences.getInstance();
+    preferences.setBool(LikedKey, Liked);
   }
 
   Future setAudio() async {
@@ -240,27 +256,30 @@ class _QuranAudioState extends State<QuranAudio>
                         color: color,
                       ),
                     ),
-                    LikeButton(
-                      size: 20,
-                      bubblesColor: BubblesColor(
-                          dotPrimaryColor: Kred, dotSecondaryColor: Kwhite),
-                      likeBuilder: (isLiked) {
-                        if (isLiked)
-                          return SvgPicture.asset(
-                            'assets/icons/heartr.svg',
-                            height: 18,
-                            width: 18,
-                            color: Kred,
-                          );
-                        if (!isLiked) {
-                          return SvgPicture.asset(
-                            'assets/icons/heartout.svg',
-                            height: 18,
-                            width: 18,
-                            color: Kred,
-                          );
-                        }
-                      },
+                    InkWell(
+                      onTap: _persistPreference,
+                      child: LikeButton(
+                        size: 20,
+                        bubblesColor: BubblesColor(
+                            dotPrimaryColor: Kred, dotSecondaryColor: Kwhite),
+                        likeBuilder: (isLiked) {
+                          if (isLiked)
+                            return SvgPicture.asset(
+                              'assets/icons/heartr.svg',
+                              height: 18,
+                              width: 18,
+                              color: Kred,
+                            );
+                          if (!isLiked) {
+                            return SvgPicture.asset(
+                              'assets/icons/heartout.svg',
+                              height: 18,
+                              width: 18,
+                              color: Kred,
+                            );
+                          }
+                        },
+                      ),
                     )
                   ],
                 ),
@@ -270,17 +289,25 @@ class _QuranAudioState extends State<QuranAudio>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SvgPicture.asset(
-                      'assets/icons/shuffle.svg',
-                      height: 18,
-                      width: 18,
-                      color: Kred,
+                    InkWell(
+                      onTap: () {},
+                      child: SvgPicture.asset(
+                        'assets/icons/shuffle.svg',
+                        height: 18,
+                        width: 18,
+                        color: Kred,
+                      ),
                     ),
-                    SvgPicture.asset(
-                      'assets/icons/device.svg',
-                      height: 18,
-                      width: 18,
-                      color: Kred,
+                    InkWell(
+                      onTap: () {
+                        AppSettings.openBluetoothSettings();
+                      },
+                      child: SvgPicture.asset(
+                        'assets/icons/device.svg',
+                        height: 18,
+                        width: 18,
+                        color: Kred,
+                      ),
                     ),
                   ],
                 ),
@@ -349,7 +376,7 @@ class _QuranAudioState extends State<QuranAudio>
                 child: RichText(
                   text: TextSpan(children: [
                     TextSpan(
-                      text: "Listen ",
+                      text: "Listen to ",
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,

@@ -12,6 +12,7 @@ class SignScreen extends StatefulWidget {
 class _SignScreenState extends State<SignScreen> {
   @override
   Widget build(BuildContext context) {
+    var siZe = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Kblack,
       body: SafeArea(
@@ -19,7 +20,7 @@ class _SignScreenState extends State<SignScreen> {
           padding: const EdgeInsets.only(top: 60, left: 10, right: 10),
           child: Column(
             children: [
-              Text(
+              const Text(
                 'Al Hudha',
                 style: TextStyle(
                   fontSize: 26,
@@ -27,7 +28,7 @@ class _SignScreenState extends State<SignScreen> {
                   color: Kred,
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               Text(
                 "Indeed, Allah does not do injustice, [even] as much as an atom's weight while if there is a good deed, He multiplies it and gives from Himself a great reward",
                 style: TextStyle(
@@ -37,20 +38,19 @@ class _SignScreenState extends State<SignScreen> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 60),
+              const SizedBox(height: 60),
               Container(
-                height: 400,
-                width: 400,
+                height: siZe.height * 0.45,
+                width: siZe.width * 0.9,
                 decoration: BoxDecoration(
-                  color: KBlack,
                   borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     image: AssetImage('assets/images/mecca1.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               InkWell(
                 onTap: () {
                   AuthService().signInWithGoogle();
@@ -71,8 +71,8 @@ class _SignScreenState extends State<SignScreen> {
                         width: 24,
                         fit: BoxFit.scaleDown,
                       ),
-                      SizedBox(width: 15),
-                      Text(
+                      const SizedBox(width: 15),
+                      const Text(
                         'Continue with Google',
                         style: TextStyle(
                           fontSize: 14,

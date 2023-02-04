@@ -16,10 +16,10 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int currentIndex = 0;
   final screens = [
-    Home(),
-    PrayerTime(),
-    Quran(),
-    More(),
+    const Home(),
+    const PrayerTime(),
+    const Quran(),
+    const More(),
   ];
 
   @override

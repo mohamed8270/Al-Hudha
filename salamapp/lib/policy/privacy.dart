@@ -70,7 +70,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Container(
-                constraints: BoxConstraints(
+                constraints: const BoxConstraints(
                   maxHeight: double.infinity,
                 ),
                 width: 380,
@@ -89,14 +89,14 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                           children: [
                             TextSpan(
                               text: privacyList[index]["Heading"],
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w600,
                                 color: Kred,
                               ),
                             ),
-                            TextSpan(text: '\n'),
-                            TextSpan(text: '\n'),
+                            const TextSpan(text: '\n'),
+                            const TextSpan(text: '\n'),
                             TextSpan(
                               text: privacyList[index]["Subheading"],
                               style: TextStyle(

@@ -60,7 +60,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
-                      children: [
+                      children: const [
                         Icon(
                           Icons.lock_outline,
                           color: Kwhite,
@@ -77,7 +77,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
                       "The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security.",
                       textAlign: TextAlign.justify,
@@ -91,7 +91,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
               height: 180,
               width: 380,
@@ -105,7 +105,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
-                      children: [
+                      children: const [
                         Icon(
                           Icons.quick_contacts_dialer_outlined,
                           color: Kwhite,
@@ -122,7 +122,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
                         )
                       ],
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
                       "If you have any questions about this Privacy Policy, You can contact us",
                       style: TextStyle(
@@ -131,13 +131,14 @@ class _SecurityScreenState extends State<SecurityScreen> {
                         color: Kwhite.withOpacity(0.5),
                       ),
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     InkWell(
                       onTap: () async {
                         var result = await OpenMailApp.openMailApp(
                           nativePickerTitle: 'Select email app to open',
                         );
                         if (!result.didOpen && !result.canOpen) {
+                          // ignore: use_build_context_synchronously
                           showNoMailAppsDialog(context);
                         } else if (!result.didOpen && result.canOpen) {
                           showDialog(
@@ -161,7 +162,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
                                 color: Kwhite.withOpacity(0.5),
                               ),
                             ),
-                            TextSpan(
+                            const TextSpan(
                               text: "ibrahimrasith@gmail.com",
                               style: TextStyle(
                                 fontSize: 16,
@@ -173,8 +174,9 @@ class _SecurityScreenState extends State<SecurityScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     InkWell(
+                      // ignore: deprecated_member_use
                       onTap: () => launch('https://ibu-ux.web.app/'),
                       child: RichText(
                         text: TextSpan(
@@ -187,7 +189,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
                                 color: Kwhite.withOpacity(0.5),
                               ),
                             ),
-                            TextSpan(
+                            const TextSpan(
                               text: "https://ibu-ux.web.app/",
                               style: TextStyle(
                                 fontSize: 16,
@@ -215,11 +217,11 @@ void showNoMailAppsDialog(BuildContext context) {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: Text("Open Mail App"),
-        content: Text("No mail apps installed"),
+        title: const Text("Open Mail App"),
+        content: const Text("No mail apps installed"),
         actions: <Widget>[
           TextButton(
-            child: Text("OK"),
+            child: const Text("OK"),
             onPressed: () {
               Navigator.pop(context);
             },

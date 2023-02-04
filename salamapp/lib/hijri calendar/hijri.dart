@@ -64,26 +64,26 @@ class _HijriCalendarState extends State<HijriCalendar> {
                   outsideTextStyle: TextStyle(
                     color: Kred.withOpacity(0.5),
                   ),
-                  defaultTextStyle: TextStyle(color: Kwhite),
+                  defaultTextStyle: const TextStyle(color: Kwhite),
                 ),
                 daysOfWeekStyle: DaysOfWeekStyle(
-                  weekdayStyle: TextStyle(color: Kwhite),
+                  weekdayStyle: const TextStyle(color: Kwhite),
                   weekendStyle: TextStyle(
                     color: Kwhite.withOpacity(0.3),
                   ),
                 ),
                 headerStyle: HeaderStyle(
-                  leftChevronIcon: Icon(
+                  leftChevronIcon: const Icon(
                     Icons.chevron_left_outlined,
                     color: Kred,
                   ),
-                  rightChevronIcon: Icon(
+                  rightChevronIcon: const Icon(
                     Icons.chevron_right_outlined,
                     color: Kred,
                   ),
                   titleTextStyle:
-                      TextStyle(color: Kred, fontWeight: FontWeight.w600),
-                  formatButtonTextStyle: TextStyle(color: Kwhite),
+                      const TextStyle(color: Kred, fontWeight: FontWeight.w600),
+                  formatButtonTextStyle: const TextStyle(color: Kwhite),
                   formatButtonDecoration: BoxDecoration(
                     color: Kred,
                     borderRadius: BorderRadius.circular(10),
@@ -96,7 +96,7 @@ class _HijriCalendarState extends State<HijriCalendar> {
                 selectedDayPredicate: (day) => isSameDay(day, today),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
               height: 50,
               width: 250,
@@ -106,8 +106,9 @@ class _HijriCalendarState extends State<HijriCalendar> {
               ),
               alignment: Alignment.center,
               child: Text(
+                // ignore: prefer_interpolation_to_compose_strings
                 "Selected Day " + today.toString().split(" ")[0],
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: Kwhite,

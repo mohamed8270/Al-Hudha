@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 
 class FavoriteProvider extends ChangeNotifier {
   List<String> _surahs = [];
+  // ignore: non_constant_identifier_names
   List<String> get Surahs => _surahs;
 
+  // ignore: non_constant_identifier_names
   void toggleFavorite(String Surah) {
     final isExist = _surahs.contains(Surah);
     if (isExist) {
@@ -15,6 +17,7 @@ class FavoriteProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  // ignore: non_constant_identifier_names
   bool isExist(String Surah) {
     final isExist = _surahs.contains(Surah);
     return isExist;

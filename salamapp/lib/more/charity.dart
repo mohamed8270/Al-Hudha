@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:salamapp/theme/colors.dart';
@@ -14,6 +13,7 @@ class CharityPage extends StatefulWidget {
 class _CharityPageState extends State<CharityPage> {
   @override
   Widget build(BuildContext context) {
+    var siZe = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Kblack,
       appBar: AppBar(
@@ -47,8 +47,8 @@ class _CharityPageState extends State<CharityPage> {
         child: Column(
           children: [
             Container(
-              height: 110,
-              width: 380,
+              height: siZe.height * 0.14,
+              width: siZe.width * 0.95,
               decoration: BoxDecoration(
                 color: Kwhite.withOpacity(0.03),
                 borderRadius: BorderRadius.circular(10),
@@ -63,8 +63,8 @@ class _CharityPageState extends State<CharityPage> {
                           Icons.warning_amber_rounded,
                           color: Kred.withOpacity(0.7),
                         ),
-                        SizedBox(width: 10),
-                        Text(
+                        const SizedBox(width: 10),
+                        const Text(
                           "Attention!",
                           style: TextStyle(
                             fontSize: 18,
@@ -74,7 +74,7 @@ class _CharityPageState extends State<CharityPage> {
                         )
                       ],
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Text(
                       "The donation site below mentioned is fully trusted and reviewed by the developer, There is no malisious activities or scamming in the mentioned platform",
                       style: TextStyle(
@@ -87,14 +87,14 @@ class _CharityPageState extends State<CharityPage> {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
-              height: 200,
-              width: 380,
+              height: siZe.height * 0.28,
+              width: siZe.width * 0.95,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 color: Kwhite.withOpacity(0.03),
-                image: DecorationImage(
+                image: const DecorationImage(
                   image: AssetImage('assets/images/heart.jpg'),
                   fit: BoxFit.cover,
                 ),
@@ -112,8 +112,8 @@ class _CharityPageState extends State<CharityPage> {
                           width: 18,
                           color: Kred,
                         ),
-                        SizedBox(width: 10),
-                        Text(
+                        const SizedBox(width: 10),
+                        const Text(
                           'Quran about charity',
                           style: TextStyle(
                             fontSize: 18,
@@ -123,8 +123,8 @@ class _CharityPageState extends State<CharityPage> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 15),
-                    Text(
+                    const SizedBox(height: 15),
+                    const Text(
                       "Those who spend their wealth in \nAllah's cause are like grains of corn\nwhich produce seven ears, each\nbearing a hundred grains",
                       style: TextStyle(
                         fontSize: 12,
@@ -132,8 +132,9 @@ class _CharityPageState extends State<CharityPage> {
                         color: Kblack,
                       ),
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     InkWell(
+                      // ignore: deprecated_member_use
                       onTap: () => launch(
                           'https://www.savejan.com/donationpage?utm_content=13964962&utm_medium=Email&utm_name=Id&utm_source=Actionetics&utm_term=Email'),
                       child: Container(
@@ -144,7 +145,7 @@ class _CharityPageState extends State<CharityPage> {
                           borderRadius: BorderRadius.circular(40),
                         ),
                         alignment: Alignment.center,
-                        child: Text(
+                        child: const Text(
                           "Donate Now",
                           style: TextStyle(
                             fontSize: 12,

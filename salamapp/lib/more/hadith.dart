@@ -1,5 +1,4 @@
 import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:salamapp/external/hadith_models.dart';
@@ -53,18 +52,18 @@ class _HadithSalamState extends State<HadithSalam> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
         child: ListView.builder(
           itemCount: HadithTopic.length,
           itemBuilder: (context, i) => Column(
             children: [
               InkWell(
-                // ignore: deprecated_member_use
+                // ignore: deprecated_member_use, unnecessary_this
                 onTap: () => launch(this.widget.urlPath),
                 child: ListTile(
-                  title: new Text(
+                  title: Text(
                     HadithTopic[i].name,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
                       color: Kwhite,

@@ -1,16 +1,11 @@
 import 'dart:convert';
-import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:provider/provider.dart';
 import 'package:salamapp/external/bookmark.dart';
-import 'package:salamapp/external/hadith_models.dart';
 import 'package:salamapp/hijri%20calendar/hijri.dart';
 import 'package:salamapp/more/charity.dart';
-import 'package:salamapp/more/hadith.dart';
 import 'package:salamapp/policy/privacy.dart';
-import 'package:salamapp/screens/quran.dart';
 import 'package:salamapp/security/security.dart';
 import 'package:salamapp/theme/colors.dart';
 
@@ -23,6 +18,7 @@ class DrawerSalam extends StatefulWidget {
 
 class _DrawerSalamState extends State<DrawerSalam>
     with SingleTickerProviderStateMixin {
+  // ignore: non_constant_identifier_names
   List HadidList = [];
 
   @override
@@ -50,7 +46,7 @@ class _DrawerSalamState extends State<DrawerSalam>
           UserAccountsDrawerHeader(
             accountName: Text(
               FirebaseAuth.instance.currentUser!.displayName!,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w800,
                 color: Kwhite,
@@ -73,14 +69,14 @@ class _DrawerSalamState extends State<DrawerSalam>
                 fit: BoxFit.cover,
               )),
             ),
-            decoration: BoxDecoration(color: Kblack),
+            decoration: const BoxDecoration(color: Kblack),
           ),
           ListTile(
-            leading: Icon(
+            leading: const Icon(
               Icons.bookmark_outline_rounded,
               color: Kwhite,
             ),
-            title: Text(
+            title: const Text(
               'Bookmarks',
               style: TextStyle(
                 fontSize: 16,
@@ -92,17 +88,17 @@ class _DrawerSalamState extends State<DrawerSalam>
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => BookMarks(),
+                  builder: (context) => const BookMarks(),
                 ),
               );
             },
           ),
           ListTile(
-            leading: Icon(
+            leading: const Icon(
               Icons.calendar_month_outlined,
               color: Kwhite,
             ),
-            title: Text(
+            title: const Text(
               'Calendar',
               style: TextStyle(
                 fontSize: 16,
@@ -114,7 +110,7 @@ class _DrawerSalamState extends State<DrawerSalam>
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => HijriCalendar(),
+                  builder: (context) => const HijriCalendar(),
                 ),
               );
             },
@@ -126,7 +122,7 @@ class _DrawerSalamState extends State<DrawerSalam>
               width: 17,
               color: Kwhite,
             ),
-            title: Text(
+            title: const Text(
               'Charity Donation',
               style: TextStyle(
                 fontSize: 16,
@@ -138,17 +134,17 @@ class _DrawerSalamState extends State<DrawerSalam>
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => CharityPage(),
+                  builder: (context) => const CharityPage(),
                 ),
               );
             },
           ),
           ListTile(
-            leading: Icon(
+            leading: const Icon(
               Icons.security_outlined,
               color: Kwhite,
             ),
-            title: Text(
+            title: const Text(
               'Security',
               style: TextStyle(
                 fontSize: 16,
@@ -160,17 +156,17 @@ class _DrawerSalamState extends State<DrawerSalam>
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => SecurityScreen(),
+                  builder: (context) => const SecurityScreen(),
                 ),
               );
             },
           ),
           ListTile(
-            leading: Icon(
+            leading: const Icon(
               Icons.privacy_tip_outlined,
               color: Kwhite,
             ),
-            title: Text(
+            title: const Text(
               'Privacy Policy',
               style: TextStyle(
                 fontSize: 16,
@@ -182,7 +178,7 @@ class _DrawerSalamState extends State<DrawerSalam>
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => PrivacyPolicyScreen(),
+                  builder: (context) => const PrivacyPolicyScreen(),
                 ),
               );
             },

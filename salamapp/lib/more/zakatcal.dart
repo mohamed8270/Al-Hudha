@@ -3,7 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:salamapp/theme/colors.dart';
 
 class ZakatCalc extends StatefulWidget {
+  // ignore: non_constant_identifier_names
   const ZakatCalc({Key? key, required this.Controller}) : super(key: key);
+  // ignore: non_constant_identifier_names
   final TextEditingController Controller;
 
   @override
@@ -14,6 +16,16 @@ class _ZakatCalcState extends State<ZakatCalc> {
   final _num1 = TextEditingController();
   final _num2 = TextEditingController();
   final _tot = TextEditingController();
+
+  // ignore: no_leading_underscores_for_local_identifiers
+  double calculateZakat(double _num1) {
+    // ignore: prefer_const_declarations
+    final nisab = 85; // the minimum amount of wealth required to pay Zakat
+    if (_num1 < nisab) {
+      return 0;
+    }
+    return (_num1 * 0.025);
+  }
 
   late int result;
   late int sum;
@@ -50,11 +62,11 @@ class _ZakatCalcState extends State<ZakatCalc> {
       body: Column(
         children: [
           Container(
-            margin: EdgeInsets.all(10),
+            margin: const EdgeInsets.all(10),
             child: TextField(
               keyboardType: TextInputType.number,
               controller: _num1,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 enabledBorder:
                     OutlineInputBorder(borderSide: BorderSide(color: Kwhite)),
                 focusedBorder:
@@ -65,11 +77,11 @@ class _ZakatCalcState extends State<ZakatCalc> {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(10),
+            margin: const EdgeInsets.all(10),
             child: TextField(
               keyboardType: TextInputType.number,
               controller: _num2,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 enabledBorder:
                     OutlineInputBorder(borderSide: BorderSide(color: Kwhite)),
                 focusedBorder:
@@ -80,11 +92,11 @@ class _ZakatCalcState extends State<ZakatCalc> {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(10),
+            margin: const EdgeInsets.all(10),
             child: TextField(
               keyboardType: TextInputType.number,
               controller: _tot,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 enabledBorder:
                     OutlineInputBorder(borderSide: BorderSide(color: Kwhite)),
                 focusedBorder:
@@ -94,7 +106,7 @@ class _ZakatCalcState extends State<ZakatCalc> {
               ),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           InkWell(
             onTap: () {
               sum = int.parse(_num1.text) * int.parse(_num2.text);
@@ -109,7 +121,7 @@ class _ZakatCalcState extends State<ZakatCalc> {
                 borderRadius: BorderRadius.circular(40),
               ),
               alignment: Alignment.center,
-              child: Text(
+              child: const Text(
                 'Calculate',
                 style: TextStyle(
                   fontSize: 18,
@@ -119,7 +131,7 @@ class _ZakatCalcState extends State<ZakatCalc> {
               ),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
         ],
       ),
     );

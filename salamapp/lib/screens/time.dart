@@ -1,3 +1,4 @@
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:adhan/adhan.dart';
 import 'package:external_app_launcher/external_app_launcher.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +42,8 @@ class _PrayerTimeState extends State<PrayerTime> {
       message = "It's time for thahajjath";
     }
 
+    var siZe = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Kblack,
       appBar: AppBar(
@@ -50,7 +53,7 @@ class _PrayerTimeState extends State<PrayerTime> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => BottomNav()),
+              MaterialPageRoute(builder: (context) => const BottomNav()),
             );
           },
           child: Padding(
@@ -77,14 +80,14 @@ class _PrayerTimeState extends State<PrayerTime> {
         future: getLoc(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(
                 color: Kred,
               ),
             );
           }
 
-          final myCoordinates = Coordinates(33.769933, 72.8248431);
+          final myCoordinates = Coordinates(10.195384, 78.394964);
           final params = CalculationMethod.karachi.getParameters();
           params.madhab = Madhab.hanafi;
           final prayerTimes = PrayerTimes.today(myCoordinates, params);
@@ -94,12 +97,12 @@ class _PrayerTimeState extends State<PrayerTime> {
             child: Column(
               children: [
                 Container(
-                  height: 100,
-                  width: 380,
+                  height: siZe.height * 0.15,
+                  width: siZe.width * 0.95,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: Kwhite.withOpacity(0.03),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage('assets/images/quran2.jpg'),
                       fit: BoxFit.cover,
                     ),
@@ -110,22 +113,22 @@ class _PrayerTimeState extends State<PrayerTime> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          padding: EdgeInsets.only(bottom: 0.5),
-                          decoration: BoxDecoration(
+                          padding: const EdgeInsets.only(bottom: 0.5),
+                          decoration: const BoxDecoration(
                             border: Border(
                               bottom: BorderSide(color: Kred, width: 2),
                             ),
                           ),
                           child: Text(
                             message,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Kblack,
                             ),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Text(
                           "O you who believe! Seek help in patience \nand As-Salat (the prayer). Truly! Allah \nis with As-Sabirin the patient ones",
                           textAlign: TextAlign.left,
@@ -139,7 +142,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 PrayerTimeWidget(
                   time: DateFormat.jm().format(prayerTimes.fajr),
                   title: 'Salat al-Fajr',
@@ -148,7 +151,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                   thickness: 1,
                   color: Kwhite.withOpacity(0.4),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 PrayerTimeWidget(
                   time: DateFormat.jm().format(prayerTimes.dhuhr),
                   title: 'Salat al-Zuhr',
@@ -157,7 +160,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                   thickness: 1,
                   color: Kwhite.withOpacity(0.4),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 PrayerTimeWidget(
                   time: DateFormat.jm().format(prayerTimes.asr),
                   title: 'Salat al-Asr',
@@ -166,7 +169,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                   thickness: 1,
                   color: Kwhite.withOpacity(0.4),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 PrayerTimeWidget(
                   time: DateFormat.jm().format(prayerTimes.maghrib),
                   title: 'Salat al-Maghrib',
@@ -175,34 +178,35 @@ class _PrayerTimeState extends State<PrayerTime> {
                   thickness: 1,
                   color: Kwhite.withOpacity(0.4),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 PrayerTimeWidget(
                   time: DateFormat.jm().format(prayerTimes.isha),
                   title: 'Salat al-Isha',
                 ),
-                SizedBox(height: 80),
+                const SizedBox(height: 80),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => QiblaDirection(),
+                            builder: (context) => const QiblaDirection(),
                           ),
                         );
                       },
                       child: Container(
-                        height: 50,
-                        width: 150,
+                        height: siZe.height * 0.065,
+                        width: siZe.width * 0.35,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(40),
                           color: Kwhite.withOpacity(0.02),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
+                          children: const [
                             Icon(
                               Icons.location_on_outlined,
                               color: Kred,
@@ -228,8 +232,8 @@ class _PrayerTimeState extends State<PrayerTime> {
                         );
                       },
                       child: Container(
-                        height: 50,
-                        width: 200,
+                        height: siZe.height * 0.065,
+                        width: siZe.width * 0.5,
                         decoration: BoxDecoration(
                           color: Kwhite.withOpacity(0.02),
                           borderRadius: BorderRadius.circular(40),
@@ -244,8 +248,8 @@ class _PrayerTimeState extends State<PrayerTime> {
                               fit: BoxFit.scaleDown,
                               color: Kred,
                             ),
-                            SizedBox(width: 20),
-                            Text(
+                            const SizedBox(width: 20),
+                            const Text(
                               'Set Reminder',
                               style: TextStyle(
                                 fontSize: 16,
@@ -268,7 +272,9 @@ class _PrayerTimeState extends State<PrayerTime> {
   }
 
   getLoc() async {
+    // ignore: no_leading_underscores_for_local_identifiers
     bool _serviceEnabled;
+    // ignore: no_leading_underscores_for_local_identifiers
     PermissionStatus _permissionGranted;
 
     _serviceEnabled = await location.serviceEnabled();

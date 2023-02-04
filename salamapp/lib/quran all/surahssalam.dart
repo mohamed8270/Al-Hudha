@@ -24,7 +24,7 @@ class _SurahSalamState extends State<SurahSalam> {
             Navigator.pop(context);
           },
           child: Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: SvgPicture.asset(
               'assets/icons/back.svg',
               color: Kred,
@@ -39,10 +39,22 @@ class _SurahSalamState extends State<SurahSalam> {
             fontWeight: FontWeight.w500,
           ),
         ),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.all(12),
+            child: SizedBox(
+              width: 150,
+              child: Text(
+                quran.basmala,
+                style: TextStyle(fontSize: 18, color: Kred),
+              ),
+            ),
+          )
+        ],
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(15.0),
+          padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
           child: ListView.builder(
             itemCount: quran.getVerseCount(widget.surahnumber),
             itemBuilder: (context, index) {
@@ -51,7 +63,7 @@ class _SurahSalamState extends State<SurahSalam> {
                   quran.getVerse(widget.surahnumber, index + 1,
                       verseEndSymbol: true),
                   textAlign: TextAlign.right,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Kwhite,
                     fontSize: 20,
                   ),

@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:salamapp/interface/bottomnav.dart';
-import 'package:salamapp/onboard%20screen/onboard.dart';
 import 'package:salamapp/theme/colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,11 +15,11 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    Timer(Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 5), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => BottomNav(),
+          builder: (context) => const BottomNav(),
         ),
       );
     });
@@ -34,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Container(
           height: 200,
           width: 300,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Kblack,
             image: DecorationImage(
               image: AssetImage('assets/images/Splash screen.png'),

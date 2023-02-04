@@ -1,7 +1,9 @@
 import 'dart:convert';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:salamapp/external/benefits.dart';
+import 'package:salamapp/external/halalstock.dart';
+import 'package:salamapp/external/podcast.dart';
 import 'package:salamapp/interface/bottomnav.dart';
 import 'package:salamapp/more/charity.dart';
 import 'package:salamapp/more/hadith.dart';
@@ -17,12 +19,17 @@ class More extends StatefulWidget {
 }
 
 class _MoreState extends State<More> with SingleTickerProviderStateMixin {
+  // ignore: non_constant_identifier_names
   List HadidList = [];
+
+  // ignore: non_constant_identifier_names
+  List Podcastlist = [];
 
   @override
   initState() {
     super.initState();
 
+    _readPodcast();
     _readData();
   }
 
@@ -32,6 +39,19 @@ class _MoreState extends State<More> with SingleTickerProviderStateMixin {
         .then((s) {
       setState(() {
         HadidList = json.decode(s);
+      });
+    });
+  }
+
+  // ignore: prefer_typing_uninitialized_variables
+  var index;
+
+  _readPodcast() async {
+    await DefaultAssetBundle.of(context)
+        .loadString("assets/podcast_json/Podcast.json")
+        .then((s) {
+      setState(() {
+        Podcastlist = json.decode(s);
       });
     });
   }
@@ -48,7 +68,7 @@ class _MoreState extends State<More> with SingleTickerProviderStateMixin {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => BottomNav(),
+                builder: (context) => const BottomNav(),
               ),
             );
           },
@@ -88,28 +108,30 @@ class _MoreState extends State<More> with SingleTickerProviderStateMixin {
                     ),
                   );
                 },
-                child: MoreItems(
+                child: const MoreItems(
                   txt: 'Zakat Calculator',
                   icn: 'assets/icons/cal.svg',
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               InkWell(
+                borderRadius: BorderRadius.circular(10),
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => TasbeehSalam(),
+                      builder: (context) => const TasbeehSalam(),
                     ),
                   );
                 },
-                child: MoreItems(
+                child: const MoreItems(
                   txt: 'Tasbeeh',
                   icn: 'assets/icons/tasbih.svg',
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               InkWell(
+                borderRadius: BorderRadius.circular(10),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -120,30 +142,80 @@ class _MoreState extends State<More> with SingleTickerProviderStateMixin {
                     ),
                   );
                 },
-                child: MoreItems(
+                child: const MoreItems(
                   txt: 'Hadiths',
                   icn: 'assets/icons/hadid.svg',
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               InkWell(
+                borderRadius: BorderRadius.circular(10),
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CharityPage(),
+                      builder: (context) => const CharityPage(),
                     ),
                   );
                 },
-                child: MoreItems(
+                child: const MoreItems(
                   txt: 'Charity Donation',
                   icn: 'assets/icons/donate.svg',
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               InkWell(
+                borderRadius: BorderRadius.circular(10),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HalalStocks(),
+                    ),
+                  );
+                },
+                child: const MoreItems(
+                  txt: 'Halal Stocks',
+                  icn: 'assets/icons/graph.svg',
+                ),
+              ),
+              const SizedBox(height: 10),
+              InkWell(
+                borderRadius: BorderRadius.circular(10),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const BenefitsScreen(),
+                    ),
+                  );
+                },
+                child: const MoreItems(
+                  txt: 'Benefits of surah',
+                  icn: 'assets/icons/bulb.svg',
+                ),
+              ),
+              const SizedBox(height: 10),
+              InkWell(
+                borderRadius: BorderRadius.circular(10),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PodCast(),
+                    ),
+                  );
+                },
+                child: const MoreItems(
+                  txt: 'Islamic Podcast',
+                  icn: 'assets/icons/podcast.svg',
+                ),
+              ),
+              const SizedBox(height: 10),
+              InkWell(
+                borderRadius: BorderRadius.circular(10),
                 onTap: () {},
-                child: MoreItems(
+                child: const MoreItems(
                   txt: 'Quiz',
                   icn: 'assets/icons/quiz.svg',
                 ),
@@ -167,9 +239,10 @@ class MoreItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var siZe = MediaQuery.of(context).size;
     return Container(
-      height: 50,
-      width: 400,
+      height: siZe.height * 0.065,
+      width: siZe.width * 0.95,
       decoration: BoxDecoration(
         color: Kwhite.withOpacity(0.02),
         borderRadius: BorderRadius.circular(10),
@@ -185,10 +258,10 @@ class MoreItems extends StatelessWidget {
               width: 17,
               color: Kwhite,
             ),
-            SizedBox(width: 20),
+            const SizedBox(width: 20),
             Text(
               txt,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
                 color: Kred,

@@ -12,7 +12,7 @@ class TabControlSalam extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 50,
-      constraints: BoxConstraints(maxWidth: double.infinity),
+      constraints: const BoxConstraints(maxWidth: double.infinity),
       decoration: BoxDecoration(
         color: KPrimaryblue,
         borderRadius: BorderRadius.circular(40),
@@ -22,7 +22,7 @@ class TabControlSalam extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Text(
           txt,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w600,
             color: KPurewhite,

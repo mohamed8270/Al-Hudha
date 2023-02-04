@@ -24,7 +24,7 @@ class _QuranState extends State<Quran> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => BottomNav()),
+              MaterialPageRoute(builder: (context) => const BottomNav()),
             );
           },
           child: Padding(
@@ -48,7 +48,7 @@ class _QuranState extends State<Quran> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.all(15.0),
+        padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
         child: ListView.builder(
           itemCount: 114,
           itemBuilder: (BuildContext context, int index) {
@@ -63,19 +63,37 @@ class _QuranState extends State<Quran> {
                   ),
                 );
               },
-              child: ListTile(
-                title: Text(
-                  quran.getSurahName(index + 1),
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Kwhite,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: ListTile(
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        quran.getSurahName(index + 1),
+                        style: const TextStyle(
+                          fontSize: 20,
+                          color: Kwhite,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      Text(
+                        quran.getSurahNameEnglish(index + 1),
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Kwhite.withOpacity(0.5),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                trailing: InkWell(
-                  onTap: () {},
-                  child: Icon(
-                    Icons.bookmark_outline_rounded,
-                    color: Kred.withOpacity(0.5),
+                  trailing: Text(
+                    quran.getSurahNameArabic(index + 1),
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      color: Kred,
+                    ),
                   ),
                 ),
               ),

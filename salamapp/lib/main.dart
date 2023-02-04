@@ -3,17 +3,16 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:salamapp/auth_services.dart';
+import 'package:salamapp/interface/bottomnav.dart';
 import 'package:salamapp/onboard%20screen/onboard.dart';
 import 'package:salamapp/provider%20like/fav_provider.dart';
 import 'package:salamapp/splash%20screen/splashscreen.dart';
 import 'package:salamapp/theme/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'interface/bottomnav.dart';
-import 'signup screen/signup.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
+  // ignore: avoid_print
   print('Handling a background message : ${message.messageId}');
 }
 
@@ -25,22 +24,26 @@ Future<void> main() async {
     overlays: [],
   );
   SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Kblack));
-  SystemUiOverlayStyle(
-    statusBarBrightness: Brightness.dark,
-    statusBarIconBrightness: Brightness.light,
-  );
+      const SystemUiOverlayStyle(statusBarColor: Kblack));
+  const SystemUiOverlayStyle(
+      statusBarBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.light,
+      statusBarColor: Kblack);
   SharedPreferences prefs = await SharedPreferences.getInstance();
   isviewed = prefs.getInt('onBoard');
   await Firebase.initializeApp();
+  // ignore: unused_local_variable
   FirebaseMessaging messaging = FirebaseMessaging.instance;
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    // ignore: avoid_print
     print('Got a message whlist in the foreground!');
+    // ignore: avoid_print
     print('Message data: ${message.data}');
 
     if (message.notification != null) {
+      // ignore: avoid_print
       print('Message also contained a notification: ${message.notification}');
     }
   });
@@ -60,7 +63,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           fontFamily: 'Poppins',
         ),
-        home: isviewed != 0 ? OnboardScreen() : SplashScreen(),
+        home: isviewed != 0 ? const OnboardScreen() : const SplashScreen(),
       ),
     );
   }

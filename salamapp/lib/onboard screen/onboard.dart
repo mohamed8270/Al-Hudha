@@ -1,9 +1,6 @@
 // ignore_for_file: deprecated_member_use
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:salamapp/auth_services.dart';
-import 'package:salamapp/interface/bottomnav.dart';
 import 'package:salamapp/onboard%20screen/onboardcontent.dart';
 import 'package:salamapp/theme/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,6 +13,7 @@ class OnboardScreen extends StatefulWidget {
 }
 
 class _OnboardScreenState extends State<OnboardScreen> {
+  // ignore: non_constant_identifier_names
   int CurrentIndex = 0;
   PageController? _controller;
 
@@ -32,15 +30,18 @@ class _OnboardScreenState extends State<OnboardScreen> {
   }
 
   _storeOnboardInfo() async {
+    // ignore: avoid_print
     print("Shared pref called");
     int isViewed = 0;
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setInt('onBoard', isViewed);
+    // ignore: avoid_print
     print(prefs.getInt('onBoard'));
   }
 
   @override
   Widget build(BuildContext context) {
+    var siZe = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Kblack,
       body: Column(
@@ -61,8 +62,8 @@ class _OnboardScreenState extends State<OnboardScreen> {
                   child: Column(
                     children: [
                       Container(
-                        height: 250,
-                        width: 350,
+                        height: siZe.height * 0.3,
+                        width: siZe.width * 0.7,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50)),
                         child: Image(
@@ -70,16 +71,16 @@ class _OnboardScreenState extends State<OnboardScreen> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
                       Text(
                         content[i].title,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                           color: Kwhite,
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Text(
                         content[i].description,
                         textAlign: TextAlign.justify,
@@ -95,6 +96,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
               },
             ),
           ),
+          // ignore: avoid_unnecessary_containers
           Container(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -108,11 +110,12 @@ class _OnboardScreenState extends State<OnboardScreen> {
             height: 60,
             width: double.infinity,
             color: Kwhite.withOpacity(0.03),
-            margin: EdgeInsets.all(40),
+            margin: const EdgeInsets.all(40),
             child: FlatButton(
               onPressed: () async {
                 if (CurrentIndex == content.length - 1) {
                   await _storeOnboardInfo();
+                  // ignore: use_build_context_synchronously
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
@@ -121,12 +124,13 @@ class _OnboardScreenState extends State<OnboardScreen> {
                   );
                 }
                 _controller?.nextPage(
-                    duration: Duration(milliseconds: 100),
+                    duration: const Duration(milliseconds: 100),
                     curve: Curves.bounceIn);
               },
               child: Text(
                 CurrentIndex == content.length - 1 ? "Continue" : "Next",
-                style: TextStyle(color: Kwhite, fontWeight: FontWeight.w500),
+                style:
+                    const TextStyle(color: Kwhite, fontWeight: FontWeight.w500),
               ),
             ),
           )
@@ -139,7 +143,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
     return Container(
       height: 5,
       width: CurrentIndex == index ? 15 : 5,
-      margin: EdgeInsets.only(right: 5),
+      margin: const EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: CurrentIndex == index ? Kwhite : Kwhite.withOpacity(0.3),

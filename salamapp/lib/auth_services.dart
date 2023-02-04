@@ -1,6 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:salamapp/interface/bottomnav.dart';
@@ -12,6 +10,7 @@ class AuthService {
   // signInwithGoogle()
   // signOut()
 
+  // ignore: unused_field
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   getProfileImage() {
@@ -22,7 +21,7 @@ class AuthService {
         width: 100,
       );
     } else {
-      return Icon(
+      return const Icon(
         Icons.account_circle,
         size: 100,
       );
@@ -34,7 +33,7 @@ class AuthService {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (BuildContext context, snapshot) {
         if (snapshot.hasData) {
-          return BottomNav();
+          return const BottomNav();
         } else {
           return const SignScreen();
         }
@@ -49,6 +48,7 @@ class AuthService {
     final GoogleSignInAuthentication googleAuth =
         await googleUser!.authentication;
 
+    // ignore: non_constant_identifier_names
     final Credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
 

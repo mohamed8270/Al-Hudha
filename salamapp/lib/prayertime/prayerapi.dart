@@ -1,6 +1,6 @@
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:adhan/adhan.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:location/location.dart';
 import 'package:intl/intl.dart';
 import 'package:salamapp/theme/colors.dart';
@@ -24,7 +24,7 @@ class _PrayerApiState extends State<PrayerApi> {
         future: getLoc(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(
                 color: Kred,
               ),
@@ -45,7 +45,9 @@ class _PrayerApiState extends State<PrayerApi> {
   }
 
   getLoc() async {
+    // ignore: no_leading_underscores_for_local_identifiers
     bool _serviceEnabled;
+    // ignore: no_leading_underscores_for_local_identifiers
     PermissionStatus _permissionGranted;
 
     _serviceEnabled = await location.serviceEnabled();

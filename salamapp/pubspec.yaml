@@ -59,6 +59,9 @@ dependencies:
   open_mail_app: ^0.4.5
   table_calendar: ^3.0.9
   cloud_firestore_web: ^3.2.1
+  google_maps_flutter: ^2.2.3
+  geolocator: ^9.0.2
+ 
   
 
   
@@ -93,6 +96,9 @@ flutter:
      - assets/audio_json/.
      - assets/hadid_json/.
      - assets/privacy_json/.
+     - assets/stock_json/.
+     - assets/benefits_json/.
+     - assets/podcast_json/.
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

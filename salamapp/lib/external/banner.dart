@@ -32,12 +32,12 @@ class BannerCards extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         SizedBox(
           width: 150,
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
               color: KBlack,
@@ -47,7 +47,7 @@ class BannerCards extends StatelessWidget {
             softWrap: true,
           ),
         ),
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
         Text(
           des,
           style: TextStyle(

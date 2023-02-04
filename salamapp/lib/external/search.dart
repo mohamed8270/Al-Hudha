@@ -31,13 +31,15 @@ class SearchBar extends StatelessWidget {
               ),
             ),
             hintText: 'Search',
-            hintStyle: TextStyle(
+            hintStyle: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,
               color: Colors.grey,
             ),
-            focusedBorder: UnderlineInputBorder(borderSide: BorderSide.none),
-            enabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
+            focusedBorder:
+                const UnderlineInputBorder(borderSide: BorderSide.none),
+            enabledBorder:
+                const UnderlineInputBorder(borderSide: BorderSide.none),
           ),
         ),
       ),

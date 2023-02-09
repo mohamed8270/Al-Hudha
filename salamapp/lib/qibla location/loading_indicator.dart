@@ -10,10 +10,10 @@ class LoadingIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     final widget = (Platform.isAndroid)
         ? const CircularProgressIndicator(
-            color: Kred,
+            color: Zred,
           )
         : const CupertinoActivityIndicator(
-            color: Kred,
+            color: Zred,
           );
     return Container(
       alignment: Alignment.center,

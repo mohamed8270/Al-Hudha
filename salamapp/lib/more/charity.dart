@@ -15,22 +15,17 @@ class _CharityPageState extends State<CharityPage> {
   Widget build(BuildContext context) {
     var siZe = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Kblack,
+      backgroundColor: Zwhite,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Kblack,
+        backgroundColor: Zwhite,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: SvgPicture.asset(
-              'assets/icons/back.svg',
-              height: 18,
-              width: 18,
-              color: Kred,
-            ),
+          child: const Icon(
+            Icons.arrow_back_rounded,
+            color: Zred,
           ),
         ),
         title: Text(
@@ -38,7 +33,7 @@ class _CharityPageState extends State<CharityPage> {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w500,
-            color: Kwhite.withOpacity(0.3),
+            color: Zblack.withOpacity(0.5),
           ),
         ),
       ),
@@ -50,7 +45,7 @@ class _CharityPageState extends State<CharityPage> {
               height: siZe.height * 0.14,
               width: siZe.width * 0.95,
               decoration: BoxDecoration(
-                color: Kwhite.withOpacity(0.03),
+                color: Zgrey,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Padding(
@@ -58,17 +53,17 @@ class _CharityPageState extends State<CharityPage> {
                 child: Column(
                   children: [
                     Row(
-                      children: [
+                      children: const [
                         Icon(
                           Icons.warning_amber_rounded,
-                          color: Kred.withOpacity(0.7),
+                          color: Zred,
                         ),
-                        const SizedBox(width: 10),
-                        const Text(
+                        SizedBox(width: 10),
+                        Text(
                           "Attention!",
                           style: TextStyle(
                             fontSize: 18,
-                            color: Kwhite,
+                            color: Zblack,
                             fontWeight: FontWeight.w500,
                           ),
                         )
@@ -80,7 +75,7 @@ class _CharityPageState extends State<CharityPage> {
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
-                        color: Kwhite.withOpacity(0.5),
+                        color: Zblack.withOpacity(0.3),
                       ),
                     )
                   ],
@@ -93,7 +88,7 @@ class _CharityPageState extends State<CharityPage> {
               width: siZe.width * 0.95,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: Kwhite.withOpacity(0.03),
+                color: Zgrey,
                 image: const DecorationImage(
                   image: AssetImage('assets/images/heart.jpg'),
                   fit: BoxFit.cover,
@@ -110,7 +105,7 @@ class _CharityPageState extends State<CharityPage> {
                           'assets/icons/donate.svg',
                           height: 18,
                           width: 18,
-                          color: Kred,
+                          color: Zred,
                         ),
                         const SizedBox(width: 10),
                         const Text(
@@ -118,18 +113,18 @@ class _CharityPageState extends State<CharityPage> {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
-                            color: Kblack,
+                            color: Zblack,
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 15),
-                    const Text(
+                    Text(
                       "Those who spend their wealth in \nAllah's cause are like grains of corn\nwhich produce seven ears, each\nbearing a hundred grains",
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
-                        color: Kblack,
+                        color: Zblack.withOpacity(0.6),
                       ),
                     ),
                     const SizedBox(height: 15),
@@ -141,7 +136,7 @@ class _CharityPageState extends State<CharityPage> {
                         height: 40,
                         width: 100,
                         decoration: BoxDecoration(
-                          color: Kred,
+                          color: Zred,
                           borderRadius: BorderRadius.circular(40),
                         ),
                         alignment: Alignment.center,
@@ -150,7 +145,7 @@ class _CharityPageState extends State<CharityPage> {
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w500,
-                            color: Kwhite,
+                            color: Zwhite,
                           ),
                         ),
                       ),

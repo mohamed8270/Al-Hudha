@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:salamapp/theme/colors.dart';
 
 class BenefitsScreen extends StatefulWidget {
@@ -35,44 +34,38 @@ class _BenefitsScreenState extends State<BenefitsScreen> {
   Widget build(BuildContext context) {
     var siZe = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Kblack,
+      backgroundColor: Zwhite,
       appBar: AppBar(
-        backgroundColor: Kblack,
+        backgroundColor: Zwhite,
         elevation: 0,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: SvgPicture.asset(
-              'assets/icons/back.svg',
-              height: 18,
-              width: 18,
-              color: Kred,
-              fit: BoxFit.scaleDown,
-            ),
+          child: const Icon(
+            Icons.arrow_back_rounded,
+            color: Zred,
           ),
         ),
         title: Text(
           'Benefits of surah',
           style: TextStyle(
             fontSize: 20,
-            color: Kwhite.withOpacity(0.3),
+            color: Zblack.withOpacity(0.5),
             fontWeight: FontWeight.w500,
           ),
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
+        padding: const EdgeInsets.only(top: 0, left: 10, right: 10),
         child: SingleChildScrollView(
           child: Column(
             children: [
               Container(
-                height: siZe.height * 0.19,
+                constraints: const BoxConstraints(maxHeight: double.infinity),
                 width: siZe.width * 0.95,
-                decoration: BoxDecoration(
-                  color: Kwhite.withOpacity(0.03),
+                decoration: const BoxDecoration(
+                  color: Zgrey,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(10),
@@ -84,7 +77,7 @@ class _BenefitsScreenState extends State<BenefitsScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
-                          color: Colors.green,
+                          color: Zblack,
                         ),
                       ),
                       const SizedBox(height: 5),
@@ -93,7 +86,7 @@ class _BenefitsScreenState extends State<BenefitsScreen> {
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
-                          color: Kwhite.withOpacity(0.5),
+                          color: Zblack.withOpacity(0.4),
                         ),
                       )
                     ],
@@ -113,7 +106,7 @@ class _BenefitsScreenState extends State<BenefitsScreen> {
                       Container(
                         height: siZe.height * 0.05,
                         width: double.infinity,
-                        color: Kwhite.withOpacity(0.03),
+                        color: Zgrey,
                         alignment: Alignment.centerLeft,
                         child: Row(
                           children: [
@@ -121,7 +114,7 @@ class _BenefitsScreenState extends State<BenefitsScreen> {
                               height: siZe.height * 0.035,
                               width: siZe.width * 0.01,
                               decoration: BoxDecoration(
-                                color: Kwhite,
+                                color: Zred,
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
@@ -131,7 +124,7 @@ class _BenefitsScreenState extends State<BenefitsScreen> {
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
-                                color: Kred,
+                                color: Zblack,
                               ),
                             ),
                           ],
@@ -144,7 +137,7 @@ class _BenefitsScreenState extends State<BenefitsScreen> {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: Kwhite.withOpacity(0.5),
+                          color: Zblack.withOpacity(0.4),
                         ),
                       ),
                       const Text('\n')

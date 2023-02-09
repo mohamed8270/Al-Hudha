@@ -429,6 +429,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.2"
+  hijri:
+    dependency: transitive
+    description:
+      name: hijri
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
+  hijri_picker:
+    dependency: "direct main"
+    description:
+      name: hijri_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
   http:
     dependency: "direct main"
     description:

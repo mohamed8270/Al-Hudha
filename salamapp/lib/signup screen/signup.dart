@@ -14,7 +14,7 @@ class _SignScreenState extends State<SignScreen> {
   Widget build(BuildContext context) {
     var siZe = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Kblack,
+      backgroundColor: Zwhite,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(top: 60, left: 10, right: 10),
@@ -25,7 +25,7 @@ class _SignScreenState extends State<SignScreen> {
                 style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.w600,
-                  color: Kred,
+                  color: Zblack,
                 ),
               ),
               const SizedBox(height: 15),
@@ -34,7 +34,7 @@ class _SignScreenState extends State<SignScreen> {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
-                  color: Kwhite.withOpacity(0.3),
+                  color: Zblack.withOpacity(0.3),
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -59,7 +59,7 @@ class _SignScreenState extends State<SignScreen> {
                   height: 50,
                   width: 300,
                   decoration: BoxDecoration(
-                    color: Kwhite.withOpacity(0.03),
+                    color: Zgrey,
                     borderRadius: BorderRadius.circular(40),
                   ),
                   child: Row(
@@ -77,7 +77,7 @@ class _SignScreenState extends State<SignScreen> {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: Kwhite,
+                          color: Zblack,
                         ),
                       )
                     ],

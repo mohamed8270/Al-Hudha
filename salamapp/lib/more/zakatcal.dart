@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:salamapp/theme/colors.dart';
 
 class ZakatCalc extends StatefulWidget {
@@ -32,22 +31,17 @@ class _ZakatCalcState extends State<ZakatCalc> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Kblack,
+      backgroundColor: Zwhite,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Kblack,
+        backgroundColor: Zwhite,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: SvgPicture.asset(
-              'assets/icons/back.svg',
-              height: 12,
-              width: 12,
-              color: Kred,
-            ),
+          child: const Icon(
+            Icons.arrow_back_rounded,
+            color: Zred,
           ),
         ),
         title: Text(
@@ -55,7 +49,7 @@ class _ZakatCalcState extends State<ZakatCalc> {
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w500,
-            color: Kwhite.withOpacity(0.3),
+            color: Zblack.withOpacity(0.5),
           ),
         ),
       ),
@@ -68,11 +62,11 @@ class _ZakatCalcState extends State<ZakatCalc> {
               controller: _num1,
               decoration: const InputDecoration(
                 enabledBorder:
-                    OutlineInputBorder(borderSide: BorderSide(color: Kwhite)),
+                    OutlineInputBorder(borderSide: BorderSide(color: Zgrey)),
                 focusedBorder:
-                    OutlineInputBorder(borderSide: BorderSide(color: Kred)),
+                    OutlineInputBorder(borderSide: BorderSide(color: Zred)),
                 labelText: 'Gold in grams',
-                labelStyle: TextStyle(color: Kwhite),
+                labelStyle: TextStyle(color: Zblack),
               ),
             ),
           ),
@@ -83,11 +77,11 @@ class _ZakatCalcState extends State<ZakatCalc> {
               controller: _num2,
               decoration: const InputDecoration(
                 enabledBorder:
-                    OutlineInputBorder(borderSide: BorderSide(color: Kwhite)),
+                    OutlineInputBorder(borderSide: BorderSide(color: Zgrey)),
                 focusedBorder:
-                    OutlineInputBorder(borderSide: BorderSide(color: Kred)),
+                    OutlineInputBorder(borderSide: BorderSide(color: Zred)),
                 labelText: 'Price of Gold',
-                labelStyle: TextStyle(color: Kwhite),
+                labelStyle: TextStyle(color: Zblack),
               ),
             ),
           ),
@@ -98,11 +92,11 @@ class _ZakatCalcState extends State<ZakatCalc> {
               controller: _tot,
               decoration: const InputDecoration(
                 enabledBorder:
-                    OutlineInputBorder(borderSide: BorderSide(color: Kwhite)),
+                    OutlineInputBorder(borderSide: BorderSide(color: Zgrey)),
                 focusedBorder:
-                    OutlineInputBorder(borderSide: BorderSide(color: Kred)),
+                    OutlineInputBorder(borderSide: BorderSide(color: Zred)),
                 labelText: 'Zakat Money',
-                labelStyle: TextStyle(color: Kwhite),
+                labelStyle: TextStyle(color: Zblack),
               ),
             ),
           ),
@@ -117,7 +111,7 @@ class _ZakatCalcState extends State<ZakatCalc> {
               height: 50,
               width: 200,
               decoration: BoxDecoration(
-                color: Kwhite.withOpacity(0.02),
+                color: Zgrey,
                 borderRadius: BorderRadius.circular(40),
               ),
               alignment: Alignment.center,
@@ -126,7 +120,7 @@ class _ZakatCalcState extends State<ZakatCalc> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w800,
-                  color: Kwhite,
+                  color: Zred,
                 ),
               ),
             ),

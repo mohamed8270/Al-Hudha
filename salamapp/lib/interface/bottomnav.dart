@@ -13,7 +13,7 @@ class BottomNav extends StatefulWidget {
   State<BottomNav> createState() => _BottomNavState();
 }
 
-class _BottomNavState extends State<BottomNav> {
+class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
   int currentIndex = 0;
   final screens = [
     const Home(),
@@ -27,56 +27,61 @@ class _BottomNavState extends State<BottomNav> {
     return Scaffold(
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Kblack,
+        backgroundColor: Zwhite,
         type: BottomNavigationBarType.fixed,
         elevation: 0,
         iconSize: 18,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
         currentIndex: currentIndex,
+        selectedLabelStyle: const TextStyle(color: Zblack, fontSize: 12),
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        unselectedItemColor: Zblack.withOpacity(0.3),
+        selectedItemColor: Zblack,
+        unselectedLabelStyle:
+            TextStyle(color: Zblack.withOpacity(0.3), fontSize: 12),
         onTap: (index) => setState(() => currentIndex = index),
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/homeout.svg',
-              color: Kred.withOpacity(0.6),
+              color: Zblack.withOpacity(0.4),
             ),
             activeIcon: SvgPicture.asset(
               'assets/icons/homefill.svg',
-              color: Kred,
+              color: Zred,
             ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/timeout.svg',
-              color: Kred.withOpacity(0.6),
+              color: Zblack.withOpacity(0.4),
             ),
             activeIcon: SvgPicture.asset(
               'assets/icons/timefill.svg',
-              color: Kred,
+              color: Zred,
             ),
             label: 'Prayer Time',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/bookout.svg',
-              color: Kred.withOpacity(0.6),
+              color: Zblack.withOpacity(0.4),
             ),
             activeIcon: SvgPicture.asset(
               'assets/icons/bookfill.svg',
-              color: Kred,
+              color: Zred,
             ),
             label: 'Quran',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/moreout.svg',
-              color: Kred.withOpacity(0.6),
+              color: Zblack.withOpacity(0.4),
             ),
             activeIcon: SvgPicture.asset(
               'assets/icons/morefill.svg',
-              color: Kred,
+              color: Zred,
             ),
             label: 'More',
           ),

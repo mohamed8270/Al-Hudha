@@ -19,7 +19,7 @@ class _QiblaScreenState extends State<QiblaScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Kblack,
+      backgroundColor: Zwhite,
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(
@@ -29,7 +29,7 @@ class _QiblaScreenState extends State<QiblaScreen>
               height: 400,
               width: 380,
               decoration: BoxDecoration(
-                color: Kwhite.withOpacity(0.03),
+                color: Zgrey,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: FutureBuilder(
@@ -58,7 +58,7 @@ class _QiblaScreenState extends State<QiblaScreen>
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: Kred,
+                color: Zred,
               ),
             ),
             const SizedBox(height: 10),
@@ -67,7 +67,7 @@ class _QiblaScreenState extends State<QiblaScreen>
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
-                color: Kwhite.withOpacity(0.5),
+                color: Zblack.withOpacity(0.4),
               ),
               textAlign: TextAlign.justify,
             )

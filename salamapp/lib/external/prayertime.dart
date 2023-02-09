@@ -21,7 +21,7 @@ class PrayerTimeWidget extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-                color: Kred,
+                color: Zred,
               ),
             ),
             Text(
@@ -29,7 +29,7 @@ class PrayerTimeWidget extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w400,
-                color: Kwhite.withOpacity(0.3),
+                color: Zblack.withOpacity(0.5),
               ),
             )
           ],

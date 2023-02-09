@@ -1,5 +1,6 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:open_mail_app/open_mail_app.dart';
 import 'package:salamapp/theme/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -14,24 +15,19 @@ class SecurityScreen extends StatefulWidget {
 class _SecurityScreenState extends State<SecurityScreen> {
   @override
   Widget build(BuildContext context) {
+    var siZe = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Kblack,
+      backgroundColor: Zwhite,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Kblack,
+        backgroundColor: Zwhite,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: SvgPicture.asset(
-              'assets/icons/back.svg',
-              color: Kred,
-              height: 18,
-              width: 18,
-              fit: BoxFit.scaleDown,
-            ),
+          child: const Icon(
+            Icons.arrow_back_rounded,
+            color: Zred,
           ),
         ),
         title: Text(
@@ -39,7 +35,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w500,
-            color: Kwhite.withOpacity(0.3),
+            color: Zblack.withOpacity(0.5),
           ),
         ),
       ),
@@ -48,10 +44,10 @@ class _SecurityScreenState extends State<SecurityScreen> {
         child: Column(
           children: [
             Container(
-              height: 220,
+              constraints: const BoxConstraints(maxHeight: double.infinity),
               width: 380,
               decoration: BoxDecoration(
-                color: Kwhite.withOpacity(0.03),
+                color: Zwhite,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Padding(
@@ -63,7 +59,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
                       children: const [
                         Icon(
                           Icons.lock_outline,
-                          color: Kwhite,
+                          color: Zred,
                           size: 20,
                         ),
                         SizedBox(width: 10),
@@ -72,7 +68,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
-                            color: Kred,
+                            color: Zblack,
                           ),
                         ),
                       ],
@@ -84,7 +80,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
-                        color: Kwhite.withOpacity(0.5),
+                        color: Zblack.withOpacity(0.4),
                       ),
                     )
                   ],
@@ -92,118 +88,60 @@ class _SecurityScreenState extends State<SecurityScreen> {
               ),
             ),
             const SizedBox(height: 10),
-            Container(
-              height: 180,
-              width: 380,
-              decoration: BoxDecoration(
-                color: Kwhite.withOpacity(0.03),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: const [
-                        Icon(
-                          Icons.quick_contacts_dialer_outlined,
-                          color: Kwhite,
-                          size: 20,
-                        ),
-                        SizedBox(width: 10),
-                        Text(
-                          "Contact Us",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: Kred,
-                          ),
-                        )
-                      ],
+            Row(
+              children: [
+                InkWell(
+                  onTap: () async {
+                    var result = await OpenMailApp.openMailApp(
+                      nativePickerTitle: 'Select email app to open',
+                    );
+                    if (!result.didOpen && !result.canOpen) {
+                      // ignore: use_build_context_synchronously
+                      showNoMailAppsDialog(context);
+                    } else if (!result.didOpen && result.canOpen) {
+                      showDialog(
+                        context: context,
+                        builder: (_) {
+                          return MailAppPickerDialog(
+                            mailApps: result.options,
+                          );
+                        },
+                      );
+                    }
+                  },
+                  child: const CircleAvatar(
+                    radius: 28,
+                    backgroundColor: Zred,
+                    child: Icon(
+                      Icons.contact_support_rounded,
+                      color: Zwhite,
+                      size: 26,
                     ),
-                    const SizedBox(height: 10),
-                    Text(
-                      "If you have any questions about this Privacy Policy, You can contact us",
+                  ),
+                ),
+                const SizedBox(width: 10),
+                InkWell(
+                  onTap: () => launch('https://ibu-ux.web.app/'),
+                  borderRadius: BorderRadius.circular(40),
+                  child: Container(
+                    height: siZe.height * 0.07,
+                    width: siZe.width * 0.4,
+                    decoration: BoxDecoration(
+                      color: Zred,
+                      borderRadius: BorderRadius.circular(40),
+                    ),
+                    alignment: Alignment.center,
+                    child: const Text(
+                      "Contact Us",
                       style: TextStyle(
                         fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Kwhite.withOpacity(0.5),
+                        fontWeight: FontWeight.w600,
+                        color: Zwhite,
                       ),
                     ),
-                    const SizedBox(height: 15),
-                    InkWell(
-                      onTap: () async {
-                        var result = await OpenMailApp.openMailApp(
-                          nativePickerTitle: 'Select email app to open',
-                        );
-                        if (!result.didOpen && !result.canOpen) {
-                          // ignore: use_build_context_synchronously
-                          showNoMailAppsDialog(context);
-                        } else if (!result.didOpen && result.canOpen) {
-                          showDialog(
-                            context: context,
-                            builder: (_) {
-                              return MailAppPickerDialog(
-                                mailApps: result.options,
-                              );
-                            },
-                          );
-                        }
-                      },
-                      child: RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: "By email: ",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                color: Kwhite.withOpacity(0.5),
-                              ),
-                            ),
-                            const TextSpan(
-                              text: "ibrahimrasith@gmail.com",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                color: Kred,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    InkWell(
-                      // ignore: deprecated_member_use
-                      onTap: () => launch('https://ibu-ux.web.app/'),
-                      child: RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: "By website: ",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                color: Kwhite.withOpacity(0.5),
-                              ),
-                            ),
-                            const TextSpan(
-                              text: "https://ibu-ux.web.app/",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                color: Kred,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+                  ),
+                )
+              ],
             )
           ],
         ),

@@ -5,6 +5,8 @@ import 'package:firebase_core/firebase_core.dart';
 // ignore: unused_import
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+// ignore: unnecessary_import
+import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 // ignore: unused_import
@@ -14,6 +16,7 @@ import 'package:salamapp/interface/drawer.dart';
 import 'package:salamapp/notification/notification.dart';
 // ignore: unused_import
 import 'package:salamapp/quran%20data/surah_data.dart';
+import 'package:salamapp/screens/time.dart';
 import '../theme/colors.dart';
 // ignore: unused_import
 import 'package:quran/quran.dart' as quran;
@@ -190,8 +193,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     DateTime now = DateTime.now();
+
     var timeNow = int.parse(DateFormat('kk').format(now));
     var message = '';
+
     if (timeNow <= 9) {
       message = 'Did you complete fajr';
     } else if ((timeNow > 9) && (timeNow <= 12)) {
@@ -209,11 +214,21 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     }
 
     var siZe = MediaQuery.of(context).size;
+
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Zred,
+        elevation: 4,
+        onPressed: () {},
+        child: const Icon(
+          Icons.task_alt_rounded,
+          color: Zwhite,
+        ),
+      ),
       drawer: const DrawerSalam(),
-      backgroundColor: Kblack,
+      backgroundColor: Zwhite,
       appBar: AppBar(
-        backgroundColor: Kblack,
+        backgroundColor: Zwhite,
         elevation: 0,
         leading: Builder(
           builder: (BuildContext context) {
@@ -226,7 +241,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 'assets/icons/profile.svg',
                 height: 20,
                 width: 20,
-                color: Kred,
+                color: Zred,
               ),
             );
           },
@@ -236,7 +251,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w800,
-            color: Kwhite,
+            color: Zblack,
           ),
         ),
         centerTitle: true,
@@ -250,10 +265,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               );
             },
             icon: SvgPicture.asset(
-              'assets/icons/notificationout.svg',
+              'assets/icons/notificationfill.svg',
               height: 20,
               width: 20,
-              color: Kred,
+              color: Zred,
             ),
           )
         ],
@@ -273,75 +288,87 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                       text: 'Asalamu Alaikum\n',
                       style: TextStyle(
                         fontSize: 28,
-                        fontWeight: FontWeight.w600,
-                        color: Kwhite,
+                        fontWeight: FontWeight.w800,
+                        color: Zblack,
                       ),
                     ),
                     TextSpan(
                       text: FirebaseAuth.instance.currentUser!.displayName!,
                       style: const TextStyle(
-                        fontSize: 18,
+                        fontSize: 14,
                         fontWeight: FontWeight.w400,
-                        color: Kred,
+                        color: Zred,
                       ),
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 12),
-              Container(
-                height: siZe.height * 0.14,
-                width: siZe.width * 0.95,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Kwhite.withOpacity(0.03),
-                  image: const DecorationImage(
-                    image: AssetImage('assets/images/quran2.jpg'),
-                    fit: BoxFit.cover,
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PrayerTime(),
+                    ),
+                  );
+                },
+                child: Container(
+                  height: siZe.height * 0.14,
+                  width: siZe.width * 0.95,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Zgrey,
+                    image: const DecorationImage(
+                      image: AssetImage('assets/images/quran2.jpg'),
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.only(bottom: 0.5),
-                        decoration: const BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(color: Kred, width: 2),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.only(bottom: 0.5),
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              bottom: BorderSide(
+                                color: Zred,
+                                width: 2,
+                              ),
+                            ),
+                          ),
+                          child: Text(
+                            message,
+                            style: const TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              color: Zblack,
+                            ),
                           ),
                         ),
-                        child: Text(
-                          message,
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                            color: Kblack,
+                        const SizedBox(height: 10),
+                        Text(
+                          "O you who believe! Seek help in patience \nand As-Salat (the prayer). Truly! Allah \nis with As-Sabirin the patient ones",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w500,
+                            color: Zblack.withOpacity(0.5),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        "O you who believe! Seek help in patience \nand As-Salat (the prayer). Truly! Allah \nis with As-Sabirin the patient ones",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w500,
-                          color: Kblack.withOpacity(0.7),
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
               Container(
-                height: siZe.height * 0.07,
+                height: siZe.height * 0.06,
                 width: siZe.width * 0.95,
                 decoration: BoxDecoration(
-                  color: Kwhite.withOpacity(0.02),
-                  border: Border.all(color: Kwhite.withOpacity(0.02)),
+                  border: Border.all(color: Zblack.withOpacity(0.1)),
                   borderRadius: BorderRadius.circular(40),
                 ),
                 alignment: Alignment.center,
@@ -353,16 +380,16 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         padding: const EdgeInsets.all(15),
                         child: SvgPicture.asset(
                           'assets/icons/search.svg',
-                          height: 12,
-                          width: 12,
-                          color: Kred,
+                          height: 10,
+                          width: 10,
+                          color: Zred,
                         ),
                       ),
                       hintText: 'Search',
                       hintStyle: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Kwhite.withOpacity(0.3),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: Zblack.withOpacity(0.4),
                       ),
                       focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide.none),
@@ -372,7 +399,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
               _foundSurah.isNotEmpty
                   ? ListView.builder(
                       shrinkWrap: true,
@@ -393,13 +420,13 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         },
                         child: Container(
                           key: ValueKey(_foundSurah[i]["id"]),
-                          height: siZe.height * 0.11,
+                          height: siZe.height * 0.10,
                           width: siZe.width * 0.95,
                           decoration: BoxDecoration(
-                            color: Kwhite.withOpacity(0.02),
+                            color: Zgrey.withOpacity(0.5),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          margin: const EdgeInsets.symmetric(vertical: 5),
+                          margin: const EdgeInsets.only(bottom: 10),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -409,7 +436,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
-                                    color: Kred.withOpacity(0.6),
+                                    color: Zblack.withOpacity(0.3),
                                   ),
                                 ),
                                 title: Text(
@@ -417,7 +444,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                   style: const TextStyle(
                                     fontSize: 22,
                                     fontWeight: FontWeight.w500,
-                                    color: Kred,
+                                    color: Zblack,
                                   ),
                                 ),
                                 subtitle: Text(
@@ -425,7 +452,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                   style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500,
-                                    color: Kwhite.withOpacity(0.3),
+                                    color: Zblack.withOpacity(0.4),
                                   ),
                                 ),
                                 trailing: SvgPicture.asset(
@@ -433,7 +460,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                   height: 18,
                                   width: 18,
                                   fit: BoxFit.cover,
-                                  color: Kwhite,
+                                  color: Zblack.withOpacity(0.3),
                                 ),
                               ),
                             ],
@@ -446,7 +473,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w400,
-                        color: Kred,
+                        color: Zred,
                       ),
                     ),
             ],

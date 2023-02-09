@@ -7,7 +7,6 @@ import 'package:salamapp/interface/bottomnav.dart';
 import 'package:salamapp/onboard%20screen/onboard.dart';
 import 'package:salamapp/provider%20like/fav_provider.dart';
 import 'package:salamapp/splash%20screen/splashscreen.dart';
-import 'package:salamapp/theme/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -20,15 +19,15 @@ int? isviewed;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(
-    SystemUiMode.immersiveSticky,
-    overlays: [],
+    SystemUiMode.manual,
+    overlays: [SystemUiOverlay.top],
   );
   SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(statusBarColor: Kblack));
-  const SystemUiOverlayStyle(
-      statusBarBrightness: Brightness.dark,
-      statusBarIconBrightness: Brightness.light,
-      statusBarColor: Kblack);
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ),
+  );
+
   SharedPreferences prefs = await SharedPreferences.getInstance();
   isviewed = prefs.getInt('onBoard');
   await Firebase.initializeApp();
@@ -61,7 +60,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          fontFamily: 'Poppins',
+          fontFamily: 'DMSans',
         ),
         home: isviewed != 0 ? const OnboardScreen() : const SplashScreen(),
       ),

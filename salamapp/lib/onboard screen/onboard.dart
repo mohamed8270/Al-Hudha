@@ -43,7 +43,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
   Widget build(BuildContext context) {
     var siZe = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Kblack,
+      backgroundColor: Zwhite,
       body: Column(
         children: [
           Expanded(
@@ -77,7 +77,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
-                          color: Kwhite,
+                          color: Zblack,
                         ),
                       ),
                       const SizedBox(height: 20),
@@ -87,7 +87,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: Kwhite.withOpacity(0.3),
+                          color: Zblack.withOpacity(0.3),
                         ),
                       ),
                     ],
@@ -109,7 +109,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
           Container(
             height: 60,
             width: double.infinity,
-            color: Kwhite.withOpacity(0.03),
+            color: Zgrey,
             margin: const EdgeInsets.all(40),
             child: FlatButton(
               onPressed: () async {
@@ -130,7 +130,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
               child: Text(
                 CurrentIndex == content.length - 1 ? "Continue" : "Next",
                 style:
-                    const TextStyle(color: Kwhite, fontWeight: FontWeight.w500),
+                    const TextStyle(color: Zblack, fontWeight: FontWeight.w500),
               ),
             ),
           )
@@ -146,7 +146,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
       margin: const EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: CurrentIndex == index ? Kwhite : Kwhite.withOpacity(0.3),
+        color: CurrentIndex == index ? Zred : Zblack.withOpacity(0.3),
       ),
     );
   }

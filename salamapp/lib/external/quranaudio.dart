@@ -31,7 +31,7 @@ class _QuranAudioState extends State<QuranAudio>
   Duration duration = Duration.zero;
   Duration position = Duration.zero;
   bool isRepeat = false;
-  Color color = const Color(0xFFFF315B).withOpacity(0.5);
+  Color color = const Color(0xFFE23744).withOpacity(0.5);
   late Source path;
   // ignore: constant_identifier_names
   static const LikedKey = 'Liked_Key';
@@ -113,10 +113,10 @@ class _QuranAudioState extends State<QuranAudio>
     var siZe = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Kblack,
+      backgroundColor: Zwhite,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Kblack,
+        backgroundColor: Zwhite,
         leading: InkWell(
           onTap: () {
             audioPlayer.stop();
@@ -125,15 +125,9 @@ class _QuranAudioState extends State<QuranAudio>
               MaterialPageRoute(builder: (context) => const BottomNav()),
             );
           },
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: SvgPicture.asset(
-              'assets/icons/back.svg',
-              color: Kred,
-              height: 18,
-              width: 18,
-              fit: BoxFit.scaleDown,
-            ),
+          child: const Icon(
+            Icons.arrow_back_rounded,
+            color: Zred,
           ),
         ),
         title: Text(
@@ -141,14 +135,14 @@ class _QuranAudioState extends State<QuranAudio>
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w500,
-            color: Kwhite.withOpacity(0.3),
+            color: Zblack.withOpacity(0.5),
           ),
         ),
         actions: [
           IconButton(
             onPressed: () {
               showModalBottomSheet(
-                  backgroundColor: Kblack,
+                  backgroundColor: Zwhite,
                   context: context,
                   builder: (context) {
                     return Column(
@@ -160,7 +154,7 @@ class _QuranAudioState extends State<QuranAudio>
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
-                              color: Kred,
+                              color: Zred,
                             ),
                           ),
                           title: Text(
@@ -168,7 +162,7 @@ class _QuranAudioState extends State<QuranAudio>
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Kwhite.withOpacity(0.3),
+                              color: Zblack.withOpacity(0.4),
                             ),
                           ),
                         ),
@@ -178,7 +172,7 @@ class _QuranAudioState extends State<QuranAudio>
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
-                              color: Kred,
+                              color: Zred,
                             ),
                           ),
                           title: Text(
@@ -186,7 +180,7 @@ class _QuranAudioState extends State<QuranAudio>
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Kwhite.withOpacity(0.3),
+                              color: Zblack.withOpacity(0.4),
                             ),
                           ),
                         ),
@@ -196,7 +190,7 @@ class _QuranAudioState extends State<QuranAudio>
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
-                              color: Kred,
+                              color: Zred,
                             ),
                           ),
                           title: Text(
@@ -204,7 +198,7 @@ class _QuranAudioState extends State<QuranAudio>
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Kwhite.withOpacity(0.3),
+                              color: Zblack.withOpacity(0.4),
                             ),
                           ),
                         ),
@@ -214,7 +208,7 @@ class _QuranAudioState extends State<QuranAudio>
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
-                              color: Kred,
+                              color: Zred,
                             ),
                           ),
                           title: Text(
@@ -222,7 +216,7 @@ class _QuranAudioState extends State<QuranAudio>
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Kwhite.withOpacity(0.3),
+                              color: Zblack.withOpacity(0.4),
                             ),
                           ),
                         ),
@@ -232,7 +226,7 @@ class _QuranAudioState extends State<QuranAudio>
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
-                              color: Kred,
+                              color: Zred,
                             ),
                           ),
                           title: Text(
@@ -240,7 +234,7 @@ class _QuranAudioState extends State<QuranAudio>
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Kwhite.withOpacity(0.3),
+                              color: Zblack.withOpacity(0.4),
                             ),
                           ),
                         ),
@@ -250,7 +244,7 @@ class _QuranAudioState extends State<QuranAudio>
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
-                              color: Kred,
+                              color: Zred,
                             ),
                           ),
                           title: Text(
@@ -258,7 +252,7 @@ class _QuranAudioState extends State<QuranAudio>
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Kwhite.withOpacity(0.3),
+                              color: Zblack.withOpacity(0.4),
                             ),
                           ),
                         ),
@@ -268,7 +262,7 @@ class _QuranAudioState extends State<QuranAudio>
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
-                              color: Kred,
+                              color: Zred,
                             ),
                           ),
                           title: Text(
@@ -276,7 +270,7 @@ class _QuranAudioState extends State<QuranAudio>
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Kwhite.withOpacity(0.3),
+                              color: Zblack.withOpacity(0.4),
                             ),
                           ),
                         ),
@@ -286,7 +280,7 @@ class _QuranAudioState extends State<QuranAudio>
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
-                              color: Kred,
+                              color: Zred,
                             ),
                           ),
                           title: Text(
@@ -294,7 +288,7 @@ class _QuranAudioState extends State<QuranAudio>
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Kwhite.withOpacity(0.3),
+                              color: Zblack.withOpacity(0.4),
                             ),
                           ),
                         ),
@@ -304,7 +298,7 @@ class _QuranAudioState extends State<QuranAudio>
             },
             icon: const Icon(
               Icons.more_vert_rounded,
-              color: Kred,
+              color: Zred,
             ),
           )
         ],
@@ -323,9 +317,9 @@ class _QuranAudioState extends State<QuranAudio>
                 child: Container(
                   height: siZe.height * 0.4,
                   width: siZe.width * 0.95,
-                  decoration: BoxDecoration(
-                    color: Kwhite.withOpacity(0.02),
-                    image: const DecorationImage(
+                  decoration: const BoxDecoration(
+                    color: Zgrey,
+                    image: DecorationImage(
                       image: AssetImage('assets/images/quran4.jpg'),
                       fit: BoxFit.cover,
                     ),
@@ -339,7 +333,7 @@ class _QuranAudioState extends State<QuranAudio>
                   children: [
                     const Icon(
                       Icons.warning_amber_rounded,
-                      color: Kred,
+                      color: Zred,
                       size: 18,
                     ),
                     const SizedBox(width: 10),
@@ -348,7 +342,7 @@ class _QuranAudioState extends State<QuranAudio>
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
-                        color: Kwhite.withOpacity(0.5),
+                        color: Zblack.withOpacity(0.3),
                       ),
                     )
                   ],
@@ -365,7 +359,7 @@ class _QuranAudioState extends State<QuranAudio>
                         style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.w600,
-                          color: Kwhite,
+                          color: Zblack,
                         ),
                       ),
                       TextSpan(
@@ -373,7 +367,7 @@ class _QuranAudioState extends State<QuranAudio>
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w500,
-                          color: Kwhite.withOpacity(0.3),
+                          color: Zblack.withOpacity(0.4),
                         ),
                       ),
                       TextSpan(
@@ -381,7 +375,7 @@ class _QuranAudioState extends State<QuranAudio>
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w500,
-                          color: Kwhite.withOpacity(0.3),
+                          color: Zblack.withOpacity(0.4),
                         ),
                       )
                     ],
@@ -389,20 +383,18 @@ class _QuranAudioState extends State<QuranAudio>
                 ),
               ),
               SliderTheme(
-                data: SliderThemeData(
-                  thumbShape:
-                      const RoundSliderThumbShape(enabledThumbRadius: 5),
-                  overlayShape:
-                      const RoundSliderOverlayShape(overlayRadius: 18),
+                data: const SliderThemeData(
+                  thumbShape: RoundSliderThumbShape(enabledThumbRadius: 5),
+                  overlayShape: RoundSliderOverlayShape(overlayRadius: 18),
                   trackHeight: 2.5,
-                  thumbColor: Kred.withOpacity(0.4),
+                  thumbColor: Zred,
                 ),
                 child: Slider(
                   min: 0,
                   max: duration.inSeconds.toDouble(),
                   value: position.inSeconds.toDouble(),
-                  activeColor: Kred,
-                  inactiveColor: Kwhite.withOpacity(0.1),
+                  activeColor: Zred,
+                  inactiveColor: Zblack.withOpacity(0.09),
                   onChanged: (value) async {
                     final position = Duration(seconds: value.toInt());
                     await audioPlayer.seek(position);
@@ -420,7 +412,7 @@ class _QuranAudioState extends State<QuranAudio>
                     Text(
                       formatTime(position),
                       style: TextStyle(
-                        color: Kwhite.withOpacity(0.3),
+                        color: Zblack.withOpacity(0.4),
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
                       ),
@@ -428,7 +420,7 @@ class _QuranAudioState extends State<QuranAudio>
                     Text(
                       formatTime(duration - position),
                       style: TextStyle(
-                        color: Kwhite.withOpacity(0.3),
+                        color: Zblack.withOpacity(0.4),
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
                       ),
@@ -448,11 +440,11 @@ class _QuranAudioState extends State<QuranAudio>
                           audioPlayer.setReleaseMode(ReleaseMode.loop);
                           setState(() {
                             isRepeat = true;
-                            color = const Color(0xFFFF315B);
+                            color = const Color(0xFFE23744);
                           });
                         } else if (isRepeat == true) {
                           audioPlayer.setReleaseMode(ReleaseMode.release);
-                          color = const Color(0xFFFF315B).withOpacity(0.5);
+                          color = const Color(0xFFE23744).withOpacity(0.5);
                         }
                       },
                       child: SvgPicture.asset(
@@ -468,12 +460,13 @@ class _QuranAudioState extends State<QuranAudio>
                       },
                       child: SvgPicture.asset(
                         'assets/icons/backward.svg',
-                        color: Kred,
+                        color: Zred,
                         height: 21,
                         width: 21,
                       ),
                     ),
                     InkWell(
+                      borderRadius: BorderRadius.circular(35),
                       onTap: () async {
                         if (isPlaying) {
                           await audioPlayer.pause();
@@ -482,7 +475,7 @@ class _QuranAudioState extends State<QuranAudio>
                         }
                       },
                       child: CircleAvatar(
-                        backgroundColor: Kwhite.withOpacity(0.02),
+                        backgroundColor: Zgrey,
                         radius: 35,
                         child: SvgPicture.asset(
                           isPlaying
@@ -491,7 +484,7 @@ class _QuranAudioState extends State<QuranAudio>
                           height: 21,
                           width: 21,
                           fit: BoxFit.cover,
-                          color: Kred,
+                          color: Zred,
                         ),
                       ),
                     ),
@@ -501,7 +494,7 @@ class _QuranAudioState extends State<QuranAudio>
                       },
                       child: SvgPicture.asset(
                         'assets/icons/forward.svg',
-                        color: Kred,
+                        color: Zred,
                         height: 21,
                         width: 21,
                       ),
@@ -517,7 +510,7 @@ class _QuranAudioState extends State<QuranAudio>
                               'assets/icons/heartr.svg',
                               height: 18,
                               width: 18,
-                              color: Kred,
+                              color: Zred,
                             );
                           }
                           if (!Liked) {
@@ -525,7 +518,7 @@ class _QuranAudioState extends State<QuranAudio>
                               'assets/icons/heartout.svg',
                               height: 18,
                               width: 18,
-                              color: Kred,
+                              color: Zred,
                             );
                           }
                         },
@@ -545,7 +538,7 @@ class _QuranAudioState extends State<QuranAudio>
                         'assets/icons/shuffle.svg',
                         height: 18,
                         width: 18,
-                        color: Kred,
+                        color: Zred,
                       ),
                     ),
                     const SizedBox(width: 130),
@@ -553,7 +546,7 @@ class _QuranAudioState extends State<QuranAudio>
                       onTap: () {},
                       child: const Icon(
                         Icons.share_outlined,
-                        color: Kred,
+                        color: Zred,
                         size: 21,
                       ),
                     ),
@@ -565,7 +558,7 @@ class _QuranAudioState extends State<QuranAudio>
                         'assets/icons/device.svg',
                         height: 18,
                         width: 18,
-                        color: Kred,
+                        color: Zred,
                       ),
                     ),
                   ],
@@ -575,8 +568,8 @@ class _QuranAudioState extends State<QuranAudio>
               Container(
                 height: siZe.height * 0.06,
                 width: siZe.width * 0.95,
-                decoration: BoxDecoration(
-                  color: Kwhite.withOpacity(0.05),
+                decoration: const BoxDecoration(
+                  color: Zgrey,
                 ),
                 alignment: Alignment.center,
                 child: Row(
@@ -585,7 +578,7 @@ class _QuranAudioState extends State<QuranAudio>
                       height: siZe.height * 0.05,
                       width: siZe.width * 0.01,
                       decoration: BoxDecoration(
-                        color: Kwhite,
+                        color: Zred,
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
@@ -597,15 +590,15 @@ class _QuranAudioState extends State<QuranAudio>
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
-                            color: Kred,
+                            color: Zblack,
                           ),
                         ),
                         TextSpan(
                           text: quran.getSurahName(widget.surahnumber),
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
-                            color: Kred,
+                            color: Zblack.withOpacity(0.5),
                           ),
                         )
                       ]),
@@ -626,7 +619,7 @@ class _QuranAudioState extends State<QuranAudio>
                           verseEndSymbol: true),
                       textAlign: TextAlign.right,
                       style: const TextStyle(
-                        color: Kwhite,
+                        color: Zblack,
                         fontSize: 20,
                       ),
                     ),
@@ -655,7 +648,7 @@ showAlertDialog(BuildContext context) {
   Widget cancelButton = TextButton(
     child: const Text(
       "Cancel",
-      style: TextStyle(color: Kred),
+      style: TextStyle(color: Zred),
     ),
     onPressed: () {
       Navigator.pop(context);
@@ -664,7 +657,7 @@ showAlertDialog(BuildContext context) {
   Widget continueButton = TextButton(
     child: const Text(
       "Continue",
-      style: TextStyle(color: Kwhite),
+      style: TextStyle(color: Zblack),
     ),
     onPressed: () {
       AppSettings.openBluetoothSettings();
@@ -673,24 +666,24 @@ showAlertDialog(BuildContext context) {
 
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
-    backgroundColor: Kblack,
+    backgroundColor: Zwhite,
     title: Row(
       children: const [
         Icon(
           Icons.mic_outlined,
-          color: Kred,
+          color: Zred,
           size: 20,
         ),
         SizedBox(width: 5),
         Text(
           "Hear the blessing",
-          style: TextStyle(color: Kwhite),
+          style: TextStyle(color: Zblack),
         ),
       ],
     ),
     content: Text(
         "Immerse and experience the beautiful recitation of quran in HD voice of Al-Qaria Yassen",
-        style: TextStyle(color: Kwhite.withOpacity(0.5))),
+        style: TextStyle(color: Zblack.withOpacity(0.5))),
     actions: [
       cancelButton,
       continueButton,

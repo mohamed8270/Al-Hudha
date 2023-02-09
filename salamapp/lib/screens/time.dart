@@ -2,7 +2,6 @@
 import 'package:adhan/adhan.dart';
 import 'package:external_app_launcher/external_app_launcher.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:location/location.dart';
 import 'package:salamapp/external/prayertime.dart';
@@ -45,10 +44,10 @@ class _PrayerTimeState extends State<PrayerTime> {
     var siZe = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Kblack,
+      backgroundColor: Zwhite,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Kblack,
+        backgroundColor: Zwhite,
         leading: InkWell(
           onTap: () {
             Navigator.push(
@@ -56,22 +55,16 @@ class _PrayerTimeState extends State<PrayerTime> {
               MaterialPageRoute(builder: (context) => const BottomNav()),
             );
           },
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: SvgPicture.asset(
-              'assets/icons/back.svg',
-              height: 18,
-              width: 18,
-              fit: BoxFit.scaleDown,
-              color: Kred,
-            ),
+          child: const Icon(
+            Icons.arrow_back_rounded,
+            color: Zred,
           ),
         ),
         title: Text(
           'Prayer Time',
           style: TextStyle(
             fontSize: 20,
-            color: Kwhite.withOpacity(0.3),
+            color: Zblack.withOpacity(0.5),
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -82,7 +75,7 @@ class _PrayerTimeState extends State<PrayerTime> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
               child: CircularProgressIndicator(
-                color: Kred,
+                color: Zred,
               ),
             );
           }
@@ -101,7 +94,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                   width: siZe.width * 0.95,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
-                    color: Kwhite.withOpacity(0.03),
+                    color: Zgrey,
                     image: const DecorationImage(
                       image: AssetImage('assets/images/quran2.jpg'),
                       fit: BoxFit.cover,
@@ -116,7 +109,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                           padding: const EdgeInsets.only(bottom: 0.5),
                           decoration: const BoxDecoration(
                             border: Border(
-                              bottom: BorderSide(color: Kred, width: 2),
+                              bottom: BorderSide(color: Zred, width: 2),
                             ),
                           ),
                           child: Text(
@@ -124,7 +117,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                             style: const TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
-                              color: Kblack,
+                              color: Zblack,
                             ),
                           ),
                         ),
@@ -135,7 +128,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                           style: TextStyle(
                             fontSize: 10,
                             fontWeight: FontWeight.w500,
-                            color: Kblack.withOpacity(0.7),
+                            color: Zblack.withOpacity(0.5),
                           ),
                         ),
                       ],
@@ -147,41 +140,50 @@ class _PrayerTimeState extends State<PrayerTime> {
                   time: DateFormat.jm().format(prayerTimes.fajr),
                   title: 'Salat al-Fajr',
                 ),
-                Divider(
+                const Divider(
                   thickness: 1,
-                  color: Kwhite.withOpacity(0.4),
+                  color: Zgrey,
                 ),
                 const SizedBox(height: 10),
                 PrayerTimeWidget(
                   time: DateFormat.jm().format(prayerTimes.dhuhr),
                   title: 'Salat al-Zuhr',
                 ),
-                Divider(
+                const Divider(
                   thickness: 1,
-                  color: Kwhite.withOpacity(0.4),
+                  color: Zgrey,
                 ),
                 const SizedBox(height: 10),
                 PrayerTimeWidget(
                   time: DateFormat.jm().format(prayerTimes.asr),
                   title: 'Salat al-Asr',
                 ),
-                Divider(
+                const Divider(
                   thickness: 1,
-                  color: Kwhite.withOpacity(0.4),
+                  color: Zgrey,
                 ),
                 const SizedBox(height: 10),
                 PrayerTimeWidget(
                   time: DateFormat.jm().format(prayerTimes.maghrib),
                   title: 'Salat al-Maghrib',
                 ),
-                Divider(
+                const Divider(
                   thickness: 1,
-                  color: Kwhite.withOpacity(0.4),
+                  color: Zgrey,
                 ),
                 const SizedBox(height: 10),
                 PrayerTimeWidget(
                   time: DateFormat.jm().format(prayerTimes.isha),
                   title: 'Salat al-Isha',
+                ),
+                const Divider(
+                  thickness: 1,
+                  color: Zgrey,
+                ),
+                const SizedBox(height: 10),
+                PrayerTimeWidget(
+                  time: DateFormat.jm().format(prayerTimes.sunrise),
+                  title: 'Sun rise',
                 ),
                 const SizedBox(height: 80),
                 Row(
@@ -202,14 +204,15 @@ class _PrayerTimeState extends State<PrayerTime> {
                         width: siZe.width * 0.35,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(40),
-                          color: Kwhite.withOpacity(0.02),
+                          color: Zgrey,
                         ),
+                        alignment: Alignment.center,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const [
                             Icon(
-                              Icons.location_on_outlined,
-                              color: Kred,
+                              Icons.location_on_rounded,
+                              color: Zred,
                             ),
                             SizedBox(width: 20),
                             Text(
@@ -217,7 +220,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
-                                color: Kwhite,
+                                color: Zblack,
                               ),
                             )
                           ],
@@ -235,26 +238,24 @@ class _PrayerTimeState extends State<PrayerTime> {
                         height: siZe.height * 0.065,
                         width: siZe.width * 0.5,
                         decoration: BoxDecoration(
-                          color: Kwhite.withOpacity(0.02),
+                          color: Zgrey,
                           borderRadius: BorderRadius.circular(40),
                         ),
+                        alignment: Alignment.center,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              'assets/icons/notificationout.svg',
-                              height: 18,
-                              width: 18,
-                              fit: BoxFit.scaleDown,
-                              color: Kred,
+                          children: const [
+                            Icon(
+                              Icons.notifications_rounded,
+                              color: Zred,
                             ),
-                            const SizedBox(width: 20),
-                            const Text(
+                            SizedBox(width: 20),
+                            Text(
                               'Set Reminder',
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
-                                color: Kwhite,
+                                color: Zblack,
                               ),
                             )
                           ],

@@ -98,30 +98,24 @@ class _PodCastAudioState extends State<PodCastAudio>
   Widget build(BuildContext context) {
     var siZe = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Kblack,
+      backgroundColor: Zwhite,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Kblack,
+        backgroundColor: Zwhite,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: SvgPicture.asset(
-              'assets/icons/back.svg',
-              height: 18,
-              width: 18,
-              color: Kred,
-              fit: BoxFit.scaleDown,
-            ),
+          child: const Icon(
+            Icons.arrow_back_rounded,
+            color: Zred,
           ),
         ),
         title: Text(
           'Podcast',
           style: TextStyle(
             fontSize: 20,
-            color: Kwhite.withOpacity(0.3),
+            color: Zblack.withOpacity(0.5),
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -137,7 +131,7 @@ class _PodCastAudioState extends State<PodCastAudio>
               alignment: Alignment.center,
               child: Icon(
                 Icons.mic_rounded,
-                color: Kwhite.withOpacity(0.03),
+                color: Zblack.withOpacity(0.3),
                 size: 250,
               ),
             ),
@@ -148,7 +142,7 @@ class _PodCastAudioState extends State<PodCastAudio>
                 children: [
                   const Icon(
                     Icons.warning_amber_rounded,
-                    color: Kred,
+                    color: Zred,
                     size: 18,
                   ),
                   const SizedBox(width: 10),
@@ -157,7 +151,7 @@ class _PodCastAudioState extends State<PodCastAudio>
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
-                      color: Kwhite.withOpacity(0.5),
+                      color: Zblack.withOpacity(0.3),
                     ),
                   )
                 ],
@@ -169,7 +163,7 @@ class _PodCastAudioState extends State<PodCastAudio>
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: Kwhite,
+                color: Zblack,
               ),
             ),
             const SizedBox(height: 5),
@@ -178,23 +172,23 @@ class _PodCastAudioState extends State<PodCastAudio>
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
-                color: Kwhite.withOpacity(0.5),
+                color: Zblack.withOpacity(0.4),
               ),
             ),
             const SizedBox(height: 10),
             SliderTheme(
-              data: SliderThemeData(
-                thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 5),
-                overlayShape: const RoundSliderOverlayShape(overlayRadius: 18),
+              data: const SliderThemeData(
+                thumbShape: RoundSliderThumbShape(enabledThumbRadius: 5),
+                overlayShape: RoundSliderOverlayShape(overlayRadius: 18),
                 trackHeight: 2.5,
-                thumbColor: Kred.withOpacity(0.4),
+                thumbColor: Zred,
               ),
               child: Slider(
                 min: 0,
                 max: duration.inSeconds.toDouble(),
                 value: position.inSeconds.toDouble(),
-                activeColor: Kred,
-                inactiveColor: Kwhite.withOpacity(0.1),
+                activeColor: Zred,
+                inactiveColor: Zblack.withOpacity(0.09),
                 onChanged: (value) async {
                   final position = Duration(seconds: value.toInt());
                   await audioPlayer.seek(position);
@@ -212,7 +206,7 @@ class _PodCastAudioState extends State<PodCastAudio>
                   Text(
                     formatTime(position),
                     style: TextStyle(
-                      color: Kwhite.withOpacity(0.3),
+                      color: Zblack.withOpacity(0.4),
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
                     ),
@@ -220,7 +214,7 @@ class _PodCastAudioState extends State<PodCastAudio>
                   Text(
                     formatTime(duration - position),
                     style: TextStyle(
-                      color: Kwhite.withOpacity(0.3),
+                      color: Zblack.withOpacity(0.4),
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
                     ),
@@ -238,12 +232,13 @@ class _PodCastAudioState extends State<PodCastAudio>
                   },
                   child: SvgPicture.asset(
                     'assets/icons/backward.svg',
-                    color: Kred,
+                    color: Zred,
                     height: 21,
                     width: 21,
                   ),
                 ),
                 InkWell(
+                  borderRadius: BorderRadius.circular(40),
                   onTap: () async {
                     if (isPlaying) {
                       await audioPlayer.pause();
@@ -252,7 +247,7 @@ class _PodCastAudioState extends State<PodCastAudio>
                     }
                   },
                   child: CircleAvatar(
-                    backgroundColor: Kwhite.withOpacity(0.03),
+                    backgroundColor: Zgrey,
                     radius: 40,
                     child: SvgPicture.asset(
                       isPlaying
@@ -261,7 +256,7 @@ class _PodCastAudioState extends State<PodCastAudio>
                       height: 22,
                       width: 22,
                       fit: BoxFit.cover,
-                      color: Kred,
+                      color: Zred,
                     ),
                   ),
                 ),
@@ -271,7 +266,7 @@ class _PodCastAudioState extends State<PodCastAudio>
                   },
                   child: SvgPicture.asset(
                     'assets/icons/forward.svg',
-                    color: Kred,
+                    color: Zred,
                     height: 21,
                     width: 21,
                   ),

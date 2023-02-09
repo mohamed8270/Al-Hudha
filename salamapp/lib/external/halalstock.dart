@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:salamapp/theme/colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HalalStocks extends StatefulWidget {
   const HalalStocks({Key? key}) : super(key: key);
@@ -34,37 +34,41 @@ class _HalalStocksState extends State<HalalStocks> {
   Widget build(BuildContext context) {
     var siZe = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Kblack,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Zred,
+        // ignore: deprecated_member_use
+        onPressed: () => launch(
+            'https://play.google.com/store/apps/details?id=com.axonlogic.stocktrade'),
+        child: const Icon(
+          Icons.download,
+          color: Zwhite,
+        ),
+      ),
+      backgroundColor: Zwhite,
       appBar: AppBar(
-        backgroundColor: Kblack,
+        backgroundColor: Zwhite,
         elevation: 0,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: SvgPicture.asset(
-              'assets/icons/back.svg',
-              height: 18,
-              width: 18,
-              color: Kred,
-              fit: BoxFit.scaleDown,
-            ),
+          child: const Icon(
+            Icons.arrow_back_rounded,
+            color: Zred,
           ),
         ),
         title: Text(
           'Halal Stocks',
           style: TextStyle(
             fontSize: 20,
-            color: Kwhite.withOpacity(0.3),
+            color: Zblack.withOpacity(0.5),
             fontWeight: FontWeight.w500,
           ),
         ),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
+          padding: const EdgeInsets.only(top: 0, left: 10, right: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -72,44 +76,15 @@ class _HalalStocksState extends State<HalalStocks> {
                 height: siZe.height * 0.25,
                 width: siZe.width * 0.95,
                 decoration: BoxDecoration(
-                  color: Kwhite.withOpacity(0.03),
+                  color: Zgrey,
                   borderRadius: BorderRadius.circular(10),
                   image: const DecorationImage(
                     image: AssetImage('assets/images/stock03.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 77, left: 10),
-                      child: InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: siZe.height * 0.055,
-                          width: siZe.width * 0.4,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.green,
-                            ),
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          alignment: Alignment.center,
-                          child: const Text(
-                            "Learn More",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Kblack,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 10),
               ListView.builder(
                 itemCount: Stockslist.length,
                 scrollDirection: Axis.vertical,
@@ -124,7 +99,7 @@ class _HalalStocksState extends State<HalalStocks> {
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
-                          color: Colors.green,
+                          color: Zblack,
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -134,7 +109,7 @@ class _HalalStocksState extends State<HalalStocks> {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: Kwhite.withOpacity(0.5),
+                          color: Zblack.withOpacity(0.4),
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -144,7 +119,7 @@ class _HalalStocksState extends State<HalalStocks> {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: Kwhite.withOpacity(0.5),
+                          color: Zblack.withOpacity(0.4),
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -154,18 +129,40 @@ class _HalalStocksState extends State<HalalStocks> {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: Kwhite.withOpacity(0.5),
+                          color: Zblack.withOpacity(0.4),
                         ),
                       ),
-                      const Text('\n'),
-                      Divider(
-                        color: Kwhite.withOpacity(0.5),
-                        thickness: 1,
-                      )
+                      const SizedBox(height: 15)
                     ],
                   );
                 }),
-              )
+              ),
+              const SizedBox(height: 10),
+              InkWell(
+                // ignore: deprecated_member_use
+                onTap: () => launch(
+                    'https://academy.musaffa.com/5-tips-on-how-to-invest-in-stocks-a-guide-for-muslims/'),
+                child: Container(
+                  height: siZe.height * 0.08,
+                  constraints: const BoxConstraints(
+                    maxWidth: double.infinity,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Zred,
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  alignment: Alignment.center,
+                  child: const Text(
+                    "Learn More",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Zwhite,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
             ],
           ),
         ),

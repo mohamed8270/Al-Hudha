@@ -59,10 +59,10 @@ class _MoreState extends State<More> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Kblack,
+      backgroundColor: Zwhite,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Kblack,
+        backgroundColor: Zwhite,
         leading: InkWell(
           onTap: () {
             Navigator.push(
@@ -72,22 +72,16 @@ class _MoreState extends State<More> with SingleTickerProviderStateMixin {
               ),
             );
           },
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: SvgPicture.asset(
-              'assets/icons/back.svg',
-              height: 18,
-              width: 18,
-              color: Kred,
-              fit: BoxFit.scaleDown,
-            ),
+          child: const Icon(
+            Icons.arrow_back_rounded,
+            color: Zred,
           ),
         ),
         title: Text(
           'More',
           style: TextStyle(
             fontSize: 20,
-            color: Kwhite.withOpacity(0.3),
+            color: Zblack.withOpacity(0.5),
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -244,7 +238,7 @@ class MoreItems extends StatelessWidget {
       height: siZe.height * 0.065,
       width: siZe.width * 0.95,
       decoration: BoxDecoration(
-        color: Kwhite.withOpacity(0.02),
+        color: Zgrey,
         borderRadius: BorderRadius.circular(10),
       ),
       alignment: Alignment.centerLeft,
@@ -256,7 +250,7 @@ class MoreItems extends StatelessWidget {
               icn,
               height: 17,
               width: 17,
-              color: Kwhite,
+              color: Zred,
             ),
             const SizedBox(width: 20),
             Text(
@@ -264,7 +258,7 @@ class MoreItems extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: Kred,
+                color: Zblack,
               ),
             ),
           ],

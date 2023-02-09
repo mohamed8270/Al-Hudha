@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:salamapp/theme/colors.dart';
 
 class PrivacyPolicyScreen extends StatefulWidget {
@@ -33,23 +32,17 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Kblack,
+      backgroundColor: Zwhite,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Kblack,
+        backgroundColor: Zwhite,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: SvgPicture.asset(
-              'assets/icons/back.svg',
-              color: Kred,
-              height: 18,
-              width: 18,
-              fit: BoxFit.scaleDown,
-            ),
+          child: const Icon(
+            Icons.arrow_back_rounded,
+            color: Zred,
           ),
         ),
         title: Text(
@@ -57,7 +50,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w500,
-            color: Kwhite.withOpacity(0.3),
+            color: Zblack.withOpacity(0.5),
           ),
         ),
       ),
@@ -75,7 +68,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                 ),
                 width: 380,
                 decoration: BoxDecoration(
-                  color: Kwhite.withOpacity(0.03),
+                  color: Zwhite,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Column(
@@ -92,7 +85,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                               style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w600,
-                                color: Kred,
+                                color: Zblack,
                               ),
                             ),
                             const TextSpan(text: '\n'),
@@ -102,7 +95,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
-                                color: Kwhite.withOpacity(0.5),
+                                color: Zblack.withOpacity(0.4),
                                 height: 1.3,
                               ),
                             ),

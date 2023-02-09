@@ -23,7 +23,7 @@ class EnglishPodcast extends StatelessWidget {
       physics: const ScrollPhysics(),
       itemBuilder: ((context, index) {
         return Padding(
-          padding: const EdgeInsets.only(bottom: 10),
+          padding: const EdgeInsets.only(bottom: 0),
           child: InkWell(
             onTap: () {
               Navigator.push(
@@ -47,11 +47,11 @@ class EnglishPodcast extends StatelessWidget {
                   alignment: Alignment.topCenter,
                   child: Icon(
                     Icons.mic_rounded,
-                    color: Kwhite.withOpacity(0.05),
+                    color: Zblack.withOpacity(0.1),
                     size: 44,
                   ),
                 ),
-                const SizedBox(width: 15),
+                const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -64,7 +64,7 @@ class EnglishPodcast extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w600,
-                          color: Kwhite,
+                          color: Zblack,
                         ),
                       ),
                     ),
@@ -74,7 +74,7 @@ class EnglishPodcast extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
-                        color: Kwhite.withOpacity(0.5),
+                        color: Zblack.withOpacity(0.4),
                       ),
                     ),
                   ],

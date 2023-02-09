@@ -40,7 +40,7 @@ class _DrawerSalamState extends State<DrawerSalam>
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Kblack,
+      backgroundColor: Zwhite,
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
@@ -49,7 +49,7 @@ class _DrawerSalamState extends State<DrawerSalam>
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w800,
-                color: Kwhite,
+                color: Zblack,
               ),
             ),
             accountEmail: Text(
@@ -57,31 +57,41 @@ class _DrawerSalamState extends State<DrawerSalam>
               style: TextStyle(
                 fontSize: 10,
                 fontWeight: FontWeight.w400,
-                color: Kwhite.withOpacity(0.5),
+                color: Zblack.withOpacity(0.3),
               ),
             ),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
-                  child: Image.network(
-                FirebaseAuth.instance.currentUser!.photoURL!,
-                height: 200,
-                width: 200,
-                fit: BoxFit.cover,
-              )),
+                child: Image.network(
+                  FirebaseAuth.instance.currentUser!.photoURL!,
+                  height: 200,
+                  width: 200,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-            decoration: const BoxDecoration(color: Kblack),
+            decoration: const BoxDecoration(color: Zwhite),
           ),
           ListTile(
-            leading: const Icon(
-              Icons.bookmark_outline_rounded,
-              color: Kwhite,
+            leading: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                color: Zgrey,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              alignment: Alignment.center,
+              child: const Icon(
+                Icons.bookmark_outline_rounded,
+                color: Zblack,
+              ),
             ),
             title: const Text(
               'Bookmarks',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: Kred,
+                color: Zred,
               ),
             ),
             onTap: () {
@@ -94,16 +104,25 @@ class _DrawerSalamState extends State<DrawerSalam>
             },
           ),
           ListTile(
-            leading: const Icon(
-              Icons.calendar_month_outlined,
-              color: Kwhite,
+            leading: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                color: Zgrey,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              alignment: Alignment.center,
+              child: const Icon(
+                Icons.calendar_month_outlined,
+                color: Zblack,
+              ),
             ),
             title: const Text(
               'Calendar',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: Kred,
+                color: Zred,
               ),
             ),
             onTap: () {
@@ -116,18 +135,27 @@ class _DrawerSalamState extends State<DrawerSalam>
             },
           ),
           ListTile(
-            leading: SvgPicture.asset(
-              'assets/icons/donate.svg',
-              height: 17,
-              width: 17,
-              color: Kwhite,
+            leading: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                color: Zgrey,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              alignment: Alignment.center,
+              child: SvgPicture.asset(
+                'assets/icons/donate.svg',
+                height: 17,
+                width: 17,
+                color: Zblack,
+              ),
             ),
             title: const Text(
               'Charity Donation',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: Kred,
+                color: Zred,
               ),
             ),
             onTap: () {
@@ -140,16 +168,25 @@ class _DrawerSalamState extends State<DrawerSalam>
             },
           ),
           ListTile(
-            leading: const Icon(
-              Icons.security_outlined,
-              color: Kwhite,
+            leading: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                color: Zgrey,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              alignment: Alignment.center,
+              child: const Icon(
+                Icons.security_outlined,
+                color: Zblack,
+              ),
             ),
             title: const Text(
               'Security',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: Kred,
+                color: Zred,
               ),
             ),
             onTap: () {
@@ -162,16 +199,25 @@ class _DrawerSalamState extends State<DrawerSalam>
             },
           ),
           ListTile(
-            leading: const Icon(
-              Icons.privacy_tip_outlined,
-              color: Kwhite,
+            leading: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                color: Zgrey,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              alignment: Alignment.center,
+              child: const Icon(
+                Icons.privacy_tip_outlined,
+                color: Zblack,
+              ),
             ),
             title: const Text(
               'Privacy Policy',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: Kred,
+                color: Zred,
               ),
             ),
             onTap: () {

@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:salamapp/external/englishpodcast.dart';
 import 'package:salamapp/theme/colors.dart';
 
@@ -41,39 +40,33 @@ class _PodCastState extends State<PodCast> with TickerProviderStateMixin {
     var siZe = MediaQuery.of(context).size;
     TabController tabcontroller = TabController(length: 4, vsync: this);
     return Scaffold(
-      backgroundColor: Kblack,
+      backgroundColor: Zwhite,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Kblack,
+        backgroundColor: Zwhite,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: SvgPicture.asset(
-              'assets/icons/back.svg',
-              height: 18,
-              width: 18,
-              color: Kred,
-              fit: BoxFit.scaleDown,
-            ),
+          child: const Icon(
+            Icons.arrow_back_rounded,
+            color: Zred,
           ),
         ),
         title: Text(
           'Podcast',
           style: TextStyle(
             fontSize: 20,
-            color: Kwhite.withOpacity(0.3),
+            color: Zblack.withOpacity(0.5),
             fontWeight: FontWeight.w500,
           ),
         ),
         bottom: TabBar(
           labelPadding: const EdgeInsets.symmetric(horizontal: 30),
-          labelColor: Kwhite,
-          unselectedLabelColor: Kwhite.withOpacity(0.5),
+          labelColor: Zred,
+          unselectedLabelColor: Zblack.withOpacity(0.3),
           controller: tabcontroller,
-          indicatorColor: Kred,
+          indicatorColor: Zred,
           isScrollable: true,
           indicatorSize: TabBarIndicatorSize.label,
           labelStyle: const TextStyle(

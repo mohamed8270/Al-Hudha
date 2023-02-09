@@ -61,6 +61,8 @@ dependencies:
   cloud_firestore_web: ^3.2.1
   google_maps_flutter: ^2.2.3
   geolocator: ^9.0.2
+  hijri_picker: ^3.0.0
+ 
  
   
 
@@ -112,12 +114,11 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-     - family: Poppins
+     - family: DMSans
        fonts:
-         - asset: assets/fonts/Poppins-Bold.ttf
-         - asset: assets/fonts/Poppins-Medium.ttf
-         - asset: assets/fonts/Poppins-Regular.ttf
-         - asset: assets/fonts/Poppins-Light.ttf
+         - asset: assets/fonts/DMSans-Bold.ttf
+         - asset: assets/fonts/DMSans-Medium.ttf
+         - asset: assets/fonts/DMSans-Regular.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

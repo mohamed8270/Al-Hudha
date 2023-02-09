@@ -1,5 +1,7 @@
 library quran;
 
+import 'package:salamapp/quran%20data/translation/en_saheeh.dart';
+
 import 'quran_text.dart';
 import 'surah_data.dart';
 import 'juz_data.dart';
@@ -200,7 +202,7 @@ String getVerseURL(int surahNumber, int verseNumber) {
 }
 
 ///Takes [verseNumber] and returns '۝' symbol with verse number
-String getVerseEndSymbol(int verseNumber) {
+String getVerseEndSymbol(int verseNumber, {bool arabicNumeral = true}) {
   var arabicNumeric = '';
   var digits = verseNumber.toString().split("").toList();
 
@@ -312,4 +314,101 @@ String getAudioURLByVerse(int surahNumber, int verseNumber) {
 ///Takes [verseNumber] and returns audio URL of that verse
 String getAudioURLByVerseNumber(int verseNumber) {
   return "https://cdn.islamic.network/quran/audio/128/ar.alafasy/$verseNumber.mp3";
+}
+
+enum Translation { enSaheeh }
+
+///Takes [surahNumber], [verseNumber], [verseEndSymbol] (optional) & [translation] (optional) and returns verse translation
+String getVerseTranslation(int surahNumber, int verseNumber,
+    {bool verseEndSymbol = false,
+    Translation translation = Translation.enSaheeh}) {
+  String verse = "";
+
+  var translationText = enSaheeh;
+
+  switch (translation) {
+    case Translation.enSaheeh:
+      translationText = enSaheeh;
+      break;
+    default:
+      translationText = enSaheeh;
+  }
+
+  for (var i in translationText) {
+    if (i['surah_number'] == surahNumber && i['verse_number'] == verseNumber) {
+      verse = i['content'].toString();
+      break;
+    }
+  }
+
+  if (verse == "") {
+    throw "No verse found with given surahNumber and verseNumber.\n\n";
+  }
+
+  return verse +
+      (verseEndSymbol
+          ? getVerseEndSymbol(verseNumber, arabicNumeral: false)
+          : "");
+}
+
+///Takes a list of words [words] and [translation] (optional) and returns a map containing no. of occurences and result of the word search in the traslation
+Map searchWordsInTranslation(List<String> words,
+    {Translation translation = Translation.enSaheeh}) {
+  var translationText = enSaheeh;
+
+  switch (translation) {
+    case Translation.enSaheeh:
+      translationText = enSaheeh;
+      break;
+    default:
+      translationText = enSaheeh;
+  }
+
+  List<Map> result = [];
+
+  for (var i in translationText) {
+    bool exist = false;
+    for (var word in words) {
+      if (i['content']
+          .toString()
+          .toLowerCase()
+          .contains(word.toString().toLowerCase())) {
+        exist = true;
+      }
+    }
+    if (exist) {
+      result.add({"surah": i["surah_number"], "verse": i["verse_number"]});
+    }
+  }
+
+  return {"occurences": result.length, "result": result};
+}
+
+///Takes a list of words [words] and returns a map containing no. of occurences and result of the word search in the arabic quran text.
+///
+///You have to include the harakaat (diacritics) in the words
+///
+///Example:
+///```dart
+/// searchWords(["لِّلَّهِ","وَٱللَّهُ","ٱللَّهُ"])
+///```
+Map searchWords(List<String> words) {
+  List<Map> result = [];
+
+  for (var i in quranText) {
+    bool exist = false;
+    for (var word in words) {
+      if (i['content']
+          .toString()
+          .toLowerCase()
+          .contains(word.toString().toLowerCase())) {
+        exist = true;
+      }
+    }
+    if (exist) {
+      result.add({"surah": i["surah_number"], "verse": i["verse_number"]});
+    }
+  }
+
+  return {"occurences": result.length, "result": result};
 }

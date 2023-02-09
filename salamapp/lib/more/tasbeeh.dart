@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:salamapp/external/podcast.dart';
 import 'package:salamapp/theme/colors.dart';
 
 class TasbeehSalam extends StatefulWidget {
@@ -17,22 +17,17 @@ class _TasbeehSalamState extends State<TasbeehSalam> {
   Widget build(BuildContext context) {
     var siZe = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Kblack,
+      backgroundColor: Zwhite,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Kblack,
+        backgroundColor: Zwhite,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: SvgPicture.asset(
-              'assets/icons/back.svg',
-              height: 18,
-              width: 18,
-              color: Kred,
-            ),
+          child: const Icon(
+            Icons.arrow_back_rounded,
+            color: Zred,
           ),
         ),
         title: Text(
@@ -40,7 +35,7 @@ class _TasbeehSalamState extends State<TasbeehSalam> {
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w500,
-            color: Kwhite.withOpacity(0.3),
+            color: Zblack.withOpacity(0.5),
           ),
         ),
       ),
@@ -85,7 +80,7 @@ class _TasbeehSalamState extends State<TasbeehSalam> {
               height: siZe.height * 0.21,
               width: siZe.width * 0.95,
               decoration: BoxDecoration(
-                color: Kwhite.withOpacity(0.03),
+                color: Zgrey,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
@@ -94,7 +89,7 @@ class _TasbeehSalamState extends State<TasbeehSalam> {
                     width: siZe.width * 0.4,
                     height: siZe.height * 0.21,
                     decoration: const BoxDecoration(
-                      color: Kred,
+                      color: Zred,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(10),
                         bottomLeft: Radius.circular(10),
@@ -107,7 +102,7 @@ class _TasbeehSalamState extends State<TasbeehSalam> {
                       style: const TextStyle(
                         fontSize: 60,
                         fontWeight: FontWeight.w500,
-                        color: Kwhite,
+                        color: Zwhite,
                       ),
                     ),
                   ),
@@ -131,7 +126,7 @@ class _TasbeehSalamState extends State<TasbeehSalam> {
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
-                              color: Kred,
+                              color: Zred,
                             ),
                           ),
                           const SizedBox(height: 5),
@@ -141,7 +136,7 @@ class _TasbeehSalamState extends State<TasbeehSalam> {
                             style: TextStyle(
                               fontSize: 11,
                               fontWeight: FontWeight.w400,
-                              color: Kwhite.withOpacity(0.5),
+                              color: Zblack.withOpacity(0.4),
                             ),
                           ),
                         ],
@@ -162,13 +157,13 @@ class _TasbeehSalamState extends State<TasbeehSalam> {
               child: Container(
                 height: 200,
                 width: 200,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Kwhite.withOpacity(0.03),
+                  color: Zgrey,
                 ),
                 child: const Icon(
                   Icons.touch_app_rounded,
-                  color: Kwhite,
+                  color: Zred,
                   size: 100,
                 ),
               ),
@@ -188,30 +183,37 @@ class _TasbeehSalamState extends State<TasbeehSalam> {
                       height: 50,
                       width: 50,
                       decoration: BoxDecoration(
-                        color: Kwhite.withOpacity(0.03),
+                        color: Zgrey,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       alignment: Alignment.center,
                       child: const Icon(
                         Icons.loop_outlined,
-                        color: Kred,
+                        color: Zred,
                         size: 26,
                       ),
                     ),
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PodCast(),
+                        ),
+                      );
+                    },
                     child: Container(
                       height: 50,
                       width: 50,
                       decoration: BoxDecoration(
-                        color: Kwhite.withOpacity(0.03),
+                        color: Zgrey,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       alignment: Alignment.center,
                       child: const Icon(
                         Icons.audiotrack_outlined,
-                        color: Kred,
+                        color: Zred,
                         size: 26,
                       ),
                     ),
@@ -240,9 +242,8 @@ class TasbihBox extends StatelessWidget {
         maxWidth: double.infinity,
       ),
       height: 50,
-      decoration: BoxDecoration(
-          color: Kwhite.withOpacity(0.02),
-          borderRadius: BorderRadius.circular(10)),
+      decoration:
+          BoxDecoration(color: Zgrey, borderRadius: BorderRadius.circular(10)),
       alignment: Alignment.center,
       child: Padding(
         padding: const EdgeInsets.all(10),
@@ -251,7 +252,7 @@ class TasbihBox extends StatelessWidget {
           style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
-            color: Kred,
+            color: Zred,
           ),
         ),
       ),

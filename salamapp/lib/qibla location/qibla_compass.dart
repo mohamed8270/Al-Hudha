@@ -96,8 +96,7 @@ class _QiblahCompassState extends State<QiblahCompass> {
 class QiblahCompassWidget extends StatelessWidget {
   final _compassSvg = Image.asset(
     'assets/images/cadrant.png',
-    colorBlendMode: BlendMode.dstIn,
-    color: Kwhite.withOpacity(0.2),
+    color: Zblack.withOpacity(0.3),
     height: 310,
   );
   final _needleSvg = Image.asset(
@@ -135,7 +134,7 @@ class QiblahCompassWidget extends StatelessWidget {
               child: Text(
                 "${qiblahDirection.offset.toStringAsFixed(3)}°",
                 style: const TextStyle(
-                  color: Kred,
+                  color: Zred,
                   fontWeight: FontWeight.w600,
                 ),
               ),

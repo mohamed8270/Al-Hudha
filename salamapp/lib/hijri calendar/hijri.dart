@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hijri_picker/hijri_picker.dart';
 import 'package:salamapp/theme/colors.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -21,23 +21,17 @@ class _HijriCalendarState extends State<HijriCalendar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Kblack,
+      backgroundColor: Zwhite,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Kblack,
+        backgroundColor: Zwhite,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: SvgPicture.asset(
-              'assets/icons/back.svg',
-              color: Kred,
-              height: 18,
-              width: 18,
-              fit: BoxFit.scaleDown,
-            ),
+          child: const Icon(
+            Icons.arrow_back_rounded,
+            color: Zred,
           ),
         ),
         title: Text(
@@ -45,7 +39,7 @@ class _HijriCalendarState extends State<HijriCalendar> {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w500,
-            color: Kwhite.withOpacity(0.3),
+            color: Zblack.withOpacity(0.5),
           ),
         ),
       ),
@@ -56,36 +50,36 @@ class _HijriCalendarState extends State<HijriCalendar> {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: Kwhite.withOpacity(0.03),
+                color: Zgrey,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: TableCalendar(
                 calendarStyle: CalendarStyle(
                   outsideTextStyle: TextStyle(
-                    color: Kred.withOpacity(0.5),
+                    color: Zred.withOpacity(0.5),
                   ),
-                  defaultTextStyle: const TextStyle(color: Kwhite),
+                  defaultTextStyle: const TextStyle(color: Zblack),
                 ),
                 daysOfWeekStyle: DaysOfWeekStyle(
-                  weekdayStyle: const TextStyle(color: Kwhite),
+                  weekdayStyle: const TextStyle(color: Zblack),
                   weekendStyle: TextStyle(
-                    color: Kwhite.withOpacity(0.3),
+                    color: Zblack.withOpacity(0.3),
                   ),
                 ),
                 headerStyle: HeaderStyle(
                   leftChevronIcon: const Icon(
                     Icons.chevron_left_outlined,
-                    color: Kred,
+                    color: Zred,
                   ),
                   rightChevronIcon: const Icon(
                     Icons.chevron_right_outlined,
-                    color: Kred,
+                    color: Zred,
                   ),
                   titleTextStyle:
-                      const TextStyle(color: Kred, fontWeight: FontWeight.w600),
-                  formatButtonTextStyle: const TextStyle(color: Kwhite),
+                      const TextStyle(color: Zred, fontWeight: FontWeight.w600),
+                  formatButtonTextStyle: const TextStyle(color: Zblack),
                   formatButtonDecoration: BoxDecoration(
-                    color: Kred,
+                    color: Zgrey,
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
@@ -101,7 +95,7 @@ class _HijriCalendarState extends State<HijriCalendar> {
               height: 50,
               width: 250,
               decoration: BoxDecoration(
-                color: Kwhite.withOpacity(0.03),
+                color: Zgrey,
                 borderRadius: BorderRadius.circular(10),
               ),
               alignment: Alignment.center,
@@ -111,10 +105,10 @@ class _HijriCalendarState extends State<HijriCalendar> {
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
-                  color: Kwhite,
+                  color: Zblack,
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

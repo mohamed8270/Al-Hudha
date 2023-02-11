@@ -11,8 +11,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 // ignore: unused_import
 import 'package:quran/surah_data.dart';
+import 'package:salamapp/external/profile.dart';
 import 'package:salamapp/external/quranaudio.dart';
-import 'package:salamapp/interface/drawer.dart';
+import 'package:salamapp/external/task.dart';
 import 'package:salamapp/notification/notification.dart';
 // ignore: unused_import
 import 'package:salamapp/quran%20data/surah_data.dart';
@@ -219,58 +220,65 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Zred,
         elevation: 4,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const TaskManagement(),
+            ),
+          );
+        },
         child: const Icon(
           Icons.task_alt_rounded,
           color: Zwhite,
         ),
       ),
-      drawer: const DrawerSalam(),
       backgroundColor: Zwhite,
       appBar: AppBar(
         backgroundColor: Zwhite,
         elevation: 0,
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-              icon: SvgPicture.asset(
-                'assets/icons/profile.svg',
-                height: 20,
-                width: 20,
-                color: Zred,
-              ),
-            );
-          },
-        ),
         title: const Text(
           'Al Hudha',
           style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w800,
-            color: Zblack,
+            fontSize: 28,
+            fontWeight: FontWeight.w900,
+            color: Zred,
           ),
         ),
-        centerTitle: true,
+        centerTitle: false,
         actions: [
           IconButton(
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const NotificationSalam()),
+                  builder: (context) => const NotificationSalam(),
+                ),
               );
             },
             icon: SvgPicture.asset(
-              'assets/icons/notificationfill.svg',
+              'assets/icons/notificationout.svg',
               height: 20,
               width: 20,
               color: Zred,
             ),
-          )
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Profile(),
+                ),
+              );
+            },
+            icon: SvgPicture.asset(
+              'assets/icons/profile.svg',
+              height: 20,
+              width: 20,
+              color: Zred,
+            ),
+          ),
         ],
       ),
       body: Padding(
@@ -281,23 +289,43 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              RichText(
-                text: TextSpan(
+              Container(
+                height: siZe.height * 0.08,
+                width: double.infinity,
+                color: Zgrey,
+                alignment: Alignment.centerLeft,
+                child: Row(
                   children: [
-                    const TextSpan(
-                      text: 'Asalamu Alaikum\n',
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.w800,
-                        color: Zblack,
+                    Container(
+                      height: siZe.height * 0.08,
+                      width: siZe.width * 0.01,
+                      decoration: BoxDecoration(
+                        color: Zred,
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    TextSpan(
-                      text: FirebaseAuth.instance.currentUser!.displayName!,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Zred,
+                    const SizedBox(width: 10),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          const TextSpan(
+                            text: 'Asalamu Alaikum\n',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w600,
+                              color: Zblack,
+                            ),
+                          ),
+                          TextSpan(
+                            text:
+                                FirebaseAuth.instance.currentUser!.displayName!,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: Zred,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -324,6 +352,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                       fit: BoxFit.cover,
                     ),
                   ),
+                  clipBehavior: Clip.hardEdge,
                   child: Padding(
                     padding: const EdgeInsets.all(10),
                     child: Column(

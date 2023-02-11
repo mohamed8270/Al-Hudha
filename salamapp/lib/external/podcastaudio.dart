@@ -121,7 +121,7 @@ class _PodCastAudioState extends State<PodCastAudio>
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 10, right: 10, left: 10),
+        padding: const EdgeInsets.only(right: 10, left: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -248,7 +248,7 @@ class _PodCastAudioState extends State<PodCastAudio>
                   },
                   child: CircleAvatar(
                     backgroundColor: Zgrey,
-                    radius: 40,
+                    radius: 35,
                     child: SvgPicture.asset(
                       isPlaying
                           ? 'assets/icons/play.svg'

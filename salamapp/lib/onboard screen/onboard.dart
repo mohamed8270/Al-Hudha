@@ -65,7 +65,9 @@ class _OnboardScreenState extends State<OnboardScreen> {
                         height: siZe.height * 0.3,
                         width: siZe.width * 0.7,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50)),
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        clipBehavior: Clip.hardEdge,
                         child: Image(
                           image: AssetImage(content[i].image),
                           fit: BoxFit.cover,

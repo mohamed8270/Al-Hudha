@@ -39,6 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
               image: AssetImage('assets/images/Splash screen.png'),
             ),
           ),
+          clipBehavior: Clip.hardEdge,
         ),
       ),
     );

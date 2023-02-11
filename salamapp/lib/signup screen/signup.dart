@@ -49,6 +49,7 @@ class _SignScreenState extends State<SignScreen> {
                     fit: BoxFit.cover,
                   ),
                 ),
+                clipBehavior: Clip.hardEdge,
               ),
               const SizedBox(height: 15),
               InkWell(

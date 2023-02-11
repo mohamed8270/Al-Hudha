@@ -48,6 +48,7 @@ class _CharityPageState extends State<CharityPage> {
                 color: Zgrey,
                 borderRadius: BorderRadius.circular(10),
               ),
+              clipBehavior: Clip.hardEdge,
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: Column(
@@ -94,6 +95,7 @@ class _CharityPageState extends State<CharityPage> {
                   fit: BoxFit.cover,
                 ),
               ),
+              clipBehavior: Clip.hardEdge,
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: Column(

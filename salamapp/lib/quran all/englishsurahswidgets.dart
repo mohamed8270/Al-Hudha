@@ -42,7 +42,7 @@ class _EnglishSurahsScreenState extends State<EnglishSurahsScreen> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(top: 15, left: 5, right: 5),
+          padding: const EdgeInsets.only(top: 5, left: 5, right: 5),
           child: ListView.builder(
             itemCount: quran.getVerseCount(widget.EnglishSurah),
             itemBuilder: (context, index) {

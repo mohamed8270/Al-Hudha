@@ -100,6 +100,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                       fit: BoxFit.cover,
                     ),
                   ),
+                  clipBehavior: Clip.hardEdge,
                   child: Padding(
                     padding: const EdgeInsets.all(10),
                     child: Column(

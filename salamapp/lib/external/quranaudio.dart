@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:app_settings/app_settings.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
@@ -322,6 +324,49 @@ class _QuranAudioState extends State<QuranAudio>
                     image: DecorationImage(
                       image: AssetImage('assets/images/quran4.jpg'),
                       fit: BoxFit.cover,
+                    ),
+                  ),
+                  clipBehavior: Clip.hardEdge,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.center,
+                        colors: [
+                          Zblack,
+                          Zblack.withOpacity(0.38),
+                        ],
+                        tileMode: TileMode.clamp,
+                        stops: const [
+                          0.1,
+                          100,
+                        ],
+                      ),
+                    ),
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Container(
+                            height: siZe.height * 0.08,
+                            width: siZe.width * 0.01,
+                            decoration: BoxDecoration(
+                              color: Zred,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          const Text(
+                            "So give good news to my slaves, Those who listern to the \nword and then follow the best of it, Verily in the \nrememberence of Allah do hearts find peace",
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Zwhite,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

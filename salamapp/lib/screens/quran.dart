@@ -50,9 +50,11 @@ class _QuranState extends State<Quran> with TickerProviderStateMixin {
           isScrollable: true,
           indicatorSize: TabBarIndicatorSize.label,
           labelStyle: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              fontFamily: 'Poppins,'),
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            fontFamily: 'Poppins,',
+            letterSpacing: 0.8,
+          ),
           tabs: const [
             Tab(
               text: "Arabic",

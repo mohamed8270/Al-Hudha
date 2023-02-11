@@ -83,6 +83,7 @@ class _HalalStocksState extends State<HalalStocks> {
                     fit: BoxFit.cover,
                   ),
                 ),
+                clipBehavior: Clip.hardEdge,
               ),
               const SizedBox(height: 10),
               ListView.builder(
@@ -132,12 +133,11 @@ class _HalalStocksState extends State<HalalStocks> {
                           color: Zblack.withOpacity(0.4),
                         ),
                       ),
-                      const SizedBox(height: 15)
+                      const SizedBox(height: 15),
                     ],
                   );
                 }),
               ),
-              const SizedBox(height: 10),
               InkWell(
                 // ignore: deprecated_member_use
                 onTap: () => launch(
@@ -162,7 +162,7 @@ class _HalalStocksState extends State<HalalStocks> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 70),
             ],
           ),
         ),

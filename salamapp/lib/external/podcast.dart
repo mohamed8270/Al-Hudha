@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:salamapp/external/englishpodcast.dart';
+import 'package:salamapp/language%20podcast/arabicpodcast.dart';
+import 'package:salamapp/language%20podcast/tamilpodcast.dart';
 import 'package:salamapp/theme/colors.dart';
 
 class PodCast extends StatefulWidget {
@@ -38,7 +40,7 @@ class _PodCastState extends State<PodCast> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     var siZe = MediaQuery.of(context).size;
-    TabController tabcontroller = TabController(length: 4, vsync: this);
+    TabController tabcontroller = TabController(length: 3, vsync: this);
     return Scaffold(
       backgroundColor: Zwhite,
       appBar: AppBar(
@@ -72,6 +74,8 @@ class _PodCastState extends State<PodCast> with TickerProviderStateMixin {
           labelStyle: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w600,
+            fontFamily: 'Poppins',
+            letterSpacing: 0.8,
           ),
           tabs: const [
             Tab(
@@ -83,9 +87,6 @@ class _PodCastState extends State<PodCast> with TickerProviderStateMixin {
             Tab(
               text: "Tamil",
             ),
-            Tab(
-              text: "Urdu",
-            )
           ],
         ),
       ),
@@ -95,9 +96,8 @@ class _PodCastState extends State<PodCast> with TickerProviderStateMixin {
           controller: tabcontroller,
           children: [
             EnglishPodcast(Podcastlist: Podcastlist, siZe: siZe),
-            const Text("is"),
-            const Text("here"),
-            const Text("now"),
+            const ArabicPodcast(),
+            const TamilPodcast(),
           ],
         ),
       ),

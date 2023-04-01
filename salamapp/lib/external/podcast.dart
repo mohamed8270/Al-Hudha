@@ -45,7 +45,7 @@ class _PodCastState extends State<PodCast> with TickerProviderStateMixin {
       backgroundColor: Zwhite,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Zwhite,
+        backgroundColor: Zblack,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
@@ -55,27 +55,27 @@ class _PodCastState extends State<PodCast> with TickerProviderStateMixin {
             color: Zred,
           ),
         ),
-        title: Text(
+        title: const Text(
           'Podcast',
           style: TextStyle(
             fontSize: 20,
-            color: Zblack.withOpacity(0.5),
+            color: Zwhite,
             fontWeight: FontWeight.w500,
           ),
         ),
         bottom: TabBar(
           labelPadding: const EdgeInsets.symmetric(horizontal: 30),
-          labelColor: Zred,
-          unselectedLabelColor: Zblack.withOpacity(0.3),
+          labelColor: Zwhite,
+          unselectedLabelColor: Zwhite.withOpacity(0.3),
           controller: tabcontroller,
-          indicatorColor: Zred,
+          indicatorColor: Zwhite,
           isScrollable: true,
-          indicatorSize: TabBarIndicatorSize.label,
+          indicatorSize: TabBarIndicatorSize.tab,
           labelStyle: const TextStyle(
             fontSize: 14,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w400,
             fontFamily: 'Poppins',
-            letterSpacing: 0.8,
+            letterSpacing: 0.4,
           ),
           tabs: const [
             Tab(

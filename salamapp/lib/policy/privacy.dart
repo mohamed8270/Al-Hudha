@@ -55,13 +55,13 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
+        padding: const EdgeInsets.only(left: 5, right: 5),
         child: ListView.builder(
           scrollDirection: Axis.vertical,
           itemCount: privacyList.length,
           itemBuilder: ((context, index) {
             return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.symmetric(vertical: 3),
               child: Container(
                 constraints: const BoxConstraints(
                   maxHeight: double.infinity,

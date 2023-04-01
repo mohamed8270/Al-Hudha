@@ -137,7 +137,7 @@ class _BenefitsScreenState extends State<BenefitsScreen> {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: Zblack.withOpacity(0.4),
+                          color: Zblack.withOpacity(0.5),
                         ),
                       ),
                       const Text('\n')

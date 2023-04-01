@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_qiblah/flutter_qiblah.dart';
+import 'package:get/get.dart';
 import 'package:salamapp/qibla%20location/loading_indicator.dart';
 import 'package:salamapp/qibla%20location/qibla_compass.dart';
 import 'package:salamapp/qibla%20location/qibla_maps.dart';
@@ -18,6 +19,7 @@ class _QiblaScreenState extends State<QiblaScreen>
 
   @override
   Widget build(BuildContext context) {
+    var siZe = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Zwhite,
       body: Padding(
@@ -70,6 +72,37 @@ class _QiblaScreenState extends State<QiblaScreen>
                 color: Zblack.withOpacity(0.4),
               ),
               textAlign: TextAlign.justify,
+            ),
+            const SizedBox(height: 30),
+            InkWell(
+              borderRadius: BorderRadius.circular(40),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => QiblahMaps(),
+                  ),
+                );
+              },
+              child: Center(
+                child: Container(
+                  height: siZe.height * 0.06,
+                  width: siZe.width * 0.6,
+                  decoration: BoxDecoration(
+                    color: Zred,
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  alignment: Alignment.center,
+                  child: const Text(
+                    "Map View",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Zwhite,
+                    ),
+                  ),
+                ),
+              ),
             )
           ],
         ),

@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'dart:convert';
+import 'package:dotted_line/dotted_line.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 // ignore: unused_import
 import 'package:firebase_core/firebase_core.dart';
@@ -13,7 +15,6 @@ import 'package:intl/intl.dart';
 import 'package:quran/surah_data.dart';
 import 'package:salamapp/external/profile.dart';
 import 'package:salamapp/external/quranaudio.dart';
-import 'package:salamapp/external/task.dart';
 import 'package:salamapp/notification/notification.dart';
 // ignore: unused_import
 import 'package:salamapp/quran%20data/surah_data.dart';
@@ -217,297 +218,299 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     var siZe = MediaQuery.of(context).size;
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Zred,
-        elevation: 4,
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const TaskManagement(),
-            ),
-          );
-        },
-        child: const Icon(
-          Icons.task_alt_rounded,
-          color: Zwhite,
-        ),
-      ),
       backgroundColor: Zwhite,
-      appBar: AppBar(
-        backgroundColor: Zwhite,
-        elevation: 0,
-        title: const Text(
-          'Al Hudha',
-          style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.w900,
-            color: Zred,
-          ),
-        ),
-        centerTitle: false,
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const NotificationSalam(),
-                ),
-              );
-            },
-            icon: SvgPicture.asset(
-              'assets/icons/notificationout.svg',
-              height: 20,
-              width: 20,
-              color: Zred,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const Profile(),
-                ),
-              );
-            },
-            icon: SvgPicture.asset(
-              'assets/icons/profile.svg',
-              height: 20,
-              width: 20,
-              color: Zred,
-            ),
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                height: siZe.height * 0.08,
-                width: double.infinity,
-                color: Zgrey,
-                alignment: Alignment.centerLeft,
-                child: Row(
-                  children: [
-                    Container(
-                      height: siZe.height * 0.08,
-                      width: siZe.width * 0.01,
-                      decoration: BoxDecoration(
-                        color: Zred,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            automaticallyImplyLeading: false,
+            excludeHeaderSemantics: false,
+            toolbarHeight: siZe.height * 0.08,
+            floating: true,
+            elevation: 0,
+            pinned: true,
+            centerTitle: false,
+            snap: false,
+            backgroundColor: Zblack,
+            title: RichText(
+              text: TextSpan(
+                children: [
+                  const TextSpan(
+                    text: 'Asalamu Alaikum\n',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Zwhite,
+                      letterSpacing: 0.6,
                     ),
-                    const SizedBox(width: 10),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          const TextSpan(
-                            text: 'Asalamu Alaikum\n',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w600,
-                              color: Zblack,
-                            ),
-                          ),
-                          TextSpan(
-                            text:
-                                FirebaseAuth.instance.currentUser!.displayName!,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: Zred,
-                            ),
-                          ),
-                        ],
-                      ),
+                  ),
+                  TextSpan(
+                    text: FirebaseAuth.instance.currentUser!.displayName!,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Zwhite.withOpacity(0.5),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 12),
-              InkWell(
-                onTap: () {
+            ),
+            actions: [
+              IconButton(
+                onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const PrayerTime(),
+                      builder: (context) => const NotificationSalam(),
                     ),
                   );
                 },
+                icon: SvgPicture.asset(
+                  'assets/icons/notificationout.svg',
+                  height: 20,
+                  width: 20,
+                  color: Zred,
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Profile(),
+                    ),
+                  );
+                },
+                icon: SvgPicture.asset(
+                  'assets/icons/profile.svg',
+                  height: 20,
+                  width: 20,
+                  color: Zred,
+                ),
+              ),
+            ],
+            bottom: AppBar(
+              automaticallyImplyLeading: false,
+              excludeHeaderSemantics: false,
+              elevation: 0,
+              toolbarHeight: siZe.height * 0.08,
+              backgroundColor: Zblack,
+              title: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
                 child: Container(
-                  height: siZe.height * 0.14,
+                  height: siZe.height * 0.06,
                   width: siZe.width * 0.95,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Zgrey,
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/quran2.jpg'),
-                      fit: BoxFit.cover,
-                    ),
+                    color: Zwhite.withOpacity(0.05),
+                    borderRadius: BorderRadius.circular(40),
                   ),
-                  clipBehavior: Clip.hardEdge,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.only(bottom: 0.5),
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(
-                                color: Zred,
-                                width: 2,
-                              ),
-                            ),
-                          ),
-                          child: Text(
-                            message,
-                            style: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: Zblack,
-                            ),
+                  alignment: Alignment.center,
+                  child: Center(
+                    child: TextFormField(
+                      onChanged: (value) => _runFilter(value),
+                      decoration: InputDecoration(
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: SvgPicture.asset(
+                            'assets/icons/search.svg',
+                            height: 10,
+                            width: 10,
+                            color: Zred,
                           ),
                         ),
-                        const SizedBox(height: 10),
-                        Text(
-                          "O you who believe! Seek help in patience \nand As-Salat (the prayer). Truly! Allah \nis with As-Sabirin the patient ones",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w500,
-                            color: Zblack.withOpacity(0.5),
-                          ),
+                        hintText: 'Search',
+                        hintStyle: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Zwhite.withOpacity(0.8),
                         ),
-                      ],
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(height: 15),
-              Container(
-                height: siZe.height * 0.06,
-                width: siZe.width * 0.95,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Zblack.withOpacity(0.1)),
-                  borderRadius: BorderRadius.circular(40),
-                ),
-                alignment: Alignment.center,
-                child: Center(
-                  child: TextFormField(
-                    onChanged: (value) => _runFilter(value),
-                    decoration: InputDecoration(
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: SvgPicture.asset(
-                          'assets/icons/search.svg',
-                          height: 10,
-                          width: 10,
-                          color: Zred,
-                        ),
-                      ),
-                      hintText: 'Search',
-                      hintStyle: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Zblack.withOpacity(0.4),
-                      ),
-                      focusedBorder: const UnderlineInputBorder(
-                          borderSide: BorderSide.none),
-                      enabledBorder: const UnderlineInputBorder(
-                          borderSide: BorderSide.none),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 15),
-              _foundSurah.isNotEmpty
-                  ? ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: _foundSurah.length,
-                      physics: const ScrollPhysics(),
-                      itemBuilder: (context, i) => InkWell(
-                        borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                Padding(
+                  padding: const EdgeInsets.only(top: 8, left: 10, right: 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      InkWell(
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => QuranAudio(
-                                surahnumber: i + 1,
-                                audioPaths: audioList[i + 0]["audio"],
-                              ),
+                              builder: (context) => const PrayerTime(),
                             ),
                           );
                         },
                         child: Container(
-                          key: ValueKey(_foundSurah[i]["id"]),
-                          height: siZe.height * 0.10,
+                          height: siZe.height * 0.14,
                           width: siZe.width * 0.95,
                           decoration: BoxDecoration(
-                            color: Zgrey.withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(8),
+                            color: Zgrey,
+                            image: const DecorationImage(
+                              image: AssetImage('assets/images/quran2.jpg'),
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                          margin: const EdgeInsets.only(bottom: 10),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ListTile(
-                                leading: Text(
-                                  _foundSurah[i]["id"].toString(),
+                          clipBehavior: Clip.hardEdge,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.only(bottom: 0.5),
+                                  decoration: const BoxDecoration(
+                                    border: Border(
+                                      bottom: BorderSide(
+                                        color: Zred,
+                                        width: 2,
+                                      ),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    message,
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                      color: Zblack,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 15),
+                                Text(
+                                  "O you who believe! Seek help in patience \nand As-Salat (the prayer). Truly! Allah \nis with As-Sabirin the patient ones",
+                                  textAlign: TextAlign.left,
                                   style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 10,
                                     fontWeight: FontWeight.w500,
-                                    color: Zblack.withOpacity(0.3),
+                                    color: Zblack.withOpacity(0.5),
                                   ),
                                 ),
-                                title: Text(
-                                  _foundSurah[i]['name'],
-                                  style: const TextStyle(
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w500,
-                                    color: Zblack,
-                                  ),
-                                ),
-                                subtitle: Text(
-                                  _foundSurah[i]['aji'],
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w500,
-                                    color: Zblack.withOpacity(0.4),
-                                  ),
-                                ),
-                                trailing: SvgPicture.asset(
-                                  'assets/icons/music.svg',
-                                  height: 18,
-                                  width: 18,
-                                  fit: BoxFit.cover,
-                                  color: Zblack.withOpacity(0.3),
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    )
-                  : const Text(
-                      'No results found',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w400,
-                        color: Zred,
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "Listern to Recitation",
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              color: Zred,
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          SizedBox(
+                            width: siZe.width * 0.62,
+                            child: DottedLine(
+                              lineThickness: 1,
+                              dashColor: Zblack.withOpacity(0.3),
+                            ),
+                          )
+                        ],
                       ),
-                    ),
-            ],
-          ),
-        ),
+                      _foundSurah.isNotEmpty
+                          ? ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: _foundSurah.length,
+                              physics: const ScrollPhysics(),
+                              itemBuilder: (context, i) => InkWell(
+                                borderRadius: BorderRadius.circular(10),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => QuranAudio(
+                                        surahnumber: i + 1,
+                                        audioPaths: audioList[i + 0]["audio"],
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  key: ValueKey(_foundSurah[i]["id"]),
+                                  height: siZe.height * 0.10,
+                                  width: siZe.width * 0.95,
+                                  decoration: BoxDecoration(
+                                    color: Zgrey.withOpacity(0.5),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  margin: const EdgeInsets.only(bottom: 10),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      ListTile(
+                                        leading: Text(
+                                          _foundSurah[i]["id"].toString(),
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                            color: Zblack.withOpacity(0.3),
+                                          ),
+                                        ),
+                                        title: Text(
+                                          _foundSurah[i]['name'],
+                                          style: const TextStyle(
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.w500,
+                                            color: Zblack,
+                                          ),
+                                        ),
+                                        subtitle: Text(
+                                          _foundSurah[i]['aji'],
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w500,
+                                            color: Zblack.withOpacity(0.4),
+                                          ),
+                                        ),
+                                        trailing: SvgPicture.asset(
+                                          'assets/icons/music.svg',
+                                          height: 18,
+                                          width: 18,
+                                          fit: BoxFit.cover,
+                                          color: Zblack.withOpacity(0.3),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            )
+                          : const Text(
+                              'No results found',
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.w400,
+                                color: Zred,
+                              ),
+                            ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

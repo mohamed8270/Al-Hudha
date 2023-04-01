@@ -32,7 +32,12 @@ class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
         elevation: 0,
         iconSize: 18,
         currentIndex: currentIndex,
-        selectedLabelStyle: const TextStyle(color: Zblack, fontSize: 12),
+        selectedLabelStyle: const TextStyle(
+          color: Zblack,
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
+          height: 1.5,
+        ),
         showSelectedLabels: true,
         showUnselectedLabels: true,
         unselectedItemColor: Zblack.withOpacity(0.3),
@@ -47,7 +52,7 @@ class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
               color: Zblack.withOpacity(0.4),
             ),
             activeIcon: SvgPicture.asset(
-              'assets/icons/homefill.svg',
+              'assets/icons/homeout.svg',
               color: Zred,
             ),
             label: 'Home',
@@ -58,7 +63,7 @@ class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
               color: Zblack.withOpacity(0.4),
             ),
             activeIcon: SvgPicture.asset(
-              'assets/icons/timefill.svg',
+              'assets/icons/timeout.svg',
               color: Zred,
             ),
             label: 'Prayer Time',
@@ -69,7 +74,7 @@ class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
               color: Zblack.withOpacity(0.4),
             ),
             activeIcon: SvgPicture.asset(
-              'assets/icons/bookfill.svg',
+              'assets/icons/bookout.svg',
               color: Zred,
             ),
             label: 'Quran',
@@ -80,7 +85,7 @@ class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
               color: Zblack.withOpacity(0.4),
             ),
             activeIcon: SvgPicture.asset(
-              'assets/icons/morefill.svg',
+              'assets/icons/moreout.svg',
               color: Zred,
             ),
             label: 'More',

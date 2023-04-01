@@ -2,14 +2,17 @@
 
 import 'dart:convert';
 
+import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:salamapp/external/about.dart';
 import 'package:salamapp/external/bookmark.dart';
 import 'package:salamapp/hijri%20calendar/hijri.dart';
 import 'package:salamapp/more/charity.dart';
 import 'package:salamapp/notification/notification.dart';
 import 'package:salamapp/policy/privacy.dart';
 import 'package:salamapp/security/security.dart';
+import 'package:salamapp/signup%20screen/signup.dart';
 import 'package:salamapp/theme/colors.dart';
 
 class Profile extends StatefulWidget {
@@ -109,7 +112,7 @@ class _ProfileState extends State<Profile> {
                   Icon(
                     Icons.keyboard_arrow_right_outlined,
                     color: Zblack.withOpacity(0.2),
-                    size: 30,
+                    size: 24,
                   )
                 ],
               ),
@@ -128,12 +131,12 @@ class _ProfileState extends State<Profile> {
                 children: [
                   const ProfileCard(
                     icn: Icons.calendar_month_outlined,
-                    txt: 'Hijir Calendar',
+                    txt: 'Calendar',
                   ),
                   Icon(
                     Icons.keyboard_arrow_right_outlined,
                     color: Zblack.withOpacity(0.2),
-                    size: 30,
+                    size: 24,
                   )
                 ],
               ),
@@ -157,19 +160,14 @@ class _ProfileState extends State<Profile> {
                   Icon(
                     Icons.keyboard_arrow_right_outlined,
                     color: Zblack.withOpacity(0.2),
-                    size: 30,
+                    size: 24,
                   )
                 ],
               ),
             ),
             InkWell(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const NotificationSalam(),
-                  ),
-                );
+                AppSettings.openNotificationSettings();
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -181,7 +179,7 @@ class _ProfileState extends State<Profile> {
                   Icon(
                     Icons.keyboard_arrow_right_outlined,
                     color: Zblack.withOpacity(0.2),
-                    size: 30,
+                    size: 24,
                   )
                 ],
               ),
@@ -205,7 +203,7 @@ class _ProfileState extends State<Profile> {
                   Icon(
                     Icons.keyboard_arrow_right_outlined,
                     color: Zblack.withOpacity(0.2),
-                    size: 30,
+                    size: 24,
                   )
                 ],
               ),
@@ -229,13 +227,20 @@ class _ProfileState extends State<Profile> {
                   Icon(
                     Icons.keyboard_arrow_right_outlined,
                     color: Zblack.withOpacity(0.2),
-                    size: 30,
+                    size: 24,
                   )
                 ],
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AboutPage(),
+                  ),
+                );
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -246,7 +251,7 @@ class _ProfileState extends State<Profile> {
                   Icon(
                     Icons.keyboard_arrow_right_outlined,
                     color: Zblack.withOpacity(0.2),
-                    size: 30,
+                    size: 24,
                   )
                 ],
               ),
@@ -254,7 +259,14 @@ class _ProfileState extends State<Profile> {
             FlatButton(
               minWidth: 140,
               height: 40,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SignScreen(),
+                  ),
+                );
+              },
               shape: const StadiumBorder(),
               color: Zred,
               child: const Text(

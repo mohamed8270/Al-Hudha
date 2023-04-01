@@ -130,7 +130,8 @@ class QiblahCompassWidget extends StatelessWidget {
               child: _needleSvg,
             ),
             Positioned(
-              bottom: 38,
+              bottom: 0,
+              left: 5,
               child: Text(
                 "${qiblahDirection.offset.toStringAsFixed(3)}°",
                 style: const TextStyle(

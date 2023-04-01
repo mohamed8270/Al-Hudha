@@ -25,7 +25,7 @@ class QiblahMaps extends StatefulWidget {
 
 class _QiblahMapsState extends State<QiblahMaps> {
   final Completer<GoogleMapController> _controller = Completer();
-  LatLng position = const LatLng(36.800636, 10.180358);
+  LatLng position = const LatLng(10.195384, 78.394964);
 
   Future<Position?>? _future;
   final _positionStream = StreamController<LatLng>.broadcast();

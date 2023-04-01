@@ -86,7 +86,7 @@ class _PrayerTimeState extends State<PrayerTime> {
           final prayerTimes = PrayerTimes.today(myCoordinates, params);
 
           return Padding(
-            padding: const EdgeInsets.only(top: 15, right: 10, left: 10),
+            padding: const EdgeInsets.only(top: 10, right: 10, left: 10),
             child: Column(
               children: [
                 Container(
@@ -122,7 +122,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 15),
                         Text(
                           "O you who believe! Seek help in patience \nand As-Salat (the prayer). Truly! Allah \nis with As-Sabirin the patient ones",
                           textAlign: TextAlign.left,
@@ -134,6 +134,53 @@ class _PrayerTimeState extends State<PrayerTime> {
                         ),
                       ],
                     ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  width: siZe.width * 0.95,
+                  height: siZe.height * 0.06,
+                  decoration: BoxDecoration(
+                    color: Zgrey.withOpacity(0.6),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            height: siZe.height * 0.038,
+                            width: siZe.width * 0.01,
+                            decoration: BoxDecoration(
+                              color: Zblack,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          const Text(
+                            'Sun rise',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Zblack,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 5),
+                        child: Text(
+                          DateFormat.jm().format(prayerTimes.sunrise),
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                            color: Zblack.withOpacity(0.5),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -181,17 +228,13 @@ class _PrayerTimeState extends State<PrayerTime> {
                   thickness: 1,
                   color: Zgrey,
                 ),
-                const SizedBox(height: 10),
-                PrayerTimeWidget(
-                  time: DateFormat.jm().format(prayerTimes.sunrise),
-                  title: 'Sun rise',
-                ),
                 const SizedBox(height: 80),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
+                      borderRadius: BorderRadius.circular(40),
                       onTap: () {
                         Navigator.push(
                           context,
@@ -205,7 +248,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                         width: siZe.width * 0.35,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(40),
-                          color: Zgrey,
+                          color: Zgrey.withOpacity(0.6),
                         ),
                         alignment: Alignment.center,
                         child: Row(
@@ -229,6 +272,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                       ),
                     ),
                     InkWell(
+                      borderRadius: BorderRadius.circular(40),
                       onTap: () async {
                         await LaunchApp.openApp(
                           androidPackageName: 'com.android.clock',
@@ -239,7 +283,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                         height: siZe.height * 0.065,
                         width: siZe.width * 0.5,
                         decoration: BoxDecoration(
-                          color: Zgrey,
+                          color: Zgrey.withOpacity(0.6),
                           borderRadius: BorderRadius.circular(40),
                         ),
                         alignment: Alignment.center,

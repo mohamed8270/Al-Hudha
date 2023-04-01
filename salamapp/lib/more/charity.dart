@@ -42,7 +42,7 @@ class _CharityPageState extends State<CharityPage> {
         child: Column(
           children: [
             Container(
-              height: siZe.height * 0.14,
+              height: siZe.height * 0.13,
               width: siZe.width * 0.95,
               decoration: BoxDecoration(
                 color: Zgrey,
@@ -70,13 +70,13 @@ class _CharityPageState extends State<CharityPage> {
                         )
                       ],
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 10),
                     Text(
                       "The donation site below mentioned is fully trusted and reviewed by the developer, There is no malisious activities or scamming in the mentioned platform",
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
-                        color: Zblack.withOpacity(0.3),
+                        color: Zblack.withOpacity(0.5),
                       ),
                     )
                   ],

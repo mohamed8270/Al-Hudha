@@ -20,7 +20,7 @@ class _QuranState extends State<Quran> with TickerProviderStateMixin {
       backgroundColor: Zwhite,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Zwhite,
+        backgroundColor: Zblack,
         leading: InkWell(
           onTap: () {
             Navigator.push(
@@ -33,27 +33,28 @@ class _QuranState extends State<Quran> with TickerProviderStateMixin {
             color: Zred,
           ),
         ),
-        title: Text(
+        title: const Text(
           'Quran Recitation',
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w500,
-            color: Zblack.withOpacity(0.5),
+            color: Zwhite,
           ),
         ),
         bottom: TabBar(
           labelPadding: const EdgeInsets.symmetric(horizontal: 50),
-          labelColor: Zred,
-          unselectedLabelColor: Zblack.withOpacity(0.3),
+          labelColor: Zwhite,
+          unselectedLabelColor: Zwhite.withOpacity(0.3),
           controller: tabcontroller,
-          indicatorColor: Zred,
+          indicatorColor: Zwhite,
+          indicatorWeight: 3,
           isScrollable: true,
-          indicatorSize: TabBarIndicatorSize.label,
+          indicatorSize: TabBarIndicatorSize.tab,
           labelStyle: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
             fontFamily: 'Poppins,',
-            letterSpacing: 0.8,
+            letterSpacing: 0.4,
           ),
           tabs: const [
             Tab(

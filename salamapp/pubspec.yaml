@@ -62,6 +62,8 @@ dependencies:
   google_maps_flutter: ^2.2.3
   geolocator: ^9.0.2
   hijri_picker: ^3.0.0
+  get: ^4.6.5
+  dotted_line: ^3.1.0
  
  
   
@@ -101,6 +103,7 @@ flutter:
      - assets/stock_json/.
      - assets/benefits_json/.
      - assets/podcast_json/.
+     
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:app_settings/app_settings.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
@@ -357,12 +355,16 @@ class _QuranAudioState extends State<QuranAudio>
                             ),
                           ),
                           const SizedBox(width: 5),
-                          const Text(
-                            "So give good news to my slaves, Those who listern to the \nword and then follow the best of it, Verily in the \nrememberence of Allah do hearts find peace",
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              color: Zwhite,
+                          SizedBox(
+                            width: siZe.width * 0.8,
+                            height: siZe.height * 0.055,
+                            child: const Text(
+                              "So give good news to my slaves, Those who listern to the word and then follow the best of it, Verily in the rememberence of Allah do hearts find peace",
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: Zwhite,
+                              ),
                             ),
                           ),
                         ],
@@ -573,7 +575,8 @@ class _QuranAudioState extends State<QuranAudio>
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
